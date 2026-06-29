@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>⚡ Veículos Eletrificados em Portugal — Guia do Automóvel</title>
+<style>
+/* ── Arctic Frost Theme ── */
+:root{
+  --bg:#eef4fb;--card:#ffffff;--header:#4a6fa5;--header-text:#ffffff;
+  --text:#2a3a50;--muted:#6a8aaa;--border:#c0d4ea;--accent:#4a6fa5;
+  --accent2:#a0c4e8;--input:#f0f6fc;
+  --ev-bg:#d4e8f8;--ev-text:#1a3a70;
+  --phev-bg:#e8f0f8;--phev-text:#3a4a70;
+  --yes-bg:#d8f0e8;--yes-text:#1a4a30;
+  --no-bg:#f8e8e8;--no-text:#7a2020;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── Header ── */
+header{background:var(--header);color:var(--header-text);padding:24px 32px 20px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+header h1{font-size:22px;font-weight:700;letter-spacing:-.3px;margin-bottom:5px}
+header p{font-size:13px;opacity:.8;line-height:1.5;max-width:680px}
+.header-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;white-space:nowrap;align-self:center}
+
+/* ── Main ── */
+main{padding:24px 32px 60px;max-width:1500px;margin:0 auto}
+
+/* ── KPI Cards ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-bottom:26px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;transition:box-shadow .15s}
+.kpi:hover{box-shadow:0 4px 16px rgba(74,111,165,.12)}
+.kpi-icon{font-size:22px;margin-bottom:8px}
+.kpi-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:5px}
+.kpi-value{font-size:28px;font-weight:800;color:var(--accent);line-height:1;letter-spacing:-.5px}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px}
+.kpi-bar{height:4px;background:var(--border);border-radius:2px;margin-top:10px;overflow:hidden}
+.kpi-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .6s ease}
+
+/* ── Layout ── */
+.layout{display:grid;grid-template-columns:1fr 300px;gap:18px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}}
+
+/* ── Controls ── */
+.controls-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+input[type=text]{flex:1;min-width:200px;padding:9px 14px;border:1px solid var(--border);border-radius:8px;background:var(--input);color:var(--text);font-size:13px;outline:none;transition:border-color .15s}
+input[type=text]:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(74,111,165,.12)}
+select{padding:9px 12px;border:1px solid var(--border);border-radius:8px;background:var(--input);color:var(--text);font-size:13px;cursor:pointer;outline:none}
+select:focus{border-color:var(--accent)}
+.count-tag{font-size:13px;color:var(--muted);font-weight:500;white-space:nowrap;padding:0 4px}
+
+/* ── Table ── */
+.table-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px;background:var(--card);max-height:620px}
+table{border-collapse:collapse;width:100%;min-width:750px}
+thead th{background:var(--header);color:var(--header-text);padding:10px 12px;font-size:12px;font-weight:600;text-align:left;position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;white-space:nowrap}
+thead th:hover{background:#3d5e94}
+thead th .sort-icon{opacity:.5;margin-left:4px;font-size:10px}
+thead th.asc .sort-icon::after{content:'▲'}
+thead th.desc .sort-icon::after{content:'▼'}
+thead th:not(.asc):not(.desc) .sort-icon::after{content:'⇅'}
+td{padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#f4f8fd}
+.badge{display:inline-block;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:700}
+.badge-ev{background:var(--ev-bg);color:var(--ev-text)}
+.badge-phev{background:var(--phev-bg);color:var(--phev-text)}
+.badge-sim{background:var(--yes-bg);color:var(--yes-text)}
+.badge-nao{background:var(--no-bg);color:var(--no-text)}
+.btn-detail{background:var(--accent);color:#fff;border:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600;transition:background .15s,transform .1s}
+.btn-detail:hover{background:#3d5e94;transform:scale(1.04)}
+
+/* ── Sidebar card ── */
+.sidebar-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+.sidebar-card h3{font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px;letter-spacing:-.1px}
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.bar-label{width:80px;font-size:11px;color:var(--muted);text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0}
+.bar-track{flex:1;background:var(--border);border-radius:3px;height:16px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:3px;background:var(--accent);transition:width .5s ease}
+.bar-num{width:18px;font-size:11px;font-weight:700;color:var(--accent);flex-shrink:0}
+.divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+.type-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.type-pill{display:flex;flex-direction:column;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 16px;flex:1}
+.type-pill+.type-pill{margin-left:10px}
+.type-num{font-size:24px;font-weight:800;color:var(--accent)}
+.type-lbl{font-size:11px;font-weight:600;color:var(--muted);margin-top:3px}
+.price-range{margin-top:12px}
+.pr-row{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border)}
+.pr-row:last-child{border-bottom:none}
+.pr-lbl{color:var(--muted)}
+.pr-val{font-weight:700;color:var(--text)}
+
+/* ── Modal ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(15,30,60,.5);z-index:1000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:16px;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal-photo{width:100%;height:220px;object-fit:cover;border-radius:14px 14px 0 0;background:var(--bg);display:block}
+.modal-photo-placeholder{width:100%;height:220px;border-radius:14px 14px 0 0;background:linear-gradient(135deg,var(--ev-bg) 0%,var(--accent2) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.modal-photo-placeholder .car-icon{font-size:52px;opacity:.5}
+.modal-photo-placeholder .car-name{font-size:15px;font-weight:700;color:var(--accent);opacity:.7}
+.modal-body{padding:22px 26px 26px}
+.modal-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.modal-title{font-size:20px;font-weight:800;color:var(--text)}
+.modal-subtitle{font-size:13px;color:var(--muted);margin-top:3px}
+.modal-close{background:var(--bg);border:1px solid var(--border);border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:16px;color:var(--muted);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.modal-close:hover{background:var(--border)}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.modal-stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+.modal-stat-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px}
+.modal-stat-value{font-size:17px;font-weight:800;color:var(--accent)}
+.modal-stat-unit{font-size:11px;color:var(--muted);margin-left:2px;font-weight:400}
+.modal-obs{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.modal-obs strong{color:var(--text)}
+.modal-links{display:flex;gap:10px;flex-wrap:wrap}
+.modal-link{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;background:var(--accent);color:#fff;transition:background .15s}
+.modal-link:hover{background:#3d5e94}
+.modal-link.secondary{background:var(--bg);color:var(--accent);border:1px solid var(--border)}
+.modal-link.secondary:hover{background:var(--ev-bg)}
+.modal-iva-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:14px}
+
+/* ── Footer ── */
+footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);background:var(--card)}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>⚡ Veículos Eletrificados em Portugal</h1>
+    <p>Base consolidada · Guia do Automóvel · Gama de preços €30.000–€100.000 · EV e PHEV · Gerado em 2026-06-17</p>
+  </div>
+  <div class="header-badge">❄️ Arctic Frost</div>
+</header>
+
+<main>
+  <!-- KPI Cards -->
+  <div class="kpi-grid" id="kpi-grid">
+    <div class="kpi"><div class="kpi-icon">🚗</div><div class="kpi-label">Total Veículos</div><div class="kpi-value" id="kpi-total">—</div><div class="kpi-sub" id="kpi-total-sub">—</div></div>
+    <div class="kpi"><div class="kpi-icon">⚡</div><div class="kpi-label">Aut. Média EV</div><div class="kpi-value" id="kpi-aut-ev">—</div><div class="kpi-sub">km elétricos</div><div class="kpi-bar"><div class="kpi-bar-fill" id="bar-aut-ev" style="width:0%"></div></div></div>
+    <div class="kpi"><div class="kpi-icon">🔋</div><div class="kpi-label">Aut. Média PHEV</div><div class="kpi-value" id="kpi-aut-phev">—</div><div class="kpi-sub">km elétricos</div><div class="kpi-bar"><div class="kpi-bar-fill" id="bar-aut-phev" style="width:0%"></div></div></div>
+    <div class="kpi"><div class="kpi-icon">💶</div><div class="kpi-label">EV Mais Acessível</div><div class="kpi-value" id="kpi-min-ev" style="font-size:18px">—</div><div class="kpi-sub">PVP desde</div></div>
+    <div class="kpi"><div class="kpi-icon">💶</div><div class="kpi-label">PHEV Mais Acessível</div><div class="kpi-value" id="kpi-min-phev" style="font-size:18px">—</div><div class="kpi-sub">PVP desde</div></div>
+    <div class="kpi"><div class="kpi-icon">🏢</div><div class="kpi-label">IVA Dedutível</div><div class="kpi-value" id="kpi-iva-pct">—</div><div class="kpi-sub" id="kpi-iva-sub">—</div><div class="kpi-bar"><div class="kpi-bar-fill" id="bar-iva" style="width:0%"></div></div></div>
+    <div class="kpi"><div class="kpi-icon">🏎️</div><div class="kpi-label">Potência Máxima</div><div class="kpi-value" id="kpi-max-cv">—</div><div class="kpi-sub" id="kpi-max-cv-sub">cv</div></div>
+  </div>
+
+  <!-- Main layout -->
+  <div class="layout">
+    <!-- Table -->
+    <div>
+      <div class="controls-bar">
+        <input type="text" id="q" placeholder="🔍  Pesquisar marca, modelo, tipo...">
+        <select id="f-tipo"><option value="">Tipo: todos</option><option>EV</option><option>PHEV</option></select>
+        <select id="f-iva"><option value="">IVA empresa: todos</option><option value="Sim">Sim (dedutível)</option><option value="Não">Não</option></select>
+        <span class="count-tag" id="count-tag"></span>
+      </div>
+      <div class="table-wrap">
+        <table id="tbl">
+          <thead>
+            <tr>
+              <th data-col="Marca">Marca<span class="sort-icon"></span></th>
+              <th data-col="Modelo">Modelo<span class="sort-icon"></span></th>
+              <th data-col="Tipo">Tipo<span class="sort-icon"></span></th>
+              <th data-col="Autonomia elétrica (km)" class="desc">Autonomia (km)<span class="sort-icon"></span></th>
+              <th data-col="Potência (cv)">Pot. (cv)<span class="sort-icon"></span></th>
+              <th data-col="Preço desde (€ PVP)">Preço PVP<span class="sort-icon"></span></th>
+              <th data-col="IVA dedutível empresas?">IVA<span class="sort-icon"></span></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div>
+      <div class="sidebar-card" style="margin-bottom:14px">
+        <h3>📊 Distribuição por tipo</h3>
+        <div class="type-row">
+          <div class="type-pill"><div class="type-num" id="sb-ev">—</div><div class="type-lbl">EV</div></div>
+          <div class="type-pill"><div class="type-num" id="sb-phev">—</div><div class="type-lbl">PHEV</div></div>
+        </div>
+        <div class="price-range">
+          <div class="pr-row"><span class="pr-lbl">EV mínimo</span><span class="pr-val" id="pr-ev-min">—</span></div>
+          <div class="pr-row"><span class="pr-lbl">EV médio</span><span class="pr-val" id="pr-ev-avg">—</span></div>
+          <div class="pr-row"><span class="pr-lbl">PHEV mínimo</span><span class="pr-val" id="pr-phev-min">—</span></div>
+          <div class="pr-row"><span class="pr-lbl">PHEV médio</span><span class="pr-val" id="pr-phev-avg">—</span></div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>🏷️ Modelos por marca</h3>
+        <div id="brand-bars"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>Dados: Guia do Automóvel · guiadoautomovel.pt · Referência 2026-06-17 · Preços PVP Portugal · Sujeitos a alteração</footer>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal-box">
+    <div id="modal-photo-area"></div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+/* ── DATA ── */
+const DATA=[{"Marca":"Volvo","Modelo":"EX60","Tipo":"EV","Preço desde (€ PVP)":67906.3,"Preço s/ IVA estimado (€)":55208.37,"Autonomia elétrica (km)":810,"Potência (cv)":680,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volvocars.com/pt/cars/ex60-electric/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volvo/ex60/precos","Observações":"Guia lista preço desde 67.906,30€; autonomia até 810 km confirmada pela Volvo Portugal."},{"Marca":"Mercedes-Benz","Modelo":"CLA com tecnologia EQ","Tipo":"EV","Preço desde (€ PVP)":57600.0,"Preço s/ IVA estimado (€)":46829.27,"Autonomia elétrica (km)":792,"Potência (cv)":354,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.mercedes-benz.pt/passengercars/models/coupe/cla/overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mercedes-benz/cla/precos","Observações":"Guia lista versões elétricas CLA desde 57.600€."},{"Marca":"Audi","Modelo":"A6 e-tron","Tipo":"EV","Preço desde (€ PVP)":73500.2,"Preço s/ IVA estimado (€)":59756.26,"Autonomia elétrica (km)":756,"Potência (cv)":367,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.audi.pt/pt/modelos/a6/a6-sportback-e-tron/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/audi/a6-e-tron/precos","Observações":"Guia lista preço desde 73.500,20€."},{"Marca":"DS","Modelo":"Nº8","Tipo":"EV","Preço desde (€ PVP)":59000.0,"Preço s/ IVA estimado (€)":47967.48,"Autonomia elétrica (km)":750,"Potência (cv)":350,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.dsautomobiles.pt/modelos/ds-n8.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/ds/n-8/precos","Observações":"Guia lista preço desde 59.000€."},{"Marca":"Tesla","Modelo":"Model S","Tipo":"EV","Preço desde (€ PVP)":89990.0,"Preço s/ IVA estimado (€)":73162.6,"Autonomia elétrica (km)":723,"Potência (cv)":670,"IVA dedutível empresas?":"Não","Representante PT":"https://www.tesla.com/pt_pt/models","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/tesla","Observações":"Preço/modelo pode variar no configurador; incluído por estar publicado no Guia/Tesla."},{"Marca":"Polestar","Modelo":"Polestar 3","Tipo":"EV","Preço desde (€ PVP)":79900.0,"Preço s/ IVA estimado (€)":64959.35,"Autonomia elétrica (km)":706,"Potência (cv)":517,"IVA dedutível empresas?":"Não","Representante PT":"https://www.polestar.com/pt/polestar-3/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/polestar/review","Observações":"Preço/autonomia por versão; página Guia de marca."},{"Marca":"Volkswagen","Modelo":"ID.7","Tipo":"EV","Preço desde (€ PVP)":57900.0,"Preço s/ IVA estimado (€)":47073.17,"Autonomia elétrica (km)":702,"Potência (cv)":286,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volkswagen.pt/pt/modelos/id7.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volkswagen/id.7/review","Observações":"Incluído por gama ID.7 no Guia; confirmar preço da versão em página."},{"Marca":"Tesla","Modelo":"Model 3","Tipo":"EV","Preço desde (€ PVP)":39990.0,"Preço s/ IVA estimado (€)":32512.2,"Autonomia elétrica (km)":702,"Potência (cv)":498,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.tesla.com/pt_pt/model3","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/tesla","Observações":"Preço pode variar no configurador Tesla."},{"Marca":"BMW","Modelo":"iX","Tipo":"EV","Preço desde (€ PVP)":87000.0,"Preço s/ IVA estimado (€)":70731.71,"Autonomia elétrica (km)":701,"Potência (cv)":544,"IVA dedutível empresas?":"Não","Representante PT":"https://www.bmw.pt/pt/all-models/bmw-i/ix/2025/bmw-ix-overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/bmw/ix/precos","Observações":"Guia lista preço desde 87.000€."},{"Marca":"Volvo","Modelo":"ES90","Tipo":"EV","Preço desde (€ PVP)":71471.0,"Preço s/ IVA estimado (€)":58106.5,"Autonomia elétrica (km)":700,"Potência (cv)":680,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volvocars.com/pt/cars/es90-electric/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volvo/es90/precos","Observações":"Guia lista preço desde 71.471€."},{"Marca":"Opel","Modelo":"Grandland Electric","Tipo":"EV","Preço desde (€ PVP)":50100.0,"Preço s/ IVA estimado (€)":40731.71,"Autonomia elétrica (km)":700,"Potência (cv)":231,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.opel.pt/veiculos/grandland/overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/opel/grandland/precos","Observações":"Guia lista BEV 231cv Bateria 97 kWh desde 50.100€."},{"Marca":"Mercedes-Benz","Modelo":"EQE","Tipo":"EV","Preço desde (€ PVP)":69900.0,"Preço s/ IVA estimado (€)":56829.27,"Autonomia elétrica (km)":688,"Potência (cv)":292,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.mercedes-benz.pt/passengercars/models/saloon/eqe/overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mercedes-benz/eqe/precos","Observações":"Modelo elétrico no Guia; autonomia/potência por versão superior pode variar."},{"Marca":"Porsche","Modelo":"Taycan","Tipo":"EV","Preço desde (€ PVP)":107000.0,"Preço s/ IVA estimado (€)":86991.87,"Autonomia elétrica (km)":678,"Potência (cv)":1034,"IVA dedutível empresas?":"Não","Representante PT":"https://www.porsche.com/portugal/models/taycan/taycan-models/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/porsche","Observações":"Porsche incluído por exceção de preço (>100k)."},{"Marca":"Peugeot","Modelo":"E-5008","Tipo":"EV","Preço desde (€ PVP)":47150.0,"Preço s/ IVA estimado (€)":38333.33,"Autonomia elétrica (km)":668,"Potência (cv)":230,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.peugeot.pt/modelos/e-5008.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/peugeot/5008/precos","Observações":"Guia lista versões Plug-in e elétricas; preço desde 47.150€ para PHEV/EV conforme versão."},{"Marca":"Porsche","Modelo":"Macan Electric","Tipo":"EV","Preço desde (€ PVP)":87000.0,"Preço s/ IVA estimado (€)":70731.71,"Autonomia elétrica (km)":641,"Potência (cv)":639,"IVA dedutível empresas?":"Não","Representante PT":"https://www.porsche.com/portugal/models/macan/macan-electric-models/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/porsche","Observações":"Porsche incluído por exceção de preço."},{"Marca":"Kia","Modelo":"EV4","Tipo":"EV","Preço desde (€ PVP)":41516.8,"Preço s/ IVA estimado (€)":33753.5,"Autonomia elétrica (km)":630,"Potência (cv)":204,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.kia.com/pt/modelos/ev4/descobrir/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/kia/ev4/precos","Observações":"Guia lista preço desde 41.516,80€."},{"Marca":"Audi","Modelo":"Q6 e-tron","Tipo":"EV","Preço desde (€ PVP)":66950.4,"Preço s/ IVA estimado (€)":54431.22,"Autonomia elétrica (km)":625,"Potência (cv)":388,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.audi.pt/pt/modelos/q6-e-tron/q6-e-tron/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/audi/q6-e-tron/precos","Observações":"Guia lista preço desde 66.950,40€."},{"Marca":"Renault","Modelo":"Scénic E-Tech Electric","Tipo":"EV","Preço desde (€ PVP)":41037.3,"Preço s/ IVA estimado (€)":33363.66,"Autonomia elétrica (km)":625,"Potência (cv)":220,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.renault.pt/veiculos-eletricos/scenic-e-tech-electric.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/renault/scenic/precos","Observações":"Guia lista preço desde 41.037,30€."},{"Marca":"Tesla","Modelo":"Model Y","Tipo":"EV","Preço desde (€ PVP)":40997.3,"Preço s/ IVA estimado (€)":33331.14,"Autonomia elétrica (km)":622,"Potência (cv)":514,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.tesla.com/pt_pt/modely","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/tesla/model-y/precos","Observações":"Guia lista preço desde 40.997,30€."},{"Marca":"Hyundai","Modelo":"IONIQ 9","Tipo":"EV","Preço desde (€ PVP)":88009.5,"Preço s/ IVA estimado (€)":71552.44,"Autonomia elétrica (km)":620,"Potência (cv)":428,"IVA dedutível empresas?":"Não","Representante PT":"https://www.hyundai.pt/modelos/ioniq-9/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/hyundai/ioniq-9/precos","Observações":"Guia lista preço desde 88.009,50€."},{"Marca":"Hyundai","Modelo":"IONIQ 6","Tipo":"EV","Preço desde (€ PVP)":66107.3,"Preço s/ IVA estimado (€)":53745.77,"Autonomia elétrica (km)":614,"Potência (cv)":325,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.hyundai.pt/modelos/ioniq-6/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/hyundai/ioniq-6/precos","Observações":"Guia lista preço desde 66.107,30€."},{"Marca":"Volvo","Modelo":"EX90","Tipo":"EV","Preço desde (€ PVP)":86725.3,"Preço s/ IVA estimado (€)":70508.37,"Autonomia elétrica (km)":614,"Potência (cv)":517,"IVA dedutível empresas?":"Não","Representante PT":"https://www.volvocars.com/pt/cars/ex90-electric/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volvo/ex90/precos","Observações":"Guia lista preço desde 86.725,30€."},{"Marca":"BMW","Modelo":"i4","Tipo":"EV","Preço desde (€ PVP)":57950.0,"Preço s/ IVA estimado (€)":47113.82,"Autonomia elétrica (km)":613,"Potência (cv)":544,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.bmw.pt/pt/all-models/bmw-i/i4/2024/bmw-i4-overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/bmw/i4/precos","Observações":"Guia lista preço desde 57.950€."},{"Marca":"Kia","Modelo":"EV3","Tipo":"EV","Preço desde (€ PVP)":39916.8,"Preço s/ IVA estimado (€)":32452.68,"Autonomia elétrica (km)":605,"Potência (cv)":204,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.kia.com/pt/modelos/ev3/descobrir/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/kia/ev3/precos","Observações":"Guia lista preço desde 39.916,80€."},{"Marca":"Skoda","Modelo":"Enyaq","Tipo":"EV","Preço desde (€ PVP)":46990.0,"Preço s/ IVA estimado (€)":38203.25,"Autonomia elétrica (km)":587,"Potência (cv)":286,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.skoda-auto.pt/modelos/enyaq/enyaq","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/skoda","Observações":"Página Guia de marca; confirmar versão atual."},{"Marca":"Volvo","Modelo":"EC40","Tipo":"EV","Preço desde (€ PVP)":53330.1,"Preço s/ IVA estimado (€)":43357.8,"Autonomia elétrica (km)":583,"Potência (cv)":442,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volvocars.com/pt/cars/ec40-electric/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volvo/ec40/precos","Observações":"Guia lista preço desde 53.330,10€."},{"Marca":"Kia","Modelo":"EV6","Tipo":"EV","Preço desde (€ PVP)":55023.6,"Preço s/ IVA estimado (€)":44734.63,"Autonomia elétrica (km)":582,"Potência (cv)":325,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.kia.com/pt/modelos/ev6/descobrir/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/kia/ev6/precos","Observações":"Guia lista preço desde 55.023,60€."},{"Marca":"Skoda","Modelo":"Elroq","Tipo":"EV","Preço desde (€ PVP)":39990.0,"Preço s/ IVA estimado (€)":32512.2,"Autonomia elétrica (km)":581,"Potência (cv)":286,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.skoda-auto.pt/modelos/elroq/elroq","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/skoda/elroq/precos","Observações":"Guia lista potências 190/286 cv."},{"Marca":"Volvo","Modelo":"EX40","Tipo":"EV","Preço desde (€ PVP)":49578.6,"Preço s/ IVA estimado (€)":40307.8,"Autonomia elétrica (km)":576,"Potência (cv)":442,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volvocars.com/pt/cars/ex40-electric/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volvo/ex40/precos","Observações":"Guia lista preço desde 49.578,60€."},{"Marca":"BYD","Modelo":"Seal","Tipo":"EV","Preço desde (€ PVP)":43995.2,"Preço s/ IVA estimado (€)":35768.46,"Autonomia elétrica (km)":570,"Potência (cv)":530,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.bydauto.pt/modelos/byd-seal","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/byd","Observações":"Página Guia BYD; gama elétrica."},{"Marca":"Hyundai","Modelo":"IONIQ 5","Tipo":"EV","Preço desde (€ PVP)":45357.3,"Preço s/ IVA estimado (€)":36875.85,"Autonomia elétrica (km)":570,"Potência (cv)":325,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.hyundai.pt/modelos/ioniq-5/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/hyundai/ioniq-5/precos","Observações":"Guia lista preço desde 45.357,30€ e versão 570 km."},{"Marca":"Kia","Modelo":"EV9","Tipo":"EV","Preço desde (€ PVP)":89922.9,"Preço s/ IVA estimado (€)":73108.05,"Autonomia elétrica (km)":563,"Potência (cv)":385,"IVA dedutível empresas?":"Não","Representante PT":"https://www.kia.com/pt/modelos/ev9/descobrir/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/kia/ev9/precos","Observações":"Guia lista preço desde 89.922,90€."},{"Marca":"Audi","Modelo":"Q4 e-tron","Tipo":"EV","Preço desde (€ PVP)":49700.1,"Preço s/ IVA estimado (€)":40406.59,"Autonomia elétrica (km)":562,"Potência (cv)":286,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.audi.pt/pt/modelos/q4-e-tron/q4-e-tron/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/audi/q4-e-tron/precos","Observações":"Guia lista preço desde 49.700,10€."},{"Marca":"Mercedes-Benz","Modelo":"EQA","Tipo":"EV","Preço desde (€ PVP)":54050.0,"Preço s/ IVA estimado (€)":43943.09,"Autonomia elétrica (km)":560,"Potência (cv)":292,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.mercedes-benz.pt/passengercars/models/suv/eqa/overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mercedes-benz/eqa/precos","Observações":"Guia lista preço desde 54.050€."},{"Marca":"Volkswagen","Modelo":"ID.4","Tipo":"EV","Preço desde (€ PVP)":42380.6,"Preço s/ IVA estimado (€)":34455.77,"Autonomia elétrica (km)":560,"Potência (cv)":340,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volkswagen.pt/pt/modelos/id4.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volkswagen/id-4/precos","Observações":"Guia lista preço desde 42.380,60€ e potências até 340 cv."},{"Marca":"Volkswagen","Modelo":"ID.3","Tipo":"EV","Preço desde (€ PVP)":38900.0,"Preço s/ IVA estimado (€)":31626.02,"Autonomia elétrica (km)":557,"Potência (cv)":204,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volkswagen.pt/pt/modelos/id3.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volkswagen","Observações":"Página Guia de marca; confirmar preço/versionamento atual."},{"Marca":"Volkswagen","Modelo":"ID.5","Tipo":"EV","Preço desde (€ PVP)":49900.0,"Preço s/ IVA estimado (€)":40569.11,"Autonomia elétrica (km)":556,"Potência (cv)":340,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volkswagen.pt/pt/modelos/id5.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volkswagen","Observações":"Página Guia de marca; confirmar versão atual."},{"Marca":"Mercedes-Benz","Modelo":"EQB","Tipo":"EV","Preço desde (€ PVP)":56850.0,"Preço s/ IVA estimado (€)":46219.51,"Autonomia elétrica (km)":535,"Potência (cv)":292,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.mercedes-benz.pt/passengercars/models/suv/eqb/overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mercedes-benz/glb/precos","Observações":"Guia search expõe versões EQ em GLB/EQB; confirmar slug no Guia."},{"Marca":"BYD","Modelo":"Tang","Tipo":"EV","Preço desde (€ PVP)":75109.5,"Preço s/ IVA estimado (€)":61064.63,"Autonomia elétrica (km)":530,"Potência (cv)":517,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.bydauto.pt/modelos/byd-tang","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/byd/tang/precos","Observações":"Guia lista preço desde 75.109,50€."},{"Marca":"Kia","Modelo":"EV5","Tipo":"EV","Preço desde (€ PVP)":52518.7,"Preço s/ IVA estimado (€)":42698.13,"Autonomia elétrica (km)":530,"Potência (cv)":217,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.kia.com/pt/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/kia/ev5/precos","Observações":"Guia lista preço desde 52.518,70€."},{"Marca":"Peugeot","Modelo":"E-3008","Tipo":"EV","Preço desde (€ PVP)":45300.0,"Preço s/ IVA estimado (€)":36829.27,"Autonomia elétrica (km)":527,"Potência (cv)":210,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.peugeot.pt/modelos/e-3008.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/peugeot/3008/precos","Observações":"Guia lista PHEV desde 45.300€ e versões elétricas."},{"Marca":"MG","Modelo":"MG4 Electric","Tipo":"EV","Preço desde (€ PVP)":32990.0,"Preço s/ IVA estimado (€)":26821.14,"Autonomia elétrica (km)":520,"Potência (cv)":435,"IVA dedutível empresas?":"Sim","Representante PT":"https://mgmotor.eu/pt-PT/model/mg4","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mg","Observações":"Página Guia MG; confirmar versão."},{"Marca":"Hyundai","Modelo":"Kauai Electric","Tipo":"EV","Preço desde (€ PVP)":34507.3,"Preço s/ IVA estimado (€)":28054.72,"Autonomia elétrica (km)":514,"Potência (cv)":218,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.hyundai.pt/modelos/kauai-electric/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/hyundai/kauai/precos","Observações":"Guia lista gama Kauai; confirmar versão elétrica."},{"Marca":"MG","Modelo":"Cyberster","Tipo":"EV","Preço desde (€ PVP)":69990.0,"Preço s/ IVA estimado (€)":56902.44,"Autonomia elétrica (km)":508,"Potência (cv)":544,"IVA dedutível empresas?":"Sim","Representante PT":"https://mgmotor.eu/pt-PT/model/cyberster","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mg","Observações":"Página Guia MG; confirmar versão."},{"Marca":"BYD","Modelo":"Seal U","Tipo":"EV","Preço desde (€ PVP)":45997.3,"Preço s/ IVA estimado (€)":37396.18,"Autonomia elétrica (km)":500,"Potência (cv)":218,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.bydauto.pt/modelos/byd-seal-u","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/byd/seal-u/precos","Observações":"Guia lista 420/500 km e preço desde 45.997,30€."},{"Marca":"Volkswagen","Modelo":"ID. Buzz","Tipo":"EV","Preço desde (€ PVP)":60000.0,"Preço s/ IVA estimado (€)":48780.49,"Autonomia elétrica (km)":487,"Potência (cv)":286,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volkswagen-comerciais.pt/pt/modelos/id-buzz.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volkswagen","Observações":"Preço aproximado conforme gama; confirmar versão no Guia."},{"Marca":"Volvo","Modelo":"EX30","Tipo":"EV","Preço desde (€ PVP)":38632.3,"Preço s/ IVA estimado (€)":31408.37,"Autonomia elétrica (km)":480,"Potência (cv)":428,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volvocars.com/pt/cars/ex30-electric/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volvo/ex30/precos","Observações":"Guia lista preço desde 38.632,30€."},{"Marca":"BMW","Modelo":"iX1","Tipo":"EV","Preço desde (€ PVP)":50050.0,"Preço s/ IVA estimado (€)":40691.06,"Autonomia elétrica (km)":474,"Potência (cv)":313,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.bmw.pt/pt/all-models/bmw-i/x1/2022/bmw-ix1-overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/bmw/ix1/precos","Observações":"Guia lista preço desde 50.050€."},{"Marca":"Smart","Modelo":"#3","Tipo":"EV","Preço desde (€ PVP)":42950.0,"Preço s/ IVA estimado (€)":34918.7,"Autonomia elétrica (km)":455,"Potência (cv)":428,"IVA dedutível empresas?":"Sim","Representante PT":"https://pt.smart.com/pt/models/hashtag-three/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/smart","Observações":"Página Guia de marca; confirmar versão."},{"Marca":"Peugeot","Modelo":"E-408","Tipo":"EV","Preço desde (€ PVP)":43195.0,"Preço s/ IVA estimado (€)":35117.89,"Autonomia elétrica (km)":453,"Potência (cv)":210,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.peugeot.pt/modelos/e-408.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/peugeot/408/precos","Observações":"Guia lista versão elétrica 210 cv desde 43.195€."},{"Marca":"Kia","Modelo":"EV2","Tipo":"EV","Preço desde (€ PVP)":32266.0,"Preço s/ IVA estimado (€)":26232.52,"Autonomia elétrica (km)":440,"Potência (cv)":204,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.kia.com/pt/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/kia/ev2/precos","Observações":"Guia lista preço desde 32.266€."},{"Marca":"Smart","Modelo":"#1","Tipo":"EV","Preço desde (€ PVP)":36500.0,"Preço s/ IVA estimado (€)":29674.8,"Autonomia elétrica (km)":440,"Potência (cv)":428,"IVA dedutível empresas?":"Sim","Representante PT":"https://pt.smart.com/pt/models/hashtag-one/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/smart/1/precos","Observações":"Guia lista Smart #1 elétrico."},{"Marca":"Leapmotor","Modelo":"B10","Tipo":"EV","Preço desde (€ PVP)":31287.1,"Preço s/ IVA estimado (€)":25436.67,"Autonomia elétrica (km)":434,"Potência (cv)":218,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.leapmotor.com/pt/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/leapmotor/b10/precos","Observações":"Guia lista versão acima de 30k desde 31.287,10€; versão 29.287,10€ excluída."},{"Marca":"BYD","Modelo":"Dolphin","Tipo":"EV","Preço desde (€ PVP)":30995.2,"Preço s/ IVA estimado (€)":25199.35,"Autonomia elétrica (km)":427,"Potência (cv)":204,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.bydauto.pt/modelos/byd-dolphin","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/byd","Observações":"Página Guia BYD."},{"Marca":"BYD","Modelo":"Atto 3","Tipo":"EV","Preço desde (€ PVP)":37995.2,"Preço s/ IVA estimado (€)":30890.41,"Autonomia elétrica (km)":420,"Potência (cv)":204,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.bydauto.pt/modelos/byd-atto-3","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/byd","Observações":"Página Guia BYD."},{"Marca":"Leapmotor","Modelo":"C10","Tipo":"EV","Preço desde (€ PVP)":36787.1,"Preço s/ IVA estimado (€)":29908.21,"Autonomia elétrica (km)":420,"Potência (cv)":218,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.leapmotor.com/pt/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/leapmotor/c10/precos","Observações":"Guia lista 420 km / 145 km e preço desde 36.787,10€."},{"Marca":"Citroën","Modelo":"ë-C4","Tipo":"EV","Preço desde (€ PVP)":43415.0,"Preço s/ IVA estimado (€)":35296.75,"Autonomia elétrica (km)":415,"Potência (cv)":156,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.citroen.pt/veiculos/novo-c4.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/citroen/e-c4/precos","Observações":"Guia lista versão 156 cv Autonomia Alargada desde 43.415€."},{"Marca":"Citroën","Modelo":"ë-C4 X","Tipo":"EV","Preço desde (€ PVP)":43765.0,"Preço s/ IVA estimado (€)":35581.3,"Autonomia elétrica (km)":415,"Potência (cv)":156,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.citroen.pt/veiculos/novo-c4-x.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/citroen/e-c4-x/precos","Observações":"Guia lista versão elétrica desde 43.765€."},{"Marca":"Renault","Modelo":"5 E-Tech Electric","Tipo":"EV","Preço desde (€ PVP)":30900.0,"Preço s/ IVA estimado (€)":25121.95,"Autonomia elétrica (km)":410,"Potência (cv)":150,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.renault.pt/veiculos-eletricos/r5-e-tech-electric.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/renault/5/precos","Observações":"Guia lista gama R5 elétrica; preço desde acima de 30k em versões selecionadas."},{"Marca":"Peugeot","Modelo":"E-208","Tipo":"EV","Preço desde (€ PVP)":39160.0,"Preço s/ IVA estimado (€)":31837.4,"Autonomia elétrica (km)":410,"Potência (cv)":156,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.peugeot.pt/modelos/e-208.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/peugeot/e-208/precos","Observações":"Guia lista versão GT 156 cv por 39.160€."},{"Marca":"Renault","Modelo":"4 E-Tech Electric","Tipo":"EV","Preço desde (€ PVP)":33247.3,"Preço s/ IVA estimado (€)":27030.33,"Autonomia elétrica (km)":409,"Potência (cv)":150,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.renault.pt/veiculos-eletricos/r4-e-tech-electric.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/renault/4/precos","Observações":"Guia lista versão elegível acima de 30.000€ desde 33.247,30€; versão 29.747,30€ excluída."},{"Marca":"Fiat","Modelo":"600e","Tipo":"EV","Preço desde (€ PVP)":37200.0,"Preço s/ IVA estimado (€)":30243.9,"Autonomia elétrica (km)":409,"Potência (cv)":156,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.fiat.pt/modelos/600e","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/fiat/600e/precos","Observações":"Guia lista versão 156 cv desde 37.200€."},{"Marca":"Peugeot","Modelo":"E-2008","Tipo":"EV","Preço desde (€ PVP)":32725.0,"Preço s/ IVA estimado (€)":26605.69,"Autonomia elétrica (km)":406,"Potência (cv)":156,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.peugeot.pt/modelos/e-2008.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/peugeot/2008/precos","Observações":"Guia lista preço desde 32.725€; confirmar versão elétrica."},{"Marca":"Opel","Modelo":"Mokka Electric","Tipo":"EV","Preço desde (€ PVP)":32695.0,"Preço s/ IVA estimado (€)":26581.3,"Autonomia elétrica (km)":403,"Potência (cv)":156,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.opel.pt/veiculos/mokka/overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/opel/mokka/precos","Observações":"Guia lista gama; confirmar preço versão elétrica."},{"Marca":"DS","Modelo":"DS 3 E-Tense","Tipo":"EV","Preço desde (€ PVP)":37430.0,"Preço s/ IVA estimado (€)":30430.89,"Autonomia elétrica (km)":402,"Potência (cv)":156,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.dsautomobiles.pt/modelos/ds-3.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/ds/ds-3/precos","Observações":"Guia lista preço desde 37.430€."},{"Marca":"MG","Modelo":"Marvel R","Tipo":"EV","Preço desde (€ PVP)":45990.0,"Preço s/ IVA estimado (€)":37390.24,"Autonomia elétrica (km)":402,"Potência (cv)":288,"IVA dedutível empresas?":"Sim","Representante PT":"https://mgmotor.eu/pt-PT/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mg","Observações":"Página Guia MG; confirmar disponibilidade."},{"Marca":"Opel","Modelo":"Frontera Electric","Tipo":"EV","Preço desde (€ PVP)":33990.0,"Preço s/ IVA estimado (€)":27634.15,"Autonomia elétrica (km)":400,"Potência (cv)":113,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.opel.pt/veiculos/frontera/overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/opel/frontera/precos","Observações":"Guia lista versão elétrica desde 33.990€."},{"Marca":"Hyundai","Modelo":"Inster","Tipo":"EV","Preço desde (€ PVP)":31257.3,"Preço s/ IVA estimado (€)":25412.44,"Autonomia elétrica (km)":370,"Potência (cv)":115,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.hyundai.pt/modelos/inster/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/hyundai/inster/precos","Observações":"Guia lista preço EV 360 km desde 31.257,30€."},{"Marca":"Citroën","Modelo":"ë-SpaceTourer","Tipo":"EV","Preço desde (€ PVP)":50800.0,"Preço s/ IVA estimado (€)":41300.81,"Autonomia elétrica (km)":350,"Potência (cv)":136,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.citroen.pt/veiculos/ë-spacetourer.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/citroen/e-spacetourer/precos","Observações":"Guia lista preço desde 50.800€."},{"Marca":"Fiat","Modelo":"E-Doblò","Tipo":"EV","Preço desde (€ PVP)":35900.0,"Preço s/ IVA estimado (€)":29186.99,"Autonomia elétrica (km)":330,"Potência (cv)":136,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.fiat.pt/modelos/doblo-electric","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/fiat/edoblo/precos","Observações":"Guia lista versão elétrica desde 35.900€."},{"Marca":"Mazda","Modelo":"MX-30","Tipo":"EV","Preço desde (€ PVP)":35600.0,"Preço s/ IVA estimado (€)":28943.09,"Autonomia elétrica (km)":200,"Potência (cv)":145,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.mazda.pt/modelos/mazda-mx-30/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mazda","Observações":"Página Guia Mazda; confirmar venda atual."},{"Marca":"Omoda","Modelo":"9 PHEV","Tipo":"PHEV","Preço desde (€ PVP)":49900.0,"Preço s/ IVA estimado (€)":40569.11,"Autonomia elétrica (km)":145,"Potência (cv)":537,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.omodajaecoo.pt/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/omoda","Observações":"Artigo Guia PHEV 2026 indica autonomias até 145 km; confirmar página versão."},{"Marca":"Audi","Modelo":"A3 TFSIe","Tipo":"PHEV","Preço desde (€ PVP)":43500.0,"Preço s/ IVA estimado (€)":35365.85,"Autonomia elétrica (km)":142,"Potência (cv)":272,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.audi.pt/pt/modelos/a3/a3-sportback/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/audi","Observações":"PHEV na gama; confirmar página Guia."},{"Marca":"Skoda","Modelo":"Superb iV","Tipo":"PHEV","Preço desde (€ PVP)":49900.0,"Preço s/ IVA estimado (€)":40569.11,"Autonomia elétrica (km)":135,"Potência (cv)":204,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.skoda-auto.pt/modelos/superb/superb","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/skoda","Observações":"PHEV na gama; confirmar versão Guia."},{"Marca":"Volkswagen","Modelo":"Passat Variant PHEV","Tipo":"PHEV","Preço desde (€ PVP)":53500.0,"Preço s/ IVA estimado (€)":43495.93,"Autonomia elétrica (km)":133,"Potência (cv)":272,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volkswagen.pt/pt/modelos/passat-variant.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volkswagen","Observações":"Artigo Guia PHEV 2026; confirmar preço por versão."},{"Marca":"Volkswagen","Modelo":"Golf eHybrid/GTE","Tipo":"PHEV","Preço desde (€ PVP)":43900.0,"Preço s/ IVA estimado (€)":35691.06,"Autonomia elétrica (km)":131,"Potência (cv)":272,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volkswagen.pt/pt/modelos/golf.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volkswagen","Observações":"PHEV na gama; confirmar versão Guia."},{"Marca":"Volkswagen","Modelo":"Tiguan PHEV","Tipo":"PHEV","Preço desde (€ PVP)":48900.0,"Preço s/ IVA estimado (€)":39756.1,"Autonomia elétrica (km)":126,"Potência (cv)":272,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volkswagen.pt/pt/modelos/tiguan.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volkswagen","Observações":"Artigo Guia PHEV 2026 lista Tiguan PHEV entre os mais autónomos."},{"Marca":"BYD","Modelo":"Seal U DM-i","Tipo":"PHEV","Preço desde (€ PVP)":39997.3,"Preço s/ IVA estimado (€)":32518.13,"Autonomia elétrica (km)":125,"Potência (cv)":324,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.bydauto.pt/modelos/byd-seal-u-dm-i","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/byd/seal-u-dm-i/precos","Observações":"Guia lista autonomia 80 km em versões; artigo Guia PHEV 2026 lista 125 km para Comfort."},{"Marca":"Skoda","Modelo":"Kodiaq iV","Tipo":"PHEV","Preço desde (€ PVP)":49900.0,"Preço s/ IVA estimado (€)":40569.11,"Autonomia elétrica (km)":123,"Potência (cv)":204,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.skoda-auto.pt/modelos/kodiaq/kodiaq","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/skoda","Observações":"PHEV na gama; confirmar versão Guia."},{"Marca":"Audi","Modelo":"Q3 e-hybrid","Tipo":"PHEV","Preço desde (€ PVP)":48100.0,"Preço s/ IVA estimado (€)":39105.69,"Autonomia elétrica (km)":120,"Potência (cv)":272,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.audi.pt/pt/modelos/q3/q3-suv/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/audi/q3/precos","Observações":"Guia lista Q3 e versões e-hybrid; confirmar autonomia por versão."},{"Marca":"Mercedes-Benz","Modelo":"Classe C PHEV","Tipo":"PHEV","Preço desde (€ PVP)":70600.0,"Preço s/ IVA estimado (€)":57398.37,"Autonomia elétrica (km)":116,"Potência (cv)":313,"IVA dedutível empresas?":"Não","Representante PT":"https://www.mercedes-benz.pt/passengercars/models/saloon/c-class/overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mercedes-benz/classe-c/precos","Observações":"Guia lista versões EQ/plug-in na Classe C; preço base PHEV indicado por snippet pode variar."},{"Marca":"Mercedes-Benz","Modelo":"Classe E PHEV","Tipo":"PHEV","Preço desde (€ PVP)":64550.0,"Preço s/ IVA estimado (€)":52479.67,"Autonomia elétrica (km)":116,"Potência (cv)":381,"IVA dedutível empresas?":"Não","Representante PT":"https://www.mercedes-benz.pt/passengercars/models/saloon/e-class/overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mercedes-benz/classe-e/precos","Observações":"Guia lista preço desde 64.550€ na Classe E; PVP > limite IVA PHEV."},{"Marca":"Audi","Modelo":"A5 TFSIe","Tipo":"PHEV","Preço desde (€ PVP)":60549.9,"Preço s/ IVA estimado (€)":49227.56,"Autonomia elétrica (km)":113,"Potência (cv)":367,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.audi.pt/pt/modelos/a5/a5-avant/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/audi/a5/precos","Observações":"Guia lista preço desde 60.549,90€ na gama A5."},{"Marca":"MG","Modelo":"S9 PHEV","Tipo":"PHEV","Preço desde (€ PVP)":41969.1,"Preço s/ IVA estimado (€)":34121.22,"Autonomia elétrica (km)":110,"Potência (cv)":299,"IVA dedutível empresas?":"Sim","Representante PT":"https://mgmotor.eu/pt-PT/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mg/s9/precos","Observações":"Guia lista preço desde 41.969,10€ e potência 299 cv."},{"Marca":"BMW","Modelo":"Série 3 330e","Tipo":"PHEV","Preço desde (€ PVP)":50550.0,"Preço s/ IVA estimado (€)":41097.56,"Autonomia elétrica (km)":101,"Potência (cv)":292,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.bmw.pt/pt/all-models/3-series/sedan/2024/bmw-3-series-sedan-overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/bmw/serie-3/precos","Observações":"Guia lista preço desde 50.550€ na Série 3."},{"Marca":"BMW","Modelo":"Série 5 550e","Tipo":"PHEV","Preço desde (€ PVP)":65200.0,"Preço s/ IVA estimado (€)":53008.13,"Autonomia elétrica (km)":101,"Potência (cv)":489,"IVA dedutível empresas?":"Não","Representante PT":"https://www.bmw.pt/pt/all-models/5-series/sedan/2023/bmw-5-series-sedan-overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/bmw/serie-5/precos","Observações":"Guia lista preço desde 65.200€ na Série 5; PVP > limite IVA PHEV."},{"Marca":"MG","Modelo":"HS PHEV","Tipo":"PHEV","Preço desde (€ PVP)":41319.1,"Preço s/ IVA estimado (€)":33592.76,"Autonomia elétrica (km)":100,"Potência (cv)":272,"IVA dedutível empresas?":"Sim","Representante PT":"https://mgmotor.eu/pt-PT/model/new-mg-hs-phev","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mg/hs/precos","Observações":"Guia lista preço desde 41.319,10€ e potência 272 cv."},{"Marca":"Audi","Modelo":"A6 TFSIe","Tipo":"PHEV","Preço desde (€ PVP)":65814.7,"Preço s/ IVA estimado (€)":53507.89,"Autonomia elétrica (km)":100,"Potência (cv)":367,"IVA dedutível empresas?":"Não","Representante PT":"https://www.audi.pt/pt/modelos/a6/a6-avant/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/audi/a6/precos","Observações":"Guia lista preço desde 65.814,70€ na gama A6; PHEV acima do limite IVA se >61.500 PVP."},{"Marca":"Volvo","Modelo":"V60 PHEV","Tipo":"PHEV","Preço desde (€ PVP)":59796.9,"Preço s/ IVA estimado (€)":48615.37,"Autonomia elétrica (km)":91,"Potência (cv)":455,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.volvocars.com/pt/cars/v60-hybrid/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volvo/v60/precos","Observações":"Guia lista preço desde 59.796,90€; dentro do limite PHEV por PVP aprox."},{"Marca":"Jaecoo","Modelo":"7 PHEV","Tipo":"PHEV","Preço desde (€ PVP)":38900.0,"Preço s/ IVA estimado (€)":31626.02,"Autonomia elétrica (km)":90,"Potência (cv)":279,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.omodajaecoo.pt/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/jaecoo/7/precos","Observações":"Guia lista preço 38.900€, autonomia 90 km, potência 279 cv."},{"Marca":"Opel","Modelo":"Grandland Plug-in Hybrid","Tipo":"PHEV","Preço desde (€ PVP)":45500.0,"Preço s/ IVA estimado (€)":36991.87,"Autonomia elétrica (km)":87,"Potência (cv)":195,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.opel.pt/veiculos/grandland/overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/opel/grandland/precos","Observações":"PHEV na gama; confirmar preço versão no Guia."},{"Marca":"BMW","Modelo":"X1 xDrive25e/30e","Tipo":"PHEV","Preço desde (€ PVP)":46100.0,"Preço s/ IVA estimado (€)":37479.67,"Autonomia elétrica (km)":86,"Potência (cv)":326,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.bmw.pt/pt/all-models/x-series/X1/2022/bmw-x1-overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/bmw/x1/precos","Observações":"Guia lista preço desde 46.100€ na X1."},{"Marca":"Toyota","Modelo":"Prius Plug-in Hybrid","Tipo":"PHEV","Preço desde (€ PVP)":43000.0,"Preço s/ IVA estimado (€)":34959.35,"Autonomia elétrica (km)":86,"Potência (cv)":223,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.toyota.pt/carros/prius-plugin","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/toyota","Observações":"Página Guia Toyota; confirmar preço versão."},{"Marca":"Peugeot","Modelo":"308 Plug-in Hybrid","Tipo":"PHEV","Preço desde (€ PVP)":38510.0,"Preço s/ IVA estimado (€)":31308.94,"Autonomia elétrica (km)":85,"Potência (cv)":195,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.peugeot.pt/modelos/308.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/peugeot/308/precos","Observações":"Guia lista Plug-in Hybrid 195cv desde 38.510€."},{"Marca":"Peugeot","Modelo":"408 Plug-in Hybrid","Tipo":"PHEV","Preço desde (€ PVP)":43195.0,"Preço s/ IVA estimado (€)":35117.89,"Autonomia elétrica (km)":85,"Potência (cv)":240,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.peugeot.pt/modelos/408.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/peugeot/408/precos","Observações":"Guia lista 1.6 Plug-in Hybrid 240cv."},{"Marca":"Peugeot","Modelo":"3008 Plug-in Hybrid","Tipo":"PHEV","Preço desde (€ PVP)":45300.0,"Preço s/ IVA estimado (€)":36829.27,"Autonomia elétrica (km)":85,"Potência (cv)":225,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.peugeot.pt/modelos/3008.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/peugeot/3008/precos","Observações":"Guia lista Allure Plug-in Hybrid 225cv desde 45.300€."},{"Marca":"Peugeot","Modelo":"5008 Plug-in Hybrid","Tipo":"PHEV","Preço desde (€ PVP)":47150.0,"Preço s/ IVA estimado (€)":38333.33,"Autonomia elétrica (km)":85,"Potência (cv)":225,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.peugeot.pt/modelos/5008.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/peugeot/5008/precos","Observações":"Guia lista Plug-in Hybrid 225cv desde 47.150€."},{"Marca":"Opel","Modelo":"Astra Plug-in Hybrid","Tipo":"PHEV","Preço desde (€ PVP)":37740.0,"Preço s/ IVA estimado (€)":30682.93,"Autonomia elétrica (km)":83,"Potência (cv)":180,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.opel.pt/veiculos/astra/overview.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/opel/astra/precos","Observações":"Guia lista gama Astra com gasolina(PHEV)."},{"Marca":"Volvo","Modelo":"XC60 PHEV","Tipo":"PHEV","Preço desde (€ PVP)":70008.0,"Preço s/ IVA estimado (€)":56917.07,"Autonomia elétrica (km)":82,"Potência (cv)":455,"IVA dedutível empresas?":"Não","Representante PT":"https://www.volvocars.com/pt/cars/xc60-hybrid/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volvo/xc60/precos","Observações":"Guia lista T6 PHEV desde 70.008€; PVP > limite IVA PHEV."},{"Marca":"Citroën","Modelo":"C5 Aircross Plug-in Hybrid","Tipo":"PHEV","Preço desde (€ PVP)":40500.0,"Preço s/ IVA estimado (€)":32926.83,"Autonomia elétrica (km)":81,"Potência (cv)":225,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.citroen.pt/veiculos/novo-c5-aircross.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/citroen/c5-aircross/precos","Observações":"Guia lista Plug-in 225 Auto Plus desde 40.500€."},{"Marca":"DS","Modelo":"Nº4 Plug-in Hybrid","Tipo":"PHEV","Preço desde (€ PVP)":45680.0,"Preço s/ IVA estimado (€)":37138.21,"Autonomia elétrica (km)":81,"Potência (cv)":240,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.dsautomobiles.pt/modelos/ds-n4.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/ds/n-4/precos","Observações":"Guia lista Plug-in Hybrid 240 desde 45.680€."},{"Marca":"DS","Modelo":"DS 7 E-Tense","Tipo":"PHEV","Preço desde (€ PVP)":62925.0,"Preço s/ IVA estimado (€)":51158.54,"Autonomia elétrica (km)":81,"Potência (cv)":360,"IVA dedutível empresas?":"Não","Representante PT":"https://www.dsautomobiles.pt/modelos/ds-7.html","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/ds/ds-7/precos","Observações":"Guia lista preço desde 62.925€; PVP > limite IVA PHEV."},{"Marca":"Volvo","Modelo":"XC90 PHEV","Tipo":"PHEV","Preço desde (€ PVP)":97561.8,"Preço s/ IVA estimado (€)":79318.54,"Autonomia elétrica (km)":71,"Potência (cv)":455,"IVA dedutível empresas?":"Não","Representante PT":"https://www.volvocars.com/pt/cars/xc90-hybrid/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/volvo/xc90/precos","Observações":"Guia lista preço desde 97.561,80€; PVP > limite IVA PHEV."},{"Marca":"Kia","Modelo":"Sportage PHEV","Tipo":"PHEV","Preço desde (€ PVP)":46500.0,"Preço s/ IVA estimado (€)":37804.88,"Autonomia elétrica (km)":70,"Potência (cv)":252,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.kia.com/pt/modelos/sportage/descobrir/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/kia/sportage/precos","Observações":"PHEV na gama; confirmar página Guia."},{"Marca":"Toyota","Modelo":"C-HR Plug-in Hybrid","Tipo":"PHEV","Preço desde (€ PVP)":50097.3,"Preço s/ IVA estimado (€)":40729.51,"Autonomia elétrica (km)":66,"Potência (cv)":223,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.toyota.pt/carros/c-hr","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/toyota/c-hr/precos","Observações":"Guia lista 2.0 Plug-in Hybrid desde 50.097,30€."},{"Marca":"Mazda","Modelo":"CX-60 PHEV","Tipo":"PHEV","Preço desde (€ PVP)":53000.0,"Preço s/ IVA estimado (€)":43089.43,"Autonomia elétrica (km)":63,"Potência (cv)":327,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.mazda.pt/modelos/mazda-cx-60/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mazda","Observações":"Página Guia Mazda; confirmar preço atual."},{"Marca":"Hyundai","Modelo":"Tucson PHEV","Tipo":"PHEV","Preço desde (€ PVP)":51107.3,"Preço s/ IVA estimado (€)":41550.65,"Autonomia elétrica (km)":62,"Potência (cv)":252,"IVA dedutível empresas?":"Sim","Representante PT":"https://www.hyundai.pt/modelos/tucson/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/hyundai/tucson/precos","Observações":"Guia lista PHEV 1.6 TGDI desde 51.107,30€."},{"Marca":"Mazda","Modelo":"CX-80 PHEV","Tipo":"PHEV","Preço desde (€ PVP)":62000.0,"Preço s/ IVA estimado (€)":50406.5,"Autonomia elétrica (km)":60,"Potência (cv)":327,"IVA dedutível empresas?":"Não","Representante PT":"https://www.mazda.pt/modelos/mazda-cx-80/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/mazda","Observações":"Página Guia Mazda; PVP pode exceder limite IVA PHEV."},{"Marca":"Kia","Modelo":"Sorento PHEV","Tipo":"PHEV","Preço desde (€ PVP)":63013.9,"Preço s/ IVA estimado (€)":51230.81,"Autonomia elétrica (km)":57,"Potência (cv)":252,"IVA dedutível empresas?":"Não","Representante PT":"https://www.kia.com/pt/modelos/sorento/descobrir/","Fonte Guia":"https://www.guiadoautomovel.pt/marcas/kia/sorento/precos","Observações":"Guia lista preço desde 63.013,90€; PVP > limite IVA PHEV."}];
+
+/* ── Helpers ── */
+const fmtEUR=n=>new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const fmtN=n=>new Intl.NumberFormat('pt-PT').format(n);
+
+/* ── Sort state ── */
+let sortCol='Autonomia elétrica (km)',sortDir=-1;
+
+/* ── KPIs ── */
+function updateKPIs(rows){
+  const ev=rows.filter(r=>r.Tipo==='EV'),phev=rows.filter(r=>r.Tipo==='PHEV');
+  const avg=a=>a.length?Math.round(a.reduce((s,r)=>s+r['Autonomia elétrica (km)'],0)/a.length):0;
+  const minP=a=>a.length?Math.min(...a.map(r=>r['Preço desde (€ PVP)'])):0;
+  const ivaOk=rows.filter(r=>r['IVA dedutível empresas?']==='Sim').length;
+  const maxCV=rows.length?Math.max(...rows.map(r=>r['Potência (cv)'])):0;
+  const maxCVCar=rows.find(r=>r['Potência (cv)']===maxCV);
+  const ivaPct=rows.length?Math.round(ivaOk/rows.length*100):0;
+  const avgAutEV=avg(ev), avgAutPHEV=avg(phev);
+
+  document.getElementById('kpi-total').textContent=rows.length;
+  document.getElementById('kpi-total-sub').textContent=`${ev.length} EV · ${phev.length} PHEV`;
+  document.getElementById('kpi-aut-ev').textContent=fmtN(avgAutEV);
+  document.getElementById('bar-aut-ev').style.width=Math.min(100,Math.round(avgAutEV/810*100))+'%';
+  document.getElementById('kpi-aut-phev').textContent=fmtN(avgAutPHEV);
+  document.getElementById('bar-aut-phev').style.width=Math.min(100,Math.round(avgAutPHEV/200*100))+'%';
+  document.getElementById('kpi-min-ev').textContent=ev.length?fmtEUR(minP(ev)):'—';
+  document.getElementById('kpi-min-phev').textContent=phev.length?fmtEUR(minP(phev)):'—';
+  document.getElementById('kpi-iva-pct').textContent=ivaPct+'%';
+  document.getElementById('kpi-iva-sub').textContent=`${ivaOk} de ${rows.length} modelos`;
+  document.getElementById('bar-iva').style.width=ivaPct+'%';
+  document.getElementById('kpi-max-cv').textContent=fmtN(maxCV);
+  document.getElementById('kpi-max-cv-sub').textContent=maxCVCar?`cv · ${maxCVCar.Marca} ${maxCVCar.Modelo}`:'cv';
+
+  /* sidebar */
+  document.getElementById('sb-ev').textContent=ev.length;
+  document.getElementById('sb-phev').textContent=phev.length;
+  document.getElementById('pr-ev-min').textContent=ev.length?fmtEUR(minP(ev)):'—';
+  document.getElementById('pr-ev-avg').textContent=ev.length?fmtEUR(Math.round(ev.reduce((s,r)=>s+r['Preço desde (€ PVP)'],0)/ev.length)):'—';
+  document.getElementById('pr-phev-min').textContent=phev.length?fmtEUR(minP(phev)):'—';
+  document.getElementById('pr-phev-avg').textContent=phev.length?fmtEUR(Math.round(phev.reduce((s,r)=>s+r['Preço desde (€ PVP)'],0)/phev.length)):'—';
+}
+
+/* ── Brand bars ── */
+function updateBrands(rows){
+  const bc={};
+  rows.forEach(r=>{bc[r.Marca]=(bc[r.Marca]||0)+1});
+  const top=Object.entries(bc).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  const max=top[0]?top[0][1]:1;
+  document.getElementById('brand-bars').innerHTML=top.map(([b,c])=>`
+    <div class="bar-row">
+      <div class="bar-label" title="${b}">${b}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.round(c/max*100)}%"></div></div>
+      <div class="bar-num">${c}</div>
+    </div>`).join('');
+}
+
+/* ── Table ── */
+function renderTable(){
+  const q=document.getElementById('q').value.toLowerCase();
+  const tipo=document.getElementById('f-tipo').value;
+  const iva=document.getElementById('f-iva').value;
+
+  let rows=DATA.filter(r=>{
+    if(tipo&&r.Tipo!==tipo)return false;
+    if(iva&&r['IVA dedutível empresas?']!==iva)return false;
+    if(!q)return true;
+    return [r.Marca,r.Modelo,r.Tipo,r['IVA dedutível empresas?']].join(' ').toLowerCase().includes(q);
+  });
+
+  rows.sort((a,b)=>{
+    let va=a[sortCol],vb=b[sortCol];
+    if(typeof va==='number'&&typeof vb==='number')return(va-vb)*sortDir;
+    return String(va).localeCompare(String(vb),'pt')*sortDir;
+  });
+
+  document.getElementById('count-tag').textContent=rows.length+' veículos';
+  document.getElementById('tbody').innerHTML=rows.map(r=>`
+    <tr>
+      <td style="font-weight:600">${r.Marca}</td>
+      <td>${r.Modelo}</td>
+      <td><span class="badge badge-${r.Tipo==='EV'?'ev':'phev'}">${r.Tipo}</span></td>
+      <td style="text-align:right;font-variant-numeric:tabular-nums">${fmtN(r['Autonomia elétrica (km)'])}</td>
+      <td style="text-align:right;font-variant-numeric:tabular-nums">${fmtN(r['Potência (cv)'])}</td>
+      <td style="text-align:right;font-variant-numeric:tabular-nums">${fmtEUR(r['Preço desde (€ PVP)'])}</td>
+      <td><span class="badge badge-${r['IVA dedutível empresas?']==='Sim'?'sim':'nao'}">${r['IVA dedutível empresas?']}</span></td>
+      <td><button class="btn-detail" onclick="openModal(${DATA.indexOf(r)})">detalhes</button></td>
+    </tr>`).join('');
+
+  updateKPIs(rows);
+  updateBrands(rows);
+}
+
+/* ── Sort headers ── */
+document.querySelectorAll('thead th[data-col]').forEach(th=>{
+  th.addEventListener('click',()=>{
+    const col=th.dataset.col;
+    if(sortCol===col){sortDir*=-1}else{sortCol=col;sortDir=-1}
+    document.querySelectorAll('thead th').forEach(t=>t.classList.remove('asc','desc'));
+    th.classList.add(sortDir===1?'asc':'desc');
+    renderTable();
+  });
+});
+
+/* ── Filters ── */
+document.getElementById('q').addEventListener('input',renderTable);
+document.getElementById('f-tipo').addEventListener('change',renderTable);
+document.getElementById('f-iva').addEventListener('change',renderTable);
+
+/* ── Modal ── */
+function openModal(idx){
+  const r=DATA[idx];
+  const ivaOk=r['IVA dedutível empresas?']==='Sim';
+  const imgSrc=`https://loremflickr.com/640/300/${encodeURIComponent(r.Marca)},${encodeURIComponent(r.Modelo)},electric,car/all`;
+
+  document.getElementById('modal-photo-area').innerHTML=`
+    <img class="modal-photo" id="modal-img"
+      src="${imgSrc}"
+      alt="${r.Marca} ${r.Modelo}"
+      onerror="this.style.display='none';document.getElementById('modal-ph').style.display='flex'">
+    <div class="modal-photo-placeholder" id="modal-ph" style="display:none">
+      <div class="car-icon">🚗</div>
+      <div class="car-name">${r.Marca} ${r.Modelo}</div>
+    </div>`;
+
+  document.getElementById('modal-body').innerHTML=`
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">${r.Marca} ${r.Modelo}</div>
+        <div class="modal-subtitle">${r.Tipo==='EV'?'⚡ Elétrico puro':'🔋 Híbrido plug-in'} · Guia do Automóvel</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="modal-iva-badge" style="background:${ivaOk?'var(--yes-bg)':'var(--no-bg)'};color:${ivaOk?'var(--yes-text)':'var(--no-text)'}">
+      ${ivaOk?'✅':'❌'} IVA ${ivaOk?'dedutível':'não dedutível'} para empresas
+    </div>
+
+    <div class="modal-grid">
+      <div class="modal-stat">
+        <div class="modal-stat-label">Preço PVP desde</div>
+        <div class="modal-stat-value" style="font-size:15px">${fmtEUR(r['Preço desde (€ PVP)'])}</div>
+      </div>
+      <div class="modal-stat">
+        <div class="modal-stat-label">Preço s/ IVA est.</div>
+        <div class="modal-stat-value" style="font-size:15px">${fmtEUR(r['Preço s/ IVA estimado (€)'])}</div>
+      </div>
+      <div class="modal-stat">
+        <div class="modal-stat-label">Autonomia elétrica</div>
+        <div class="modal-stat-value">${fmtN(r['Autonomia elétrica (km)'])}<span class="modal-stat-unit">km</span></div>
+      </div>
+      <div class="modal-stat">
+        <div class="modal-stat-label">Potência</div>
+        <div class="modal-stat-value">${fmtN(r['Potência (cv)'])}<span class="modal-stat-unit">cv</span></div>
+      </div>
+    </div>
+
+    ${r['Observações']?`<div class="modal-obs"><strong>📌 Nota:</strong> ${r['Observações']}</div>`:''}
+
+    <div class="modal-links">
+      ${r['Representante PT']?`<a class="modal-link" href="${r['Representante PT']}" target="_blank" rel="noopener">🔗 Representante PT</a>`:''}
+      ${r['Fonte Guia']?`<a class="modal-link secondary" href="${r['Fonte Guia']}" target="_blank" rel="noopener">📖 Guia do Automóvel</a>`:''}
+    </div>`;
+
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* ── Init ── */
+renderTable();
+</script>
+</body>
+</html>
