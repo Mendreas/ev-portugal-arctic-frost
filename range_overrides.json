@@ -1,0 +1,656 @@
+{
+  "Volvo||EX60": {
+    "autonomia_km": 810,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volvo/ex60/precos",
+    "representante_pt": "https://www.volvocars.com/pt/cars/ex60-electric/",
+    "observacoes": "Guia lista preço desde 67.906,30€; autonomia até 810 km confirmada pela Volvo Portugal."
+  },
+  "Mercedes-Benz||CLA com tecnologia EQ": {
+    "autonomia_km": 792,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mercedes-benz/cla/precos",
+    "representante_pt": "https://www.mercedes-benz.pt/passengercars/models/coupe/cla/overview.html",
+    "observacoes": "Guia lista versões elétricas CLA desde 57.600€."
+  },
+  "Audi||A6 e-tron": {
+    "autonomia_km": 756,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/audi/a6-e-tron/precos",
+    "representante_pt": "https://www.audi.pt/pt/modelos/a6/a6-sportback-e-tron/",
+    "observacoes": "Guia lista preço desde 73.500,20€."
+  },
+  "DS||Nº8": {
+    "autonomia_km": 750,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/ds/n-8/precos",
+    "representante_pt": "https://www.dsautomobiles.pt/modelos/ds-n8.html",
+    "observacoes": "Guia lista preço desde 59.000€."
+  },
+  "Tesla||Model S": {
+    "autonomia_km": 723,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/tesla",
+    "representante_pt": "https://www.tesla.com/pt_pt/models",
+    "observacoes": "Preço/modelo pode variar no configurador; incluído por estar publicado no Guia/Tesla."
+  },
+  "Polestar||Polestar 3": {
+    "autonomia_km": 706,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/polestar/review",
+    "representante_pt": "https://www.polestar.com/pt/polestar-3/",
+    "observacoes": "Preço/autonomia por versão; página Guia de marca."
+  },
+  "Volkswagen||ID.7": {
+    "autonomia_km": 702,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volkswagen/id.7/review",
+    "representante_pt": "https://www.volkswagen.pt/pt/modelos/id7.html",
+    "observacoes": "Incluído por gama ID.7 no Guia; confirmar preço da versão em página."
+  },
+  "Tesla||Model 3": {
+    "autonomia_km": 702,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/tesla",
+    "representante_pt": "https://www.tesla.com/pt_pt/model3",
+    "observacoes": "Preço pode variar no configurador Tesla."
+  },
+  "BMW||iX": {
+    "autonomia_km": 701,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/bmw/ix/precos",
+    "representante_pt": "https://www.bmw.pt/pt/all-models/bmw-i/ix/2025/bmw-ix-overview.html",
+    "observacoes": "Guia lista preço desde 87.000€."
+  },
+  "Volvo||ES90": {
+    "autonomia_km": 700,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volvo/es90/precos",
+    "representante_pt": "https://www.volvocars.com/pt/cars/es90-electric/",
+    "observacoes": "Guia lista preço desde 71.471€."
+  },
+  "Opel||Grandland Electric": {
+    "autonomia_km": 700,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/opel/grandland/precos",
+    "representante_pt": "https://www.opel.pt/veiculos/grandland/overview.html",
+    "observacoes": "Guia lista BEV 231cv Bateria 97 kWh desde 50.100€."
+  },
+  "Mercedes-Benz||EQE": {
+    "autonomia_km": 688,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mercedes-benz/eqe/precos",
+    "representante_pt": "https://www.mercedes-benz.pt/passengercars/models/saloon/eqe/overview.html",
+    "observacoes": "Modelo elétrico no Guia; autonomia/potência por versão superior pode variar."
+  },
+  "Porsche||Taycan": {
+    "autonomia_km": 678,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/porsche",
+    "representante_pt": "https://www.porsche.com/portugal/models/taycan/taycan-models/",
+    "observacoes": "Porsche incluído por exceção de preço (>100k)."
+  },
+  "Peugeot||E-5008": {
+    "autonomia_km": 668,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/peugeot/5008/precos",
+    "representante_pt": "https://www.peugeot.pt/modelos/e-5008.html",
+    "observacoes": "Guia lista versões Plug-in e elétricas; preço desde 47.150€ para PHEV/EV conforme versão."
+  },
+  "Porsche||Macan Electric": {
+    "autonomia_km": 641,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/porsche",
+    "representante_pt": "https://www.porsche.com/portugal/models/macan/macan-electric-models/",
+    "observacoes": "Porsche incluído por exceção de preço."
+  },
+  "Kia||EV4": {
+    "autonomia_km": 630,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/kia/ev4/precos",
+    "representante_pt": "https://www.kia.com/pt/modelos/ev4/descobrir/",
+    "observacoes": "Guia lista preço desde 41.516,80€."
+  },
+  "Audi||Q6 e-tron": {
+    "autonomia_km": 625,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/audi/q6-e-tron/precos",
+    "representante_pt": "https://www.audi.pt/pt/modelos/q6-e-tron/q6-e-tron/",
+    "observacoes": "Guia lista preço desde 66.950,40€."
+  },
+  "Renault||Scénic E-Tech Electric": {
+    "autonomia_km": 625,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/renault/scenic/precos",
+    "representante_pt": "https://www.renault.pt/veiculos-eletricos/scenic-e-tech-electric.html",
+    "observacoes": "Guia lista preço desde 41.037,30€."
+  },
+  "Tesla||Model Y": {
+    "autonomia_km": 622,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/tesla/model-y/precos",
+    "representante_pt": "https://www.tesla.com/pt_pt/modely",
+    "observacoes": "Guia lista preço desde 40.997,30€."
+  },
+  "Hyundai||IONIQ 9": {
+    "autonomia_km": 620,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/hyundai/ioniq-9/precos",
+    "representante_pt": "https://www.hyundai.pt/modelos/ioniq-9/",
+    "observacoes": "Guia lista preço desde 88.009,50€."
+  },
+  "Hyundai||IONIQ 6": {
+    "autonomia_km": 614,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/hyundai/ioniq-6/precos",
+    "representante_pt": "https://www.hyundai.pt/modelos/ioniq-6/",
+    "observacoes": "Guia lista preço desde 66.107,30€."
+  },
+  "Volvo||EX90": {
+    "autonomia_km": 614,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volvo/ex90/precos",
+    "representante_pt": "https://www.volvocars.com/pt/cars/ex90-electric/",
+    "observacoes": "Guia lista preço desde 86.725,30€."
+  },
+  "BMW||i4": {
+    "autonomia_km": 613,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/bmw/i4/precos",
+    "representante_pt": "https://www.bmw.pt/pt/all-models/bmw-i/i4/2024/bmw-i4-overview.html",
+    "observacoes": "Guia lista preço desde 57.950€."
+  },
+  "Kia||EV3": {
+    "autonomia_km": 605,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/kia/ev3/precos",
+    "representante_pt": "https://www.kia.com/pt/modelos/ev3/descobrir/",
+    "observacoes": "Guia lista preço desde 39.916,80€."
+  },
+  "Skoda||Enyaq": {
+    "autonomia_km": 587,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/skoda",
+    "representante_pt": "https://www.skoda-auto.pt/modelos/enyaq/enyaq",
+    "observacoes": "Página Guia de marca; confirmar versão atual."
+  },
+  "Volvo||EC40": {
+    "autonomia_km": 583,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volvo/ec40/precos",
+    "representante_pt": "https://www.volvocars.com/pt/cars/ec40-electric/",
+    "observacoes": "Guia lista preço desde 53.330,10€."
+  },
+  "Kia||EV6": {
+    "autonomia_km": 582,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/kia/ev6/precos",
+    "representante_pt": "https://www.kia.com/pt/modelos/ev6/descobrir/",
+    "observacoes": "Guia lista preço desde 55.023,60€."
+  },
+  "Skoda||Elroq": {
+    "autonomia_km": 581,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/skoda/elroq/precos",
+    "representante_pt": "https://www.skoda-auto.pt/modelos/elroq/elroq",
+    "observacoes": "Guia lista potências 190/286 cv."
+  },
+  "Volvo||EX40": {
+    "autonomia_km": 576,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volvo/ex40/precos",
+    "representante_pt": "https://www.volvocars.com/pt/cars/ex40-electric/",
+    "observacoes": "Guia lista preço desde 49.578,60€."
+  },
+  "BYD||Seal": {
+    "autonomia_km": 570,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/byd",
+    "representante_pt": "https://www.bydauto.pt/modelos/byd-seal",
+    "observacoes": "Página Guia BYD; gama elétrica."
+  },
+  "Hyundai||IONIQ 5": {
+    "autonomia_km": 570,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/hyundai/ioniq-5/precos",
+    "representante_pt": "https://www.hyundai.pt/modelos/ioniq-5/",
+    "observacoes": "Guia lista preço desde 45.357,30€ e versão 570 km."
+  },
+  "Kia||EV9": {
+    "autonomia_km": 563,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/kia/ev9/precos",
+    "representante_pt": "https://www.kia.com/pt/modelos/ev9/descobrir/",
+    "observacoes": "Guia lista preço desde 89.922,90€."
+  },
+  "Audi||Q4 e-tron": {
+    "autonomia_km": 562,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/audi/q4-e-tron/precos",
+    "representante_pt": "https://www.audi.pt/pt/modelos/q4-e-tron/q4-e-tron/",
+    "observacoes": "Guia lista preço desde 49.700,10€."
+  },
+  "Mercedes-Benz||EQA": {
+    "autonomia_km": 560,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mercedes-benz/eqa/precos",
+    "representante_pt": "https://www.mercedes-benz.pt/passengercars/models/suv/eqa/overview.html",
+    "observacoes": "Guia lista preço desde 54.050€."
+  },
+  "Volkswagen||ID.4": {
+    "autonomia_km": 560,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volkswagen/id-4/precos",
+    "representante_pt": "https://www.volkswagen.pt/pt/modelos/id4.html",
+    "observacoes": "Guia lista preço desde 42.380,60€ e potências até 340 cv."
+  },
+  "Volkswagen||ID.3": {
+    "autonomia_km": 557,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volkswagen",
+    "representante_pt": "https://www.volkswagen.pt/pt/modelos/id3.html",
+    "observacoes": "Página Guia de marca; confirmar preço/versionamento atual."
+  },
+  "Volkswagen||ID.5": {
+    "autonomia_km": 556,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volkswagen",
+    "representante_pt": "https://www.volkswagen.pt/pt/modelos/id5.html",
+    "observacoes": "Página Guia de marca; confirmar versão atual."
+  },
+  "Mercedes-Benz||EQB": {
+    "autonomia_km": 535,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mercedes-benz/glb/precos",
+    "representante_pt": "https://www.mercedes-benz.pt/passengercars/models/suv/eqb/overview.html",
+    "observacoes": "Guia search expõe versões EQ em GLB/EQB; confirmar slug no Guia."
+  },
+  "BYD||Tang": {
+    "autonomia_km": 530,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/byd/tang/precos",
+    "representante_pt": "https://www.bydauto.pt/modelos/byd-tang",
+    "observacoes": "Guia lista preço desde 75.109,50€."
+  },
+  "Kia||EV5": {
+    "autonomia_km": 530,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/kia/ev5/precos",
+    "representante_pt": "https://www.kia.com/pt/",
+    "observacoes": "Guia lista preço desde 52.518,70€."
+  },
+  "Peugeot||E-3008": {
+    "autonomia_km": 527,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/peugeot/3008/precos",
+    "representante_pt": "https://www.peugeot.pt/modelos/e-3008.html",
+    "observacoes": "Guia lista PHEV desde 45.300€ e versões elétricas."
+  },
+  "MG||MG4 Electric": {
+    "autonomia_km": 520,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mg",
+    "representante_pt": "https://mgmotor.eu/pt-PT/model/mg4",
+    "observacoes": "Página Guia MG; confirmar versão."
+  },
+  "Hyundai||Kauai Electric": {
+    "autonomia_km": 514,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/hyundai/kauai/precos",
+    "representante_pt": "https://www.hyundai.pt/modelos/kauai-electric/",
+    "observacoes": "Guia lista gama Kauai; confirmar versão elétrica."
+  },
+  "MG||Cyberster": {
+    "autonomia_km": 508,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mg",
+    "representante_pt": "https://mgmotor.eu/pt-PT/model/cyberster",
+    "observacoes": "Página Guia MG; confirmar versão."
+  },
+  "BYD||Seal U": {
+    "autonomia_km": 500,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/byd/seal-u/precos",
+    "representante_pt": "https://www.bydauto.pt/modelos/byd-seal-u",
+    "observacoes": "Guia lista 420/500 km e preço desde 45.997,30€."
+  },
+  "Volkswagen||ID. Buzz": {
+    "autonomia_km": 487,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volkswagen",
+    "representante_pt": "https://www.volkswagen-comerciais.pt/pt/modelos/id-buzz.html",
+    "observacoes": "Preço aproximado conforme gama; confirmar versão no Guia."
+  },
+  "Volvo||EX30": {
+    "autonomia_km": 480,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volvo/ex30/precos",
+    "representante_pt": "https://www.volvocars.com/pt/cars/ex30-electric/",
+    "observacoes": "Guia lista preço desde 38.632,30€."
+  },
+  "BMW||iX1": {
+    "autonomia_km": 474,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/bmw/ix1/precos",
+    "representante_pt": "https://www.bmw.pt/pt/all-models/bmw-i/x1/2022/bmw-ix1-overview.html",
+    "observacoes": "Guia lista preço desde 50.050€."
+  },
+  "Smart||#3": {
+    "autonomia_km": 455,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/smart",
+    "representante_pt": "https://pt.smart.com/pt/models/hashtag-three/",
+    "observacoes": "Página Guia de marca; confirmar versão."
+  },
+  "Peugeot||E-408": {
+    "autonomia_km": 453,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/peugeot/408/precos",
+    "representante_pt": "https://www.peugeot.pt/modelos/e-408.html",
+    "observacoes": "Guia lista versão elétrica 210 cv desde 43.195€."
+  },
+  "Kia||EV2": {
+    "autonomia_km": 440,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/kia/ev2/precos",
+    "representante_pt": "https://www.kia.com/pt/",
+    "observacoes": "Guia lista preço desde 32.266€."
+  },
+  "Smart||#1": {
+    "autonomia_km": 440,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/smart/1/precos",
+    "representante_pt": "https://pt.smart.com/pt/models/hashtag-one/",
+    "observacoes": "Guia lista Smart #1 elétrico."
+  },
+  "Leapmotor||B10": {
+    "autonomia_km": 434,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/leapmotor/b10/precos",
+    "representante_pt": "https://www.leapmotor.com/pt/",
+    "observacoes": "Guia lista versão acima de 30k desde 31.287,10€; versão 29.287,10€ excluída."
+  },
+  "BYD||Dolphin": {
+    "autonomia_km": 427,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/byd",
+    "representante_pt": "https://www.bydauto.pt/modelos/byd-dolphin",
+    "observacoes": "Página Guia BYD."
+  },
+  "BYD||Atto 3": {
+    "autonomia_km": 420,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/byd",
+    "representante_pt": "https://www.bydauto.pt/modelos/byd-atto-3",
+    "observacoes": "Página Guia BYD."
+  },
+  "Leapmotor||C10": {
+    "autonomia_km": 420,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/leapmotor/c10/precos",
+    "representante_pt": "https://www.leapmotor.com/pt/",
+    "observacoes": "Guia lista 420 km / 145 km e preço desde 36.787,10€."
+  },
+  "Citroën||ë-C4": {
+    "autonomia_km": 415,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/citroen/e-c4/precos",
+    "representante_pt": "https://www.citroen.pt/veiculos/novo-c4.html",
+    "observacoes": "Guia lista versão 156 cv Autonomia Alargada desde 43.415€."
+  },
+  "Citroën||ë-C4 X": {
+    "autonomia_km": 415,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/citroen/e-c4-x/precos",
+    "representante_pt": "https://www.citroen.pt/veiculos/novo-c4-x.html",
+    "observacoes": "Guia lista versão elétrica desde 43.765€."
+  },
+  "Renault||5 E-Tech Electric": {
+    "autonomia_km": 410,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/renault/5/precos",
+    "representante_pt": "https://www.renault.pt/veiculos-eletricos/r5-e-tech-electric.html",
+    "observacoes": "Guia lista gama R5 elétrica; preço desde acima de 30k em versões selecionadas."
+  },
+  "Peugeot||E-208": {
+    "autonomia_km": 410,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/peugeot/e-208/precos",
+    "representante_pt": "https://www.peugeot.pt/modelos/e-208.html",
+    "observacoes": "Guia lista versão GT 156 cv por 39.160€."
+  },
+  "Renault||4 E-Tech Electric": {
+    "autonomia_km": 409,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/renault/4/precos",
+    "representante_pt": "https://www.renault.pt/veiculos-eletricos/r4-e-tech-electric.html",
+    "observacoes": "Guia lista versão elegível acima de 30.000€ desde 33.247,30€; versão 29.747,30€ excluída."
+  },
+  "Fiat||600e": {
+    "autonomia_km": 409,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/fiat/600e/precos",
+    "representante_pt": "https://www.fiat.pt/modelos/600e",
+    "observacoes": "Guia lista versão 156 cv desde 37.200€."
+  },
+  "Peugeot||E-2008": {
+    "autonomia_km": 406,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/peugeot/2008/precos",
+    "representante_pt": "https://www.peugeot.pt/modelos/e-2008.html",
+    "observacoes": "Guia lista preço desde 32.725€; confirmar versão elétrica."
+  },
+  "Opel||Mokka Electric": {
+    "autonomia_km": 403,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/opel/mokka/precos",
+    "representante_pt": "https://www.opel.pt/veiculos/mokka/overview.html",
+    "observacoes": "Guia lista gama; confirmar preço versão elétrica."
+  },
+  "DS||DS 3 E-Tense": {
+    "autonomia_km": 402,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/ds/ds-3/precos",
+    "representante_pt": "https://www.dsautomobiles.pt/modelos/ds-3.html",
+    "observacoes": "Guia lista preço desde 37.430€."
+  },
+  "MG||Marvel R": {
+    "autonomia_km": 402,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mg",
+    "representante_pt": "https://mgmotor.eu/pt-PT/",
+    "observacoes": "Página Guia MG; confirmar disponibilidade."
+  },
+  "Opel||Frontera Electric": {
+    "autonomia_km": 400,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/opel/frontera/precos",
+    "representante_pt": "https://www.opel.pt/veiculos/frontera/overview.html",
+    "observacoes": "Guia lista versão elétrica desde 33.990€."
+  },
+  "Hyundai||Inster": {
+    "autonomia_km": 370,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/hyundai/inster/precos",
+    "representante_pt": "https://www.hyundai.pt/modelos/inster/",
+    "observacoes": "Guia lista preço EV 360 km desde 31.257,30€."
+  },
+  "Citroën||ë-SpaceTourer": {
+    "autonomia_km": 350,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/citroen/e-spacetourer/precos",
+    "representante_pt": "https://www.citroen.pt/veiculos/ë-spacetourer.html",
+    "observacoes": "Guia lista preço desde 50.800€."
+  },
+  "Fiat||E-Doblò": {
+    "autonomia_km": 330,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/fiat/edoblo/precos",
+    "representante_pt": "https://www.fiat.pt/modelos/doblo-electric",
+    "observacoes": "Guia lista versão elétrica desde 35.900€."
+  },
+  "Mazda||MX-30": {
+    "autonomia_km": 200,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mazda",
+    "representante_pt": "https://www.mazda.pt/modelos/mazda-mx-30/",
+    "observacoes": "Página Guia Mazda; confirmar venda atual."
+  },
+  "Omoda||9 PHEV": {
+    "autonomia_km": 145,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/omoda",
+    "representante_pt": "https://www.omodajaecoo.pt/",
+    "observacoes": "Artigo Guia PHEV 2026 indica autonomias até 145 km; confirmar página versão."
+  },
+  "Audi||A3 TFSIe": {
+    "autonomia_km": 142,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/audi",
+    "representante_pt": "https://www.audi.pt/pt/modelos/a3/a3-sportback/",
+    "observacoes": "PHEV na gama; confirmar página Guia."
+  },
+  "Skoda||Superb iV": {
+    "autonomia_km": 135,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/skoda",
+    "representante_pt": "https://www.skoda-auto.pt/modelos/superb/superb",
+    "observacoes": "PHEV na gama; confirmar versão Guia."
+  },
+  "Volkswagen||Passat Variant PHEV": {
+    "autonomia_km": 133,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volkswagen",
+    "representante_pt": "https://www.volkswagen.pt/pt/modelos/passat-variant.html",
+    "observacoes": "Artigo Guia PHEV 2026; confirmar preço por versão."
+  },
+  "Volkswagen||Golf eHybrid/GTE": {
+    "autonomia_km": 131,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volkswagen",
+    "representante_pt": "https://www.volkswagen.pt/pt/modelos/golf.html",
+    "observacoes": "PHEV na gama; confirmar versão Guia."
+  },
+  "Volkswagen||Tiguan PHEV": {
+    "autonomia_km": 126,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volkswagen",
+    "representante_pt": "https://www.volkswagen.pt/pt/modelos/tiguan.html",
+    "observacoes": "Artigo Guia PHEV 2026 lista Tiguan PHEV entre os mais autónomos."
+  },
+  "BYD||Seal U DM-i": {
+    "autonomia_km": 125,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/byd/seal-u-dm-i/precos",
+    "representante_pt": "https://www.bydauto.pt/modelos/byd-seal-u-dm-i",
+    "observacoes": "Guia lista autonomia 80 km em versões; artigo Guia PHEV 2026 lista 125 km para Comfort."
+  },
+  "Skoda||Kodiaq iV": {
+    "autonomia_km": 123,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/skoda",
+    "representante_pt": "https://www.skoda-auto.pt/modelos/kodiaq/kodiaq",
+    "observacoes": "PHEV na gama; confirmar versão Guia."
+  },
+  "Audi||Q3 e-hybrid": {
+    "autonomia_km": 120,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/audi/q3/precos",
+    "representante_pt": "https://www.audi.pt/pt/modelos/q3/q3-suv/",
+    "observacoes": "Guia lista Q3 e versões e-hybrid; confirmar autonomia por versão."
+  },
+  "Mercedes-Benz||Classe C PHEV": {
+    "autonomia_km": 116,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mercedes-benz/classe-c/precos",
+    "representante_pt": "https://www.mercedes-benz.pt/passengercars/models/saloon/c-class/overview.html",
+    "observacoes": "Guia lista versões EQ/plug-in na Classe C; preço base PHEV indicado por snippet pode variar."
+  },
+  "Mercedes-Benz||Classe E PHEV": {
+    "autonomia_km": 116,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mercedes-benz/classe-e/precos",
+    "representante_pt": "https://www.mercedes-benz.pt/passengercars/models/saloon/e-class/overview.html",
+    "observacoes": "Guia lista preço desde 64.550€ na Classe E; PVP > limite IVA PHEV."
+  },
+  "Audi||A5 TFSIe": {
+    "autonomia_km": 113,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/audi/a5/precos",
+    "representante_pt": "https://www.audi.pt/pt/modelos/a5/a5-avant/",
+    "observacoes": "Guia lista preço desde 60.549,90€ na gama A5."
+  },
+  "MG||S9 PHEV": {
+    "autonomia_km": 110,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mg/s9/precos",
+    "representante_pt": "https://mgmotor.eu/pt-PT/",
+    "observacoes": "Guia lista preço desde 41.969,10€ e potência 299 cv."
+  },
+  "BMW||Série 3 330e": {
+    "autonomia_km": 101,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/bmw/serie-3/precos",
+    "representante_pt": "https://www.bmw.pt/pt/all-models/3-series/sedan/2024/bmw-3-series-sedan-overview.html",
+    "observacoes": "Guia lista preço desde 50.550€ na Série 3."
+  },
+  "BMW||Série 5 550e": {
+    "autonomia_km": 101,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/bmw/serie-5/precos",
+    "representante_pt": "https://www.bmw.pt/pt/all-models/5-series/sedan/2023/bmw-5-series-sedan-overview.html",
+    "observacoes": "Guia lista preço desde 65.200€ na Série 5; PVP > limite IVA PHEV."
+  },
+  "MG||HS PHEV": {
+    "autonomia_km": 100,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mg/hs/precos",
+    "representante_pt": "https://mgmotor.eu/pt-PT/model/new-mg-hs-phev",
+    "observacoes": "Guia lista preço desde 41.319,10€ e potência 272 cv."
+  },
+  "Audi||A6 TFSIe": {
+    "autonomia_km": 100,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/audi/a6/precos",
+    "representante_pt": "https://www.audi.pt/pt/modelos/a6/a6-avant/",
+    "observacoes": "Guia lista preço desde 65.814,70€ na gama A6; PHEV acima do limite IVA se >61.500 PVP."
+  },
+  "Volvo||V60 PHEV": {
+    "autonomia_km": 91,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volvo/v60/precos",
+    "representante_pt": "https://www.volvocars.com/pt/cars/v60-hybrid/",
+    "observacoes": "Guia lista preço desde 59.796,90€; dentro do limite PHEV por PVP aprox."
+  },
+  "Jaecoo||7 PHEV": {
+    "autonomia_km": 90,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/jaecoo/7/precos",
+    "representante_pt": "https://www.omodajaecoo.pt/",
+    "observacoes": "Guia lista preço 38.900€, autonomia 90 km, potência 279 cv."
+  },
+  "Opel||Grandland Plug-in Hybrid": {
+    "autonomia_km": 87,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/opel/grandland/precos",
+    "representante_pt": "https://www.opel.pt/veiculos/grandland/overview.html",
+    "observacoes": "PHEV na gama; confirmar preço versão no Guia."
+  },
+  "BMW||X1 xDrive25e/30e": {
+    "autonomia_km": 86,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/bmw/x1/precos",
+    "representante_pt": "https://www.bmw.pt/pt/all-models/x-series/X1/2022/bmw-x1-overview.html",
+    "observacoes": "Guia lista preço desde 46.100€ na X1."
+  },
+  "Toyota||Prius Plug-in Hybrid": {
+    "autonomia_km": 86,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/toyota",
+    "representante_pt": "https://www.toyota.pt/carros/prius-plugin",
+    "observacoes": "Página Guia Toyota; confirmar preço versão."
+  },
+  "Peugeot||308 Plug-in Hybrid": {
+    "autonomia_km": 85,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/peugeot/308/precos",
+    "representante_pt": "https://www.peugeot.pt/modelos/308.html",
+    "observacoes": "Guia lista Plug-in Hybrid 195cv desde 38.510€."
+  },
+  "Peugeot||408 Plug-in Hybrid": {
+    "autonomia_km": 85,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/peugeot/408/precos",
+    "representante_pt": "https://www.peugeot.pt/modelos/408.html",
+    "observacoes": "Guia lista 1.6 Plug-in Hybrid 240cv."
+  },
+  "Peugeot||3008 Plug-in Hybrid": {
+    "autonomia_km": 85,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/peugeot/3008/precos",
+    "representante_pt": "https://www.peugeot.pt/modelos/3008.html",
+    "observacoes": "Guia lista Allure Plug-in Hybrid 225cv desde 45.300€."
+  },
+  "Peugeot||5008 Plug-in Hybrid": {
+    "autonomia_km": 85,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/peugeot/5008/precos",
+    "representante_pt": "https://www.peugeot.pt/modelos/5008.html",
+    "observacoes": "Guia lista Plug-in Hybrid 225cv desde 47.150€."
+  },
+  "Opel||Astra Plug-in Hybrid": {
+    "autonomia_km": 83,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/opel/astra/precos",
+    "representante_pt": "https://www.opel.pt/veiculos/astra/overview.html",
+    "observacoes": "Guia lista gama Astra com gasolina(PHEV)."
+  },
+  "Volvo||XC60 PHEV": {
+    "autonomia_km": 82,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volvo/xc60/precos",
+    "representante_pt": "https://www.volvocars.com/pt/cars/xc60-hybrid/",
+    "observacoes": "Guia lista T6 PHEV desde 70.008€; PVP > limite IVA PHEV."
+  },
+  "Citroën||C5 Aircross Plug-in Hybrid": {
+    "autonomia_km": 81,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/citroen/c5-aircross/precos",
+    "representante_pt": "https://www.citroen.pt/veiculos/novo-c5-aircross.html",
+    "observacoes": "Guia lista Plug-in 225 Auto Plus desde 40.500€."
+  },
+  "DS||Nº4 Plug-in Hybrid": {
+    "autonomia_km": 81,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/ds/n-4/precos",
+    "representante_pt": "https://www.dsautomobiles.pt/modelos/ds-n4.html",
+    "observacoes": "Guia lista Plug-in Hybrid 240 desde 45.680€."
+  },
+  "DS||DS 7 E-Tense": {
+    "autonomia_km": 81,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/ds/ds-7/precos",
+    "representante_pt": "https://www.dsautomobiles.pt/modelos/ds-7.html",
+    "observacoes": "Guia lista preço desde 62.925€; PVP > limite IVA PHEV."
+  },
+  "Volvo||XC90 PHEV": {
+    "autonomia_km": 71,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volvo/xc90/precos",
+    "representante_pt": "https://www.volvocars.com/pt/cars/xc90-hybrid/",
+    "observacoes": "Guia lista preço desde 97.561,80€; PVP > limite IVA PHEV."
+  },
+  "Kia||Sportage PHEV": {
+    "autonomia_km": 70,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/kia/sportage/precos",
+    "representante_pt": "https://www.kia.com/pt/modelos/sportage/descobrir/",
+    "observacoes": "PHEV na gama; confirmar página Guia."
+  },
+  "Toyota||C-HR Plug-in Hybrid": {
+    "autonomia_km": 66,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/toyota/c-hr/precos",
+    "representante_pt": "https://www.toyota.pt/carros/c-hr",
+    "observacoes": "Guia lista 2.0 Plug-in Hybrid desde 50.097,30€."
+  },
+  "Mazda||CX-60 PHEV": {
+    "autonomia_km": 63,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mazda",
+    "representante_pt": "https://www.mazda.pt/modelos/mazda-cx-60/",
+    "observacoes": "Página Guia Mazda; confirmar preço atual."
+  },
+  "Hyundai||Tucson PHEV": {
+    "autonomia_km": 62,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/hyundai/tucson/precos",
+    "representante_pt": "https://www.hyundai.pt/modelos/tucson/",
+    "observacoes": "Guia lista PHEV 1.6 TGDI desde 51.107,30€."
+  },
+  "Mazda||CX-80 PHEV": {
+    "autonomia_km": 60,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/mazda",
+    "representante_pt": "https://www.mazda.pt/modelos/mazda-cx-80/",
+    "observacoes": "Página Guia Mazda; PVP pode exceder limite IVA PHEV."
+  },
+  "Kia||Sorento PHEV": {
+    "autonomia_km": 57,
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/kia/sorento/precos",
+    "representante_pt": "https://www.kia.com/pt/modelos/sorento/descobrir/",
+    "observacoes": "Guia lista preço desde 63.013,90€; PVP > limite IVA PHEV."
+  }
+}
