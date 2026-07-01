@@ -1,32 +1,36 @@
 name: Actualizar dados Guia do Automóvel
-
+ 
 on:
   schedule:
     - cron: '0 6 * * 1'   # Todas as segundas-feiras às 06:00 UTC
   workflow_dispatch:        # Permite correr manualmente no GitHub
-
+ 
 jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
-      contents: write       # Necessário para fazer commit do data.json
-
+      contents: write
+ 
     steps:
       - name: Checkout repositório
         uses: actions/checkout@v4
-
+        with:
+          fetch-depth: 0   # histórico completo para evitar conflitos
+ 
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
+ 
       - name: Actualizar data.json
         run: python3 scripts/fetch_data.py
-
+ 
       - name: Commit e push se houver alterações
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git diff --staged --quiet || git commit -m "chore: actualizar dados $(date -u +%Y-%m-%d)"
+          git diff --staged --quiet && echo "Sem alterações." && exit 0
+          git commit -m "chore: actualizar dados $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main
           git push
