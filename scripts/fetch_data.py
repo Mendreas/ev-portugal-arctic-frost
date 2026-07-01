@@ -143,8 +143,19 @@ def main():
     print(f"\nEV modelos únicos: {len(ev_models)}")
     print(f"PHEV modelos únicos: {len(phev_models)}")
 
+    # Carrega modelos manuais (modelos sem stock no Guia mas que existem no mercado PT)
+    manual_path = root / "manual_models.json"
+    manual_models_list = []
+    if manual_path.exists():
+        with open(manual_path, encoding="utf-8") as f:
+            manual_models_list = json.load(f)
+    print(f"Modelos manuais carregados: {len(manual_models_list)}")
+
     # ── Merge com overrides ──
     all_models = []
+
+    # Chaves já adicionadas pela API (para evitar duplicados com manual)
+    api_keys_added: set = set()
 
     def merge(models_dict: dict):
         for key, m in models_dict.items():
@@ -169,9 +180,38 @@ def main():
                 "Observações":               ov.get("observacoes", ""),
             }
             all_models.append(entry)
+            api_keys_added.add(key)
 
     merge(ev_models)
     merge(phev_models)
+
+    # Adiciona modelos manuais que não foram encontrados pela API
+    manual_added = 0
+    for m in manual_models_list:
+        key = f"{m['Marca']}||{m['Modelo']}"
+        if key not in api_keys_added:
+            # Tenta enriquecer com overrides se existir
+            ov = overrides.get(key, {})
+            pvp = m.get("Preço desde (€ PVP)", 0)
+            entry = {
+                "Marca":                     m["Marca"],
+                "Modelo":                    m["Modelo"],
+                "Tipo":                      m["Tipo"],
+                "Preço desde (€ PVP)":       pvp,
+                "Preço s/ IVA estimado (€)": round(pvp / (1 + IVA_RATE), 2) if pvp else 0,
+                "Autonomia elétrica (km)":   ov.get("autonomia_km") or m.get("Autonomia elétrica (km)", 0),
+                "Potência (cv)":             m.get("Potência (cv)", 0),
+                "Carroçaria":                m.get("Carroçaria", ""),
+                "Foto":                      m.get("Foto", ""),
+                "IVA dedutível empresas?":   "",   # calculado abaixo
+                "Representante PT":          ov.get("representante_pt") or m.get("Representante PT", ""),
+                "Fonte Guia":                ov.get("fonte_guia") or m.get("Fonte Guia", ""),
+                "Observações":               ov.get("observacoes") or m.get("Observações", ""),
+            }
+            all_models.append(entry)
+            manual_added += 1
+
+    print(f"Modelos manuais adicionados: {manual_added}")
 
     # Calcular máxima autonomia elegível por tipo (para critério de autonomia superior)
     def max_aut_elegivel(tipo: str, limite: float) -> int:
