@@ -62,10 +62,31 @@
     "observacoes": "Incluído por gama ID.7 no Guia; confirmar preço da versão em página."
   },
   "Tesla||Model 3": {
-    "autonomia_km": 702,
-    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/tesla",
+    "variantes": [
+      {
+        "nome": "Standard (RWD)",
+        "pvp": 36990,
+        "autonomia_km": 534,
+        "hp": 283
+      },
+      {
+        "nome": "Premium RWD (ex-Long Range)",
+        "pvp": 44990,
+        "autonomia_km": 750,
+        "hp": 333,
+        "estimado": true
+      },
+      {
+        "nome": "Performance AWD",
+        "pvp": 57490,
+        "autonomia_km": 528,
+        "hp": 627,
+        "estimado": true
+      }
+    ],
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/tesla/model-3/precos",
     "representante_pt": "https://www.tesla.com/pt_pt/model3",
-    "observacoes": "Preço pode variar no configurador Tesla."
+    "observacoes": "Gama reestruturada em 2026: 'Standard' é a versão base (ex-sem nome), 'Premium' substitui a antiga designação 'Long Range'. Apenas o Standard e o Premium RWD ficam abaixo do limite de IVA de €62.500 s/IVA; o Performance fica acima mas é elegível por critério de autonomia apenas se a autonomia WLTP ultrapassar o máximo elegível do grupo EV."
   },
   "BMW||iX": {
     "autonomia_km": 701,
@@ -672,5 +693,25 @@
     "fonte_guia": "https://www.guiadoautomovel.pt/marcas/kia/sorento/precos",
     "representante_pt": "https://www.kia.com/pt/modelos/sorento/descobrir/",
     "observacoes": "Guia lista preço desde 63.013,90€; PVP > limite IVA PHEV."
+  },
+  "BMW||iX3": {
+    "variantes": [
+      {
+        "nome": "iX3 40 (RWD)",
+        "pvp": 65000,
+        "autonomia_km": 635,
+        "hp": 320,
+        "estimado": true
+      },
+      {
+        "nome": "iX3 50 xDrive AWD",
+        "pvp": 72900,
+        "autonomia_km": 805,
+        "hp": 469
+      }
+    ],
+    "fonte_guia": "https://www.guiadoautomovel.pt/marcas/bmw/ix3/review",
+    "representante_pt": "https://www.bmw.pt/pt/all-models/x-series/ix3/bmw-ix3.html",
+    "observacoes": "iX3 40 (RWD) ainda sem preço oficial confirmado para Portugal — estimativa baseada no posicionamento acima do iX3 50 na Alemanha/França. iX3 50 xDrive tem preço de lista de €72.900, mas existem campanhas para empresas a partir de ~€56.133+IVA (verificar junto do concessionário). Ambas as versões ficam acima do limite de €62.500 s/IVA ao preço de lista."
   }
 }

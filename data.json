@@ -1,11 +1,11 @@
 {
-  "updated": "2026-07-02T14:36:55Z",
+  "updated": "2026-07-02T14:46:50Z",
   "total": 180,
   "ev_count": 133,
   "phev_count": 47,
   "iva_limit_ev": 62500,
   "iva_limit_phev": 50000,
-  "max_aut_ev_elegivel": 792,
+  "max_aut_ev_elegivel": 805,
   "max_aut_phev_elegivel": 145,
   "models": [
     {
@@ -939,6 +939,50 @@
       "Observações": ""
     },
     {
+      "Marca": "Tesla",
+      "Modelo": "Model 3",
+      "Tipo": "EV",
+      "Preço desde (€ PVP)": 36990,
+      "Preço s/ IVA estimado (€)": 30073.17,
+      "Autonomia elétrica (km)": 750,
+      "Potência (cv)": 283,
+      "Carroçaria": "",
+      "Foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Tesla_Model_3_%282023%29_Autofr%C3%BChling_Ulm_IMG_9282.jpg/3840px-Tesla_Model_3_%282023%29_Autofr%C3%BChling_Ulm_IMG_9282.jpg",
+      "IVA dedutível empresas?": "Sim",
+      "Representante PT": "https://www.tesla.com/pt_pt/model3",
+      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/tesla/model-3/precos",
+      "Observações": "Gama reestruturada em 2026: 'Standard' é a versão base (ex-sem nome), 'Premium' substitui a antiga designação 'Long Range'. Apenas o Standard e o Premium RWD ficam abaixo do limite de IVA de €62.500 s/IVA; o Performance fica acima mas é elegível por critério de autonomia apenas se a autonomia WLTP ultrapassar o máximo elegível do grupo EV.",
+      "Variantes": [
+        {
+          "nome": "Standard (RWD)",
+          "pvp": 36990,
+          "pvp_sem_iva": 30073.17,
+          "autonomia_km": 534,
+          "hp": 283,
+          "estimado": false,
+          "iva_dedutivel": "Sim"
+        },
+        {
+          "nome": "Premium RWD (ex-Long Range)",
+          "pvp": 44990,
+          "pvp_sem_iva": 36577.24,
+          "autonomia_km": 750,
+          "hp": 333,
+          "estimado": true,
+          "iva_dedutivel": "Sim"
+        },
+        {
+          "nome": "Performance AWD",
+          "pvp": 57490,
+          "pvp_sem_iva": 46739.84,
+          "autonomia_km": 528,
+          "hp": 627,
+          "estimado": true,
+          "iva_dedutivel": "Sim"
+        }
+      ]
+    },
+    {
       "Marca": "DS",
       "Modelo": "DS 3 E-Tense",
       "Tipo": "EV",
@@ -1102,21 +1146,6 @@
       "Representante PT": "https://www.kia.com/pt/modelos/ev3/descobrir/",
       "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/kia/ev3/precos",
       "Observações": "Guia lista preço desde 39.916,80€."
-    },
-    {
-      "Marca": "Tesla",
-      "Modelo": "Model 3",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 39990.0,
-      "Preço s/ IVA estimado (€)": 32512.2,
-      "Autonomia elétrica (km)": 702,
-      "Potência (cv)": 498,
-      "Carroçaria": "",
-      "Foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Tesla_Model_3_%282023%29_Autofr%C3%BChling_Ulm_IMG_9282.jpg/3840px-Tesla_Model_3_%282023%29_Autofr%C3%BChling_Ulm_IMG_9282.jpg",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "https://www.tesla.com/pt_pt/model3",
-      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/tesla",
-      "Observações": "Preço pode variar no configurador Tesla."
     },
     {
       "Marca": "Peugeot",
@@ -1539,21 +1568,6 @@
       "Observações": "Guia lista preço desde 52.518,70€."
     },
     {
-      "Marca": "BMW",
-      "Modelo": "iX3",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 52700,
-      "Preço s/ IVA estimado (€)": 42845.53,
-      "Autonomia elétrica (km)": 0,
-      "Potência (cv)": 285,
-      "Carroçaria": "SUV",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/251079/large/large_fd6db2bd-9500-4d67-bdb1-05c256ebf105.jpg",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "",
-      "Fonte Guia": "",
-      "Observações": ""
-    },
-    {
       "Marca": "Volvo",
       "Modelo": "EC40",
       "Tipo": "EV",
@@ -1762,6 +1776,41 @@
       "Representante PT": "https://www.porsche.com/portugal/models/taycan/taycan-models/",
       "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/porsche",
       "Observações": "Porsche incluído por exceção de preço (>100k)."
+    },
+    {
+      "Marca": "BMW",
+      "Modelo": "iX3",
+      "Tipo": "EV",
+      "Preço desde (€ PVP)": 65000,
+      "Preço s/ IVA estimado (€)": 52845.53,
+      "Autonomia elétrica (km)": 805,
+      "Potência (cv)": 320,
+      "Carroçaria": "SUV",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/251079/large/large_fd6db2bd-9500-4d67-bdb1-05c256ebf105.jpg",
+      "IVA dedutível empresas?": "Sim",
+      "Representante PT": "https://www.bmw.pt/pt/all-models/x-series/ix3/bmw-ix3.html",
+      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/bmw/ix3/review",
+      "Observações": "iX3 40 (RWD) ainda sem preço oficial confirmado para Portugal — estimativa baseada no posicionamento acima do iX3 50 na Alemanha/França. iX3 50 xDrive tem preço de lista de €72.900, mas existem campanhas para empresas a partir de ~€56.133+IVA (verificar junto do concessionário). Ambas as versões ficam acima do limite de €62.500 s/IVA ao preço de lista.",
+      "Variantes": [
+        {
+          "nome": "iX3 40 (RWD)",
+          "pvp": 65000,
+          "pvp_sem_iva": 52845.53,
+          "autonomia_km": 635,
+          "hp": 320,
+          "estimado": true,
+          "iva_dedutivel": "Sim"
+        },
+        {
+          "nome": "iX3 50 xDrive AWD",
+          "pvp": 72900,
+          "pvp_sem_iva": 59268.29,
+          "autonomia_km": 805,
+          "hp": 469,
+          "estimado": false,
+          "iva_dedutivel": "Sim"
+        }
+      ]
     },
     {
       "Marca": "Hyundai",
