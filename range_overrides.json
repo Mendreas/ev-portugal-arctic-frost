@@ -1,9 +1,29 @@
 {
   "Volvo||EX60": {
-    "autonomia_km": 810,
+    "variantes": [
+      {
+        "nome": "P6 Elétrico (RWD)",
+        "pvp": 67906,
+        "autonomia_km": 620,
+        "hp": 374
+      },
+      {
+        "nome": "P10 AWD Elétrico",
+        "pvp": 72500,
+        "autonomia_km": 660,
+        "hp": 510,
+        "estimado": true
+      },
+      {
+        "nome": "P12 AWD Elétrico",
+        "pvp": 77131,
+        "autonomia_km": 810,
+        "hp": 680
+      }
+    ],
     "fonte_guia": "https://www.guiadoautomovel.pt/marcas/volvo/ex60/precos",
     "representante_pt": "https://www.volvocars.com/pt/cars/ex60-electric/",
-    "observacoes": "Guia lista preço desde 67.906,30€; autonomia até 810 km confirmada pela Volvo Portugal."
+    "observacoes": "Preço e IVA dedutível dependem da versão: P6 e P10 ficam abaixo do limite de €62.500 s/IVA (dedutível); P12 fica acima (não dedutível, exceto por critério de autonomia). Preço do P10 é uma estimativa baseada em posicionamento entre P6 e P12."
   },
   "Mercedes-Benz||CLA com tecnologia EQ": {
     "autonomia_km": 792,

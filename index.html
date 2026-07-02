@@ -68,6 +68,13 @@ tr:hover td{background:#f4f8fd}
 .badge-sim{background:var(--yes-bg);color:var(--yes-text)}
 .badge-nao{background:var(--no-bg);color:var(--no-text)}
 .badge-auto{background:#f3eeff;color:#7c3aed}
+.badge-parcial{background:#fff7ed;color:#c2410c}
+.variant-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12.5px}
+.variant-table th{text-align:left;padding:7px 8px;color:var(--muted);font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1.5px solid var(--border)}
+.variant-table td{padding:8px 8px;border-bottom:1px solid rgba(221,225,238,.5)}
+.variant-table tr:last-child td{border-bottom:none}
+.variant-name{font-weight:600}
+.variant-est{font-size:10px;color:var(--muted);font-weight:400}
 .btn-detail{background:var(--accent);color:#fff;border:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600;transition:background .15s,transform .1s}
 .btn-detail:hover{background:#3d5e94;transform:scale(1.04)}
 
@@ -284,6 +291,7 @@ function renderTable(){
     const v=r['IVA dedutível empresas?'];
     if(v==='Sim')return'<span class="badge badge-sim">Sim</span>';
     if(v==='Autonomia')return'<span class="badge badge-auto">★ Aut.</span>';
+    if(v==='Parcial')return'<span class="badge badge-parcial">◐ Parcial</span>';
     return'<span class="badge badge-nao">Não</span>';
   };
 
@@ -322,8 +330,9 @@ document.getElementById('f-iva').addEventListener('change',renderTable);
 function openModal(idx){
   const r=DATA[idx];
   const iva=r['IVA dedutível empresas?'];
-  const ivaOk=iva==='Sim', ivaAut=iva==='Autonomia';
+  const ivaOk=iva==='Sim', ivaAut=iva==='Autonomia', ivaParcial=iva==='Parcial';
   const photo=r['Foto']||'';
+  const temVariantes = Array.isArray(r['Variantes']) && r['Variantes'].length>0;
 
   document.getElementById('modal-photo-area').innerHTML=photo
     ?`<img class="modal-photo" src="${photo}" alt="${r.Marca} ${r.Modelo}"
@@ -335,12 +344,48 @@ function openModal(idx){
         <div class="car-icon">🚗</div><div class="car-name">${r.Marca} ${r.Modelo}</div>
       </div>`;
 
-  const ivaBg=ivaOk?'var(--yes-bg)':ivaAut?'#f3eeff':'var(--no-bg)';
-  const ivaClr=ivaOk?'var(--yes-text)':ivaAut?'#7c3aed':'var(--no-text)';
-  const ivaIcon=ivaOk?'✅':ivaAut?'★':'❌';
-  const ivaTxt=ivaOk?'IVA dedutível para empresas'
-               :ivaAut?'Incluído por autonomia superior ao máximo elegível'
-               :'IVA não dedutível para empresas';
+  const ivaBg  = ivaOk?'var(--yes-bg)':ivaParcial?'#fff7ed':ivaAut?'#f3eeff':'var(--no-bg)';
+  const ivaClr = ivaOk?'var(--yes-text)':ivaParcial?'#c2410c':ivaAut?'#7c3aed':'var(--no-text)';
+  const ivaIcon= ivaOk?'✅':ivaParcial?'◐':ivaAut?'★':'❌';
+  const ivaTxt = ivaOk?'IVA dedutível para empresas'
+               : ivaParcial?'Depende da versão — ver detalhe das variantes abaixo'
+               : ivaAut?'Incluído por autonomia superior ao máximo elegível'
+               : 'IVA não dedutível para empresas';
+
+  const statLabel = temVariantes ? 'Preço desde (variante mais barata)' : 'Preço PVP desde';
+  const autLabel  = temVariantes ? 'Autonomia máx. (melhor variante)'   : 'Autonomia elétrica';
+
+  let variantsHtml = '';
+  if (temVariantes) {
+    const rows = r['Variantes']
+      .slice()
+      .sort((a,b)=>a.pvp-b.pvp)
+      .map(v=>{
+        const vIcon = v.iva_dedutivel==='Sim' ? '✅' : v.iva_dedutivel==='Autonomia' ? '★' : '❌';
+        const vColor = v.iva_dedutivel==='Sim' ? 'var(--yes-text)' : v.iva_dedutivel==='Autonomia' ? '#7c3aed' : 'var(--no-text)';
+        return `<tr>
+          <td><span class="variant-name">${v.nome}</span>${v.estimado?'<div class="variant-est">preço estimado</div>':''}</td>
+          <td style="text-align:right">${fmtEUR(v.pvp)}</td>
+          <td style="text-align:right">${fmtN(v.autonomia_km)} km</td>
+          <td style="text-align:right">${fmtN(v.hp)} cv</td>
+          <td style="text-align:center;color:${vColor};font-weight:600">${vIcon}</td>
+        </tr>`;
+      }).join('');
+    variantsHtml = `
+      <div style="margin-top:14px">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px">
+          Variantes / motorizações
+        </div>
+        <table class="variant-table">
+          <thead><tr>
+            <th>Versão</th><th style="text-align:right">Preço PVP</th>
+            <th style="text-align:right">Autonomia</th><th style="text-align:right">Potência</th>
+            <th style="text-align:center">IVA</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+  }
 
   document.getElementById('modal-body').innerHTML=`
     <div class="modal-header">
@@ -352,15 +397,16 @@ function openModal(idx){
     </div>
     <div class="modal-iva-badge" style="background:${ivaBg};color:${ivaClr}">${ivaIcon} ${ivaTxt}</div>
     <div class="modal-grid">
-      <div class="modal-stat"><div class="modal-stat-label">Preço PVP desde</div>
+      <div class="modal-stat"><div class="modal-stat-label">${statLabel}</div>
         <div class="modal-stat-value" style="font-size:15px">${fmtEUR(r['Preço desde (€ PVP)'])}</div></div>
       <div class="modal-stat"><div class="modal-stat-label">Preço s/ IVA est.</div>
         <div class="modal-stat-value" style="font-size:15px">${fmtEUR(r['Preço s/ IVA estimado (€)'])}</div></div>
-      <div class="modal-stat"><div class="modal-stat-label">Autonomia elétrica</div>
+      <div class="modal-stat"><div class="modal-stat-label">${autLabel}</div>
         <div class="modal-stat-value">${fmtN(r['Autonomia elétrica (km)'])}<span class="modal-stat-unit">km</span></div></div>
       <div class="modal-stat"><div class="modal-stat-label">Potência</div>
         <div class="modal-stat-value">${fmtN(r['Potência (cv)'])}<span class="modal-stat-unit">cv</span></div></div>
     </div>
+    ${variantsHtml}
     ${r['Observações']?`<div class="modal-obs"><strong>📌 Nota:</strong> ${r['Observações']}</div>`:''}
     <div class="modal-links">
       ${r['Representante PT']?`<a class="modal-link" href="${r['Representante PT']}" target="_blank" rel="noopener">🔗 Representante PT</a>`:''}

@@ -1,11 +1,11 @@
 {
-  "updated": "2026-07-01T19:10:17Z",
-  "total": 182,
-  "ev_count": 135,
+  "updated": "2026-07-02T14:36:55Z",
+  "total": 180,
+  "ev_count": 133,
   "phev_count": 47,
   "iva_limit_ev": 62500,
   "iva_limit_phev": 50000,
-  "max_aut_ev_elegivel": 810,
+  "max_aut_ev_elegivel": 792,
   "max_aut_phev_elegivel": 145,
   "models": [
     {
@@ -129,21 +129,6 @@
       "Observações": "Página Guia Mazda; confirmar venda atual."
     },
     {
-      "Marca": "Fiat",
-      "Modelo": "500e C",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 18850,
-      "Preço s/ IVA estimado (€)": 15325.2,
-      "Autonomia elétrica (km)": 0,
-      "Potência (cv)": 118,
-      "Carroçaria": "Cabrio",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/541396/large/large_API_NCAUTO_17522440717970-6.webp",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "",
-      "Fonte Guia": "",
-      "Observações": ""
-    },
-    {
       "Marca": "Peugeot",
       "Modelo": "e-2008",
       "Tipo": "EV",
@@ -234,15 +219,15 @@
       "Observações": "Página Guia de marca; confirmar preço/versionamento atual."
     },
     {
-      "Marca": "Renault",
-      "Modelo": "Mégane E-Tech",
+      "Marca": "Fiat",
+      "Modelo": "500e C",
       "Tipo": "EV",
       "Preço desde (€ PVP)": 22850,
       "Preço s/ IVA estimado (€)": 18577.24,
       "Autonomia elétrica (km)": 0,
-      "Potência (cv)": 218,
-      "Carroçaria": "SUV",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/703782/large/large_API_NCAUTO_17804866343140-6.webp",
+      "Potência (cv)": 118,
+      "Carroçaria": "Hatchback",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/690392/large/large_API_NCAUTO_17776337716810-6.webp",
       "IVA dedutível empresas?": "Sim",
       "Representante PT": "",
       "Fonte Guia": "",
@@ -288,21 +273,6 @@
       "Potência (cv)": 204,
       "Carroçaria": "Hatchback",
       "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/637121/large/large_API_NCAUTO_17704613193140-6.webp",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "",
-      "Fonte Guia": "",
-      "Observações": ""
-    },
-    {
-      "Marca": "MG",
-      "Modelo": "ZS",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 23900,
-      "Preço s/ IVA estimado (€)": 19430.89,
-      "Autonomia elétrica (km)": 0,
-      "Potência (cv)": 156,
-      "Carroçaria": "SUV",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/647838/large/large_API_NCAUTO_17726249042960-6.webp",
       "IVA dedutível empresas?": "Sim",
       "Representante PT": "",
       "Fonte Guia": "",
@@ -417,31 +387,16 @@
       "Marca": "KIA",
       "Modelo": "Niro EV",
       "Tipo": "EV",
-      "Preço desde (€ PVP)": 27650,
-      "Preço s/ IVA estimado (€)": 22479.67,
+      "Preço desde (€ PVP)": 27900,
+      "Preço s/ IVA estimado (€)": 22682.93,
       "Autonomia elétrica (km)": 0,
       "Potência (cv)": 204,
       "Carroçaria": "SUV",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/706816/large/large_API_NCAUTO_17813644948910-6.webp",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/705575/large/large_API_NCAUTO_17809993555390-6.webp",
       "IVA dedutível empresas?": "Sim",
       "Representante PT": "",
       "Fonte Guia": "",
       "Observações": ""
-    },
-    {
-      "Marca": "BYD",
-      "Modelo": "Dolphin",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 27900,
-      "Preço s/ IVA estimado (€)": 22682.93,
-      "Autonomia elétrica (km)": 427,
-      "Potência (cv)": 204,
-      "Carroçaria": "Micro Carro",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/504473/large/large_API_NCAUTO_17441064787270-6.webp",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "https://www.bydauto.pt/modelos/byd-dolphin",
-      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/byd",
-      "Observações": "Página Guia BYD."
     },
     {
       "Marca": "Peugeot",
@@ -502,6 +457,21 @@
       "Representante PT": "",
       "Fonte Guia": "",
       "Observações": ""
+    },
+    {
+      "Marca": "BYD",
+      "Modelo": "Dolphin",
+      "Tipo": "EV",
+      "Preço desde (€ PVP)": 28900,
+      "Preço s/ IVA estimado (€)": 23495.93,
+      "Autonomia elétrica (km)": 427,
+      "Potência (cv)": 204,
+      "Carroçaria": "Micro Carro",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/504473/large/large_API_NCAUTO_17441064787270-6.webp",
+      "IVA dedutível empresas?": "Sim",
+      "Representante PT": "https://www.bydauto.pt/modelos/byd-dolphin",
+      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/byd",
+      "Observações": "Página Guia BYD."
     },
     {
       "Marca": "MINI",
@@ -622,21 +592,6 @@
       "Representante PT": "",
       "Fonte Guia": "",
       "Observações": ""
-    },
-    {
-      "Marca": "Audi",
-      "Modelo": "Q4 e-tron",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 31900,
-      "Preço s/ IVA estimado (€)": 25934.96,
-      "Autonomia elétrica (km)": 562,
-      "Potência (cv)": 204,
-      "Carroçaria": "SUV",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/707642/large/large_SVN_NCAUTO_809751176816711992026-06-16T07_26_340-6.jpg",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "https://www.audi.pt/pt/modelos/q4-e-tron/q4-e-tron/",
-      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/audi/q4-e-tron/precos",
-      "Observações": "Guia lista preço desde 49.700,10€."
     },
     {
       "Marca": "Volvo",
@@ -1614,6 +1569,21 @@
       "Observações": "Guia lista preço desde 53.330,10€."
     },
     {
+      "Marca": "Audi",
+      "Modelo": "Q4 e-tron",
+      "Tipo": "EV",
+      "Preço desde (€ PVP)": 53490,
+      "Preço s/ IVA estimado (€)": 43487.8,
+      "Autonomia elétrica (km)": 562,
+      "Potência (cv)": 204,
+      "Carroçaria": "SUV",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/246988/large/large_f7272b73-fd9e-b098-2034-bb139465e84a-20231020-120216jpg.jpg",
+      "IVA dedutível empresas?": "Sim",
+      "Representante PT": "https://www.audi.pt/pt/modelos/q4-e-tron/q4-e-tron/",
+      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/audi/q4-e-tron/precos",
+      "Observações": "Guia lista preço desde 49.700,10€."
+    },
+    {
       "Marca": "Kia",
       "Modelo": "EV6",
       "Tipo": "EV",
@@ -1827,16 +1797,45 @@
       "Marca": "Volvo",
       "Modelo": "EX60",
       "Tipo": "EV",
-      "Preço desde (€ PVP)": 67906.3,
-      "Preço s/ IVA estimado (€)": 55208.37,
+      "Preço desde (€ PVP)": 67906,
+      "Preço s/ IVA estimado (€)": 55208.13,
       "Autonomia elétrica (km)": 810,
-      "Potência (cv)": 680,
+      "Potência (cv)": 374,
       "Carroçaria": "",
       "Foto": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Volvo_EX60_fl.jpg",
-      "IVA dedutível empresas?": "Sim",
+      "IVA dedutível empresas?": "Parcial",
       "Representante PT": "https://www.volvocars.com/pt/cars/ex60-electric/",
       "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/volvo/ex60/precos",
-      "Observações": "Guia lista preço desde 67.906,30€; autonomia até 810 km confirmada pela Volvo Portugal."
+      "Observações": "Preço e IVA dedutível dependem da versão: P6 e P10 ficam abaixo do limite de €62.500 s/IVA (dedutível); P12 fica acima (não dedutível, exceto por critério de autonomia). Preço do P10 é uma estimativa baseada em posicionamento entre P6 e P12.",
+      "Variantes": [
+        {
+          "nome": "P6 Elétrico (RWD)",
+          "pvp": 67906,
+          "pvp_sem_iva": 55208.13,
+          "autonomia_km": 620,
+          "hp": 374,
+          "estimado": false,
+          "iva_dedutivel": "Sim"
+        },
+        {
+          "nome": "P10 AWD Elétrico",
+          "pvp": 72500,
+          "pvp_sem_iva": 58943.09,
+          "autonomia_km": 660,
+          "hp": 510,
+          "estimado": true,
+          "iva_dedutivel": "Sim"
+        },
+        {
+          "nome": "P12 AWD Elétrico",
+          "pvp": 77131,
+          "pvp_sem_iva": 62708.13,
+          "autonomia_km": 810,
+          "hp": 680,
+          "estimado": false,
+          "iva_dedutivel": "Autonomia"
+        }
+      ]
     },
     {
       "Marca": "MG",
