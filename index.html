@@ -24,6 +24,33 @@ header h1{font-size:22px;font-weight:700;letter-spacing:-.3px;margin-bottom:5px}
 header p{font-size:13px;opacity:.8;line-height:1.5;max-width:680px}
 .header-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;white-space:nowrap;align-self:center}
 
+/* ── Theme Switcher ── */
+.theme-wrap{position:relative;align-self:center}
+.theme-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;white-space:nowrap;color:inherit;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s}
+.theme-btn:hover{background:rgba(255,255,255,.25)}
+.theme-btn .chev{font-size:9px;opacity:.7}
+.theme-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;background:var(--card);border:1px solid var(--border);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.18);min-width:200px;z-index:50;overflow:hidden}
+.theme-menu.open{display:block}
+.theme-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:13px;color:var(--text);cursor:pointer;transition:background .12s}
+.theme-opt:hover{background:var(--bg)}
+.theme-opt.active{background:var(--bg);font-weight:700}
+.theme-opt .swatch{width:16px;height:16px;border-radius:5px;flex-shrink:0;border:1px solid rgba(0,0,0,.1)}
+.theme-opt .check{margin-left:auto;font-size:12px;color:var(--accent);opacity:0}
+.theme-opt.active .check{opacity:1}
+
+/* ── Brand Modal ── */
+.brand-row{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:1px solid var(--border);border-radius:9px;margin-bottom:8px;cursor:pointer;transition:all .12s;background:var(--card)}
+.brand-row:hover{border-color:var(--accent);background:var(--bg)}
+.brand-row:last-child{margin-bottom:0}
+.brand-row-model{font-weight:600;font-size:13px}
+.brand-row-type{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle}
+.brand-row-stats{display:flex;gap:16px;align-items:center}
+.brand-row-stat{text-align:right}
+.brand-row-stat .lbl{font-size:9px;text-transform:uppercase;color:var(--muted);letter-spacing:.04em}
+.brand-row-stat .val{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.brand-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--accent);cursor:pointer;font-weight:600;margin-bottom:14px}
+.brand-back:hover{text-decoration:underline}
+
 /* ── Main ── */
 main{padding:24px 32px 60px;max-width:1500px;margin:0 auto}
 
@@ -137,7 +164,12 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
     <h1>⚡ Veículos Eletrificados em Portugal</h1>
     <p>Base consolidada · Guia do Automóvel · EV e PHEV · A carregar dados...</p>
   </div>
-  <div class="header-badge">❄️ Arctic Frost</div>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="theme-btn" onclick="toggleThemeMenu(event)">
+      <span id="theme-btn-icon">❄️</span> <span id="theme-btn-label">Arctic Frost</span> <span class="chev">▼</span>
+    </button>
+    <div class="theme-menu" id="theme-menu"></div>
+  </div>
 </header>
 
 <main>
@@ -199,6 +231,7 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-t
 
       <div class="sidebar-card">
         <h3>🏷️ Modelos por marca</h3>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">clica numa marca para ver os modelos</div>
         <div id="brand-bars"></div>
       </div>
     </div>
@@ -260,7 +293,7 @@ function updateBrands(rows){
   const top=Object.entries(bc).sort((a,b)=>b[1]-a[1]).slice(0,10);
   const max=top[0]?top[0][1]:1;
   document.getElementById('brand-bars').innerHTML=top.map(([b,c])=>`
-    <div class="bar-row">
+    <div class="bar-row" style="cursor:pointer" onclick="openBrandModal('${b.replace(/'/g,"\\'")}')">
       <div class="bar-label" title="${b}">${b}</div>
       <div class="bar-track"><div class="bar-fill" style="width:${Math.round(c/max*100)}%"></div></div>
       <div class="bar-num">${c}</div>
@@ -421,6 +454,119 @@ function closeModal(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* ── Brand Modal ── */
+function openBrandModal(marca){
+  const modelos = DATA.filter(r=>r.Marca===marca).sort((a,b)=>(b['Autonomia elétrica (km)']||0)-(a['Autonomia elétrica (km)']||0));
+  document.getElementById('modal-photo-area').innerHTML='';
+  const rows = modelos.map(r=>{
+    const idx = DATA.indexOf(r);
+    const tipoColor = r.Tipo==='EV' ? 'background:var(--ev-bg);color:var(--ev-text)' : 'background:var(--phev-bg);color:var(--phev-text)';
+    return `<div class="brand-row" onclick="openModal(${idx})">
+      <div>
+        <span class="brand-row-model">${r.Modelo}</span>
+        <span class="brand-row-type" style="${tipoColor}">${r.Tipo}</span>
+      </div>
+      <div class="brand-row-stats">
+        <div class="brand-row-stat"><div class="lbl">Autonomia</div><div class="val">${fmtN(r['Autonomia elétrica (km)'])} km</div></div>
+        <div class="brand-row-stat"><div class="lbl">Preço</div><div class="val">${fmtEUR(r['Preço desde (€ PVP)'])}</div></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('modal-body').innerHTML=`
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">${marca}</div>
+        <div class="modal-subtitle">${modelos.length} modelo${modelos.length!==1?'s':''} no catálogo</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div style="margin-top:6px">${rows}</div>`;
+
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+/* ── Theme Switcher ── */
+const THEMES = {
+  arctic: {
+    label:'Arctic Frost', icon:'❄️',
+    vars:{ '--bg':'#eef4fb','--card':'#ffffff','--header':'#4a6fa5','--header-text':'#ffffff',
+      '--text':'#2a3a50','--muted':'#6a8aaa','--border':'#c0d4ea','--accent':'#4a6fa5',
+      '--accent2':'#a0c4e8','--input':'#f0f6fc',
+      '--ev-bg':'#d4e8f8','--ev-text':'#1a3a70','--phev-bg':'#e8f0f8','--phev-text':'#3a4a70',
+      '--yes-bg':'#d8f0e8','--yes-text':'#1a4a30','--no-bg':'#f8e8e8','--no-text':'#7a2020' }
+  },
+  ocean: {
+    label:'Ocean Depths', icon:'🌊',
+    vars:{ '--bg':'#0b2333','--card':'#0f2e42','--header':'#0a3d5c','--header-text':'#e8f4f8',
+      '--text':'#dceef4','--muted':'#7fa8bc','--border':'#1e4a63','--accent':'#00b4d8',
+      '--accent2':'#48cae4','--input':'#0f2e42',
+      '--ev-bg':'#0e3d52','--ev-text':'#90e0ef','--phev-bg':'#123048','--phev-text':'#a8d8e8',
+      '--yes-bg':'#0d3d2e','--yes-text':'#52d68a','--no-bg':'#3d1620','--no-text':'#f07178' }
+  },
+  minimal: {
+    label:'Modern Minimalist', icon:'⚪',
+    vars:{ '--bg':'#fafafa','--card':'#ffffff','--header':'#1a1a1a','--header-text':'#ffffff',
+      '--text':'#1a1a1a','--muted':'#8a8a8a','--border':'#e0e0e0','--accent':'#1a1a1a',
+      '--accent2':'#4a4a4a','--input':'#f5f5f5',
+      '--ev-bg':'#f0f0f0','--ev-text':'#1a1a1a','--phev-bg':'#f5f5f5','--phev-text':'#4a4a4a',
+      '--yes-bg':'#e8f5e9','--yes-text':'#1b5e20','--no-bg':'#fbe9e7','--no-text':'#b71c1c' }
+  },
+  tech: {
+    label:'Tech Innovation', icon:'🚀',
+    vars:{ '--bg':'#0f0f1a','--card':'#1a1a2e','--header':'#16162a','--header-text':'#e0e0ff',
+      '--text':'#e0e0ff','--muted':'#8888b0','--border':'#2a2a4a','--accent':'#8b5cf6',
+      '--accent2':'#c084fc','--input':'#1a1a2e',
+      '--ev-bg':'#2a1a4a','--ev-text':'#c084fc','--phev-bg':'#1a2a4a','--phev-text':'#60a5fa',
+      '--yes-bg':'#0f2a1a','--yes-text':'#4ade80','--no-bg':'#2a0f1a','--no-text':'#f87171' }
+  },
+  aviation: {
+    label:'Aviation', icon:'✈️',
+    vars:{ '--bg':'#0d1b2a','--card':'#132a3e','--header':'#1b3a5c','--header-text':'#ffd166',
+      '--text':'#e8eef2','--muted':'#7a95ab','--border':'#28455e','--accent':'#ffd166',
+      '--accent2':'#4fc3f7','--input':'#132a3e',
+      '--ev-bg':'#123048','--ev-text':'#4fc3f7','--phev-bg':'#1b3a2a','--phev-text':'#81c995',
+      '--yes-bg':'#123020','--yes-text':'#66d9a0','--no-bg':'#3a1418','--no-text':'#ff6b6b' }
+  }
+};
+
+function applyTheme(key){
+  const t = THEMES[key];
+  if(!t) return;
+  const root = document.documentElement;
+  Object.entries(t.vars).forEach(([k,v])=>root.style.setProperty(k,v));
+  document.getElementById('theme-btn-icon').textContent = t.icon;
+  document.getElementById('theme-btn-label').textContent = t.label;
+  document.querySelectorAll('.theme-opt').forEach(el=>el.classList.toggle('active', el.dataset.key===key));
+  try{ localStorage.setItem('evpt-theme', key); }catch(e){}
+  document.getElementById('theme-menu').classList.remove('open');
+}
+
+function buildThemeMenu(){
+  const menu = document.getElementById('theme-menu');
+  menu.innerHTML = Object.entries(THEMES).map(([key,t])=>`
+    <div class="theme-opt" data-key="${key}" onclick="applyTheme('${key}')">
+      <span class="swatch" style="background:${t.vars['--header']}"></span>
+      <span>${t.icon} ${t.label}</span>
+      <span class="check">✓</span>
+    </div>`).join('');
+}
+
+function toggleThemeMenu(e){
+  e.stopPropagation();
+  document.getElementById('theme-menu').classList.toggle('open');
+}
+
+document.addEventListener('click', ()=>{
+  document.getElementById('theme-menu').classList.remove('open');
+});
+
+buildThemeMenu();
+let savedTheme = 'arctic';
+try{ savedTheme = localStorage.getItem('evpt-theme') || 'arctic'; }catch(e){}
+applyTheme(savedTheme);
 
 /* ── Load data.json dynamically ── */
 let DATA=[];
