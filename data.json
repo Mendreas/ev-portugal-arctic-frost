@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-02T14:46:50Z",
-  "total": 180,
+  "updated": "2026-07-06T10:13:48Z",
+  "total": 179,
   "ev_count": 133,
-  "phev_count": 47,
+  "phev_count": 46,
   "iva_limit_ev": 62500,
   "iva_limit_phev": 50000,
   "max_aut_ev_elegivel": 805,
@@ -174,6 +174,21 @@
       "Observações": ""
     },
     {
+      "Marca": "Opel",
+      "Modelo": "Mokka-e",
+      "Tipo": "EV",
+      "Preço desde (€ PVP)": 21000,
+      "Preço s/ IVA estimado (€)": 17073.17,
+      "Autonomia elétrica (km)": 0,
+      "Potência (cv)": 136,
+      "Carroçaria": "SUV",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/715341/large/large_SVN_NCAUTO_809758696916798382026-07-03T07_25_470-6.jpg",
+      "IVA dedutível empresas?": "Sim",
+      "Representante PT": "",
+      "Fonte Guia": "",
+      "Observações": ""
+    },
+    {
       "Marca": "Citroën",
       "Modelo": "e-C3",
       "Tipo": "EV",
@@ -183,21 +198,6 @@
       "Potência (cv)": 113,
       "Carroçaria": "Hatchback",
       "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/686686/large/large_API_NCAUTO_17768527315040-6.webp",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "",
-      "Fonte Guia": "",
-      "Observações": ""
-    },
-    {
-      "Marca": "TESLA",
-      "Modelo": "Model 3",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 21790,
-      "Preço s/ IVA estimado (€)": 17715.45,
-      "Autonomia elétrica (km)": 0,
-      "Potência (cv)": 476,
-      "Carroçaria": "Micro Carro",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/638147/large/large_Multi_NCAUTO_90300000000400016074032026-02-11T20_31_570-6.jpg",
       "IVA dedutível empresas?": "Sim",
       "Representante PT": "",
       "Fonte Guia": "",
@@ -217,21 +217,6 @@
       "Representante PT": "https://www.volkswagen.pt/pt/modelos/id3.html",
       "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/volkswagen",
       "Observações": "Página Guia de marca; confirmar preço/versionamento atual."
-    },
-    {
-      "Marca": "Fiat",
-      "Modelo": "500e C",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 22850,
-      "Preço s/ IVA estimado (€)": 18577.24,
-      "Autonomia elétrica (km)": 0,
-      "Potência (cv)": 118,
-      "Carroçaria": "Hatchback",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/690392/large/large_API_NCAUTO_17776337716810-6.webp",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "",
-      "Fonte Guia": "",
-      "Observações": ""
     },
     {
       "Marca": "Peugeot",
@@ -279,6 +264,21 @@
       "Observações": ""
     },
     {
+      "Marca": "TESLA",
+      "Modelo": "Model 3",
+      "Tipo": "EV",
+      "Preço desde (€ PVP)": 24450,
+      "Preço s/ IVA estimado (€)": 19878.05,
+      "Autonomia elétrica (km)": 0,
+      "Potência (cv)": 238,
+      "Carroçaria": "Sedan",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/640797/large/large_API_NCAUTO_17713648439800-6.webp",
+      "IVA dedutível empresas?": "Sim",
+      "Representante PT": "",
+      "Fonte Guia": "",
+      "Observações": ""
+    },
+    {
       "Marca": "Hyundai",
       "Modelo": "Kauai EV",
       "Tipo": "EV",
@@ -307,21 +307,6 @@
       "Representante PT": "",
       "Fonte Guia": "",
       "Observações": ""
-    },
-    {
-      "Marca": "Volkswagen",
-      "Modelo": "ID.4",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 26600,
-      "Preço s/ IVA estimado (€)": 21626.02,
-      "Autonomia elétrica (km)": 560,
-      "Potência (cv)": 204,
-      "Carroçaria": "SUV",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/703261/large/large_SVN_NCAUTO_809755195816657842026-06-03T07_21_060-6.jpg",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "https://www.volkswagen.pt/pt/modelos/id4.html",
-      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/volkswagen/id-4/precos",
-      "Observações": "Guia lista preço desde 42.380,60€ e potências até 340 cv."
     },
     {
       "Marca": "MG",
@@ -594,6 +579,21 @@
       "Observações": ""
     },
     {
+      "Marca": "Volkswagen",
+      "Modelo": "ID.4",
+      "Tipo": "EV",
+      "Preço desde (€ PVP)": 31850,
+      "Preço s/ IVA estimado (€)": 25894.31,
+      "Autonomia elétrica (km)": 560,
+      "Potência (cv)": 204,
+      "Carroçaria": "SUV",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/680541/large/large_API_NCAUTO_17764204706720-6.webp",
+      "IVA dedutível empresas?": "Sim",
+      "Representante PT": "https://www.volkswagen.pt/pt/modelos/id4.html",
+      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/volkswagen/id-4/precos",
+      "Observações": "Guia lista preço desde 42.380,60€ e potências até 340 cv."
+    },
+    {
       "Marca": "Volvo",
       "Modelo": "XC 40",
       "Tipo": "EV",
@@ -802,21 +802,6 @@
       "Representante PT": "https://www.hyundai.pt/modelos/kauai-electric/",
       "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/hyundai/kauai/precos",
       "Observações": "Guia lista gama Kauai; confirmar versão elétrica."
-    },
-    {
-      "Marca": "Smart",
-      "Modelo": "#1",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 34880,
-      "Preço s/ IVA estimado (€)": 28357.72,
-      "Autonomia elétrica (km)": 440,
-      "Potência (cv)": 428,
-      "Carroçaria": "SUV",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/593487/large/large_API_NCAUTO_17617482593310-6.webp",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "https://pt.smart.com/pt/models/hashtag-one/",
-      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/smart/1/precos",
-      "Observações": "Guia lista Smart #1 elétrico."
     },
     {
       "Marca": "Peugeot",
@@ -1046,8 +1031,8 @@
       "Marca": "TESLA",
       "Modelo": "Model Y",
       "Tipo": "EV",
-      "Preço desde (€ PVP)": 37900,
-      "Preço s/ IVA estimado (€)": 30813.01,
+      "Preço desde (€ PVP)": 37800,
+      "Preço s/ IVA estimado (€)": 30731.71,
       "Autonomia elétrica (km)": 0,
       "Potência (cv)": 351,
       "Carroçaria": "SUV",
@@ -1761,6 +1746,21 @@
       "Representante PT": "https://www.volkswagen-comerciais.pt/pt/modelos/id-buzz.html",
       "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/volkswagen",
       "Observações": "Preço aproximado conforme gama; confirmar versão no Guia."
+    },
+    {
+      "Marca": "Audi",
+      "Modelo": "e-tron GT",
+      "Tipo": "EV",
+      "Preço desde (€ PVP)": 63900,
+      "Preço s/ IVA estimado (€)": 51951.22,
+      "Autonomia elétrica (km)": 0,
+      "Potência (cv)": 476,
+      "Carroçaria": "Sedan",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/663224/large/large_API_NCAUTO_17734250661650-6.webp",
+      "IVA dedutível empresas?": "Sim",
+      "Representante PT": "",
+      "Fonte Guia": "",
+      "Observações": ""
     },
     {
       "Marca": "Porsche",
@@ -2740,21 +2740,6 @@
       "Representante PT": "https://www.mercedes-benz.pt/passengercars/models/saloon/c-class/overview.html",
       "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/mercedes-benz/classe-c/precos",
       "Observações": "Guia lista versões EQ/plug-in na Classe C; preço base PHEV indicado por snippet pode variar."
-    },
-    {
-      "Marca": "Mercedes-Benz",
-      "Modelo": "GLE 350",
-      "Tipo": "PHEV",
-      "Preço desde (€ PVP)": 74500,
-      "Preço s/ IVA estimado (€)": 60569.11,
-      "Autonomia elétrica (km)": 0,
-      "Potência (cv)": 320,
-      "Carroçaria": "SUV",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/673515/large/large_API_NCAUTO_17740207996680-6.webp",
-      "IVA dedutível empresas?": "Não",
-      "Representante PT": "",
-      "Fonte Guia": "",
-      "Observações": ""
     },
     {
       "Marca": "Volvo",
