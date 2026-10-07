@@ -3,600 +3,787 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>⚡ Veículos Eletrificados em Portugal — Guia do Automóvel</title>
+<title>⚡ EV & PHEV Portugal — Guia Fiscal para Empresas</title>
 <style>
-/* ── Arctic Frost Theme ── */
 :root{
   --bg:#eef4fb;--card:#ffffff;--header:#4a6fa5;--header-text:#ffffff;
   --text:#2a3a50;--muted:#6a8aaa;--border:#c0d4ea;--accent:#4a6fa5;
   --accent2:#a0c4e8;--input:#f0f6fc;
-  --ev-bg:#d4e8f8;--ev-text:#1a3a70;
-  --phev-bg:#e8f0f8;--phev-text:#3a4a70;
-  --yes-bg:#d8f0e8;--yes-text:#1a4a30;
-  --no-bg:#f8e8e8;--no-text:#7a2020;
+  --ev-bg:#d4e8f8;--ev-text:#1a3a70;--phev-bg:#e8f0f8;--phev-text:#3a4a70;
+  --yes-bg:#d8f0e8;--yes-text:#1a4a30;--no-bg:#f8e8e8;--no-text:#7a2020;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.4}
+a{color:var(--accent)}
+button{font-family:inherit}
 
-/* ── Header ── */
-header{background:var(--header);color:var(--header-text);padding:24px 32px 20px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
-header h1{font-size:22px;font-weight:700;letter-spacing:-.3px;margin-bottom:5px}
-header p{font-size:13px;opacity:.8;line-height:1.5;max-width:680px}
-.header-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;white-space:nowrap;align-self:center}
-
-/* ── Theme Switcher ── */
-.theme-wrap{position:relative;align-self:center}
-.theme-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;white-space:nowrap;color:inherit;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s}
+/* ── Top bar + abas ── */
+.topbar{background:var(--header);color:var(--header-text);position:sticky;top:0;z-index:60;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.topbar-in{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:20px;min-height:58px}
+.logo{font-weight:800;font-size:16px;letter-spacing:-.2px;white-space:nowrap;cursor:pointer}
+.tabs{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:none;color:inherit;opacity:.75;padding:18px 14px;font-size:14px;font-weight:600;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.tab:hover{opacity:1}
+.tab.active{opacity:1;border-bottom-color:var(--header-text)}
+.tab .cnt{background:rgba(255,255,255,.22);border-radius:99px;padding:1px 7px;font-size:11px;margin-left:5px}
+.theme-wrap{position:relative}
+.theme-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:7px 12px;font-size:12px;font-weight:600;white-space:nowrap;color:inherit;cursor:pointer;display:flex;align-items:center;gap:7px}
 .theme-btn:hover{background:rgba(255,255,255,.25)}
-.theme-btn .chev{font-size:9px;opacity:.7}
-.theme-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;background:var(--card);border:1px solid var(--border);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.18);min-width:200px;z-index:50;overflow:hidden}
+.theme-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;background:var(--card);border:1px solid var(--border);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.25);min-width:200px;z-index:80;overflow:hidden}
 .theme-menu.open{display:block}
-.theme-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:13px;color:var(--text);cursor:pointer;transition:background .12s}
-.theme-opt:hover{background:var(--bg)}
-.theme-opt.active{background:var(--bg);font-weight:700}
-.theme-opt .swatch{width:16px;height:16px;border-radius:5px;flex-shrink:0;border:1px solid rgba(0,0,0,.1)}
+.theme-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:13px;color:var(--text);cursor:pointer}
+.theme-opt:hover,.theme-opt.active{background:var(--bg)}
+.theme-opt.active{font-weight:700}
+.theme-opt .swatch{width:16px;height:16px;border-radius:5px;border:1px solid rgba(0,0,0,.15)}
 .theme-opt .check{margin-left:auto;font-size:12px;color:var(--accent);opacity:0}
 .theme-opt.active .check{opacity:1}
+.fav-btn-top{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:7px 12px;font-size:12px;font-weight:600;color:inherit;cursor:pointer;white-space:nowrap}
+.fav-btn-top:hover{background:rgba(255,255,255,.25)}
 
-/* ── Brand Modal ── */
-.brand-row{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:1px solid var(--border);border-radius:9px;margin-bottom:8px;cursor:pointer;transition:all .12s;background:var(--card)}
-.brand-row:hover{border-color:var(--accent);background:var(--bg)}
-.brand-row:last-child{margin-bottom:0}
-.brand-row-model{font-weight:600;font-size:13px}
-.brand-row-type{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle}
-.brand-row-stats{display:flex;gap:16px;align-items:center}
-.brand-row-stat{text-align:right}
-.brand-row-stat .lbl{font-size:9px;text-transform:uppercase;color:var(--muted);letter-spacing:.04em}
-.brand-row-stat .val{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
-.brand-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--accent);cursor:pointer;font-weight:600;margin-bottom:14px}
-.brand-back:hover{text-decoration:underline}
+main{max-width:1400px;margin:0 auto;padding:24px 24px 70px}
+.view{display:none}
+.view.active{display:block}
+h2.sec{font-size:20px;font-weight:800;margin:30px 0 14px;letter-spacing:-.3px}
+.muted{color:var(--muted)}
 
-/* ── Main ── */
-main{padding:24px 32px 60px;max-width:1500px;margin:0 auto}
+/* ── Hero ── */
+.hero{position:relative;border-radius:18px;overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:center;padding:44px 40px 90px;color:#fff;background:linear-gradient(135deg,#1c3a63 0%,#4a6fa5 55%,#7fb0e0 100%)}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.38;filter:saturate(1.1)}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,25,50,.78) 0%,rgba(10,25,50,.25) 70%)}
+.hero>*{position:relative;z-index:2}
+.hero h1{font-size:34px;font-weight:800;letter-spacing:-.8px;max-width:640px;line-height:1.15}
+.hero p{font-size:15px;opacity:.9;max-width:560px;margin:10px 0 20px}
+.search-big{display:flex;max-width:620px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.search-big input{flex:1;border:none;outline:none;padding:15px 18px;font-size:15px;color:#223;background:#fff;min-width:0}
+.search-big button{border:none;background:var(--accent);color:var(--header-text);padding:0 22px;font-weight:700;cursor:pointer;font-size:14px}
+.sugg{position:absolute;top:100%;left:0;right:0;background:#fff;color:#223;border-radius:0 0 12px 12px;box-shadow:0 12px 28px rgba(0,0,0,.25);z-index:30;max-height:300px;overflow:auto}
+.sugg div{padding:10px 18px;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;gap:10px}
+.sugg div:hover{background:#eef4fb}
+.sugg small{color:#6a8aaa}
+.search-wrap{position:relative;max-width:620px}
 
-/* ── KPI Cards ── */
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-bottom:26px}
-.kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;transition:box-shadow .15s}
-.kpi:hover{box-shadow:0 4px 16px rgba(74,111,165,.12)}
-.kpi-icon{font-size:22px;margin-bottom:8px}
-.kpi-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:5px}
-.kpi-value{font-size:28px;font-weight:800;color:var(--accent);line-height:1;letter-spacing:-.5px}
-.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px}
-.kpi-bar{height:4px;background:var(--border);border-radius:2px;margin-top:10px;overflow:hidden}
-.kpi-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .6s ease}
+/* ── Filtros rápidos flutuantes ── */
+.quick{position:relative;z-index:5;margin:-62px 24px 0;background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:0 14px 40px rgba(20,40,80,.18);padding:20px 24px;display:grid;grid-template-columns:150px 1fr 1fr;gap:22px 28px;align-items:end}
+.quick label.l{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:7px}
+.quick .val{font-weight:800;color:var(--accent);font-size:15px;float:right;text-transform:none;letter-spacing:0}
+select,input[type=text],input[type=number]{padding:9px 12px;border:1px solid var(--border);border-radius:8px;background:var(--input);color:var(--text);font-size:13px;outline:none;width:100%}
+select:focus,input:focus{border-color:var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent);height:28px}
+.toggle-row{grid-column:1/-1;display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:14px}
+.switch{position:relative;width:46px;height:26px;flex-shrink:0}
+.switch input{opacity:0;width:0;height:0}
+.switch span{position:absolute;inset:0;background:var(--border);border-radius:99px;cursor:pointer;transition:.2s}
+.switch span::before{content:'';position:absolute;width:20px;height:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.switch input:checked+span{background:#2e9e6a}
+.switch input:checked+span::before{transform:translateX(20px)}
+.toggle-label{font-weight:600;font-size:14px}
+.btn{background:var(--accent);color:var(--header-text);border:none;border-radius:9px;padding:10px 18px;font-weight:700;font-size:13px;cursor:pointer;transition:filter .15s,transform .1s}
+.btn:hover{filter:brightness(1.1)}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.btn.sm{padding:7px 12px;font-size:12px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 
-/* ── Layout ── */
-.layout{display:grid;grid-template-columns:1fr 300px;gap:18px}
-@media(max-width:900px){.layout{grid-template-columns:1fr}}
-
-/* ── Controls ── */
-.controls-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-input[type=text]{flex:1;min-width:200px;padding:9px 14px;border:1px solid var(--border);border-radius:8px;background:var(--input);color:var(--text);font-size:13px;outline:none;transition:border-color .15s}
-input[type=text]:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(74,111,165,.12)}
-select{padding:9px 12px;border:1px solid var(--border);border-radius:8px;background:var(--input);color:var(--text);font-size:13px;cursor:pointer;outline:none}
-select:focus{border-color:var(--accent)}
-.count-tag{font-size:13px;color:var(--muted);font-weight:500;white-space:nowrap;padding:0 4px}
-
-/* ── Table ── */
-.table-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px;background:var(--card);max-height:620px}
-table{border-collapse:collapse;width:100%;min-width:750px}
-thead th{background:var(--header);color:var(--header-text);padding:10px 12px;font-size:12px;font-weight:600;text-align:left;position:sticky;top:0;z-index:2;cursor:pointer;user-select:none;white-space:nowrap}
-thead th:hover{background:#3d5e94}
-thead th .sort-icon{opacity:.5;margin-left:4px;font-size:10px}
-thead th.asc .sort-icon::after{content:'▲'}
-thead th.desc .sort-icon::after{content:'▼'}
-thead th:not(.asc):not(.desc) .sort-icon::after{content:'⇅'}
-td{padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;vertical-align:middle}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:#f4f8fd}
-.badge{display:inline-block;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:700}
+/* ── Cartões ── */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s;cursor:pointer;position:relative}
+.card:hover{box-shadow:0 10px 28px rgba(30,60,110,.16);transform:translateY(-3px)}
+.card-img{height:158px;background:linear-gradient(135deg,var(--ev-bg),var(--accent2));position:relative;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--accent);opacity:.75;font-weight:800;gap:2px}
+.ph b{font-size:40px;line-height:1}
+.ph small{font-size:12px;font-weight:600}
+.card-tags{position:absolute;top:10px;left:10px;display:flex;gap:6px}
+.card-fav{position:absolute;top:8px;right:8px;background:rgba(255,255,255,.92);border:none;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;color:#c0392b;display:flex;align-items:center;justify-content:center}
+.card-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card-brand{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.card-name{font-size:17px;font-weight:800;letter-spacing:-.2px;margin-top:-4px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;margin-top:2px}
+.stat .k{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.stat .v{font-size:15px;font-weight:800;font-variant-numeric:tabular-nums}
+.card-foot{display:flex;gap:8px;align-items:center;margin-top:auto;padding-top:6px}
+.badge{display:inline-block;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:700;white-space:nowrap}
 .badge-ev{background:var(--ev-bg);color:var(--ev-text)}
 .badge-phev{background:var(--phev-bg);color:var(--phev-text)}
 .badge-sim{background:var(--yes-bg);color:var(--yes-text)}
 .badge-nao{background:var(--no-bg);color:var(--no-text)}
 .badge-auto{background:#f3eeff;color:#7c3aed}
 .badge-parcial{background:#fff7ed;color:#c2410c}
-.variant-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12.5px}
-.variant-table th{text-align:left;padding:7px 8px;color:var(--muted);font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1.5px solid var(--border)}
-.variant-table td{padding:8px 8px;border-bottom:1px solid rgba(221,225,238,.5)}
-.variant-table tr:last-child td{border-bottom:none}
-.variant-name{font-weight:600}
-.variant-est{font-size:10px;color:var(--muted);font-weight:400}
-.btn-detail{background:var(--accent);color:#fff;border:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600;transition:background .15s,transform .1s}
-.btn-detail:hover{background:#3d5e94;transform:scale(1.04)}
+.badge-est{background:#fff3cd;color:#7a5a00}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--card);border-radius:99px;padding:6px 13px;font-size:12px;font-weight:600;cursor:pointer;color:var(--text)}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.on{background:var(--accent);color:var(--header-text);border-color:var(--accent)}
+.chip small{opacity:.7}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
 
-/* ── Sidebar card ── */
-.sidebar-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
-.sidebar-card h3{font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px;letter-spacing:-.1px}
-.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.bar-label{width:80px;font-size:11px;color:var(--muted);text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0}
-.bar-track{flex:1;background:var(--border);border-radius:3px;height:16px;overflow:hidden;position:relative}
-.bar-fill{height:100%;border-radius:3px;background:var(--accent);transition:width .5s ease}
-.bar-num{width:18px;font-size:11px;font-weight:700;color:var(--accent);flex-shrink:0}
-.divider{border:none;border-top:1px solid var(--border);margin:16px 0}
-.type-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.type-pill{display:flex;flex-direction:column;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 16px;flex:1}
-.type-pill+.type-pill{margin-left:10px}
-.type-num{font-size:24px;font-weight:800;color:var(--accent)}
-.type-lbl{font-size:11px;font-weight:600;color:var(--muted);margin-top:3px}
-.price-range{margin-top:12px}
-.pr-row{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border)}
-.pr-row:last-child{border-bottom:none}
-.pr-lbl{color:var(--muted)}
-.pr-val{font-weight:700;color:var(--text)}
+/* ── Guia ── */
+.guia{display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:start}
+.side{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;position:sticky;top:76px;max-height:calc(100vh - 96px);overflow:auto}
+.side h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:16px 0 8px}
+.side h4:first-child{margin-top:0}
+.chk{display:flex;align-items:center;gap:8px;font-size:13px;padding:3px 0;cursor:pointer}
+.chk input{accent-color:var(--accent);width:15px;height:15px}
+.chk .n{margin-left:auto;color:var(--muted);font-size:11px}
+.brands-box{max-height:210px;overflow:auto;border:1px solid var(--border);border-radius:8px;padding:6px 10px;background:var(--input)}
+.hint{font-size:11px;color:var(--muted);margin-top:4px}
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.toolbar .count{font-weight:700;flex:1;min-width:140px}
+.toolbar select{width:auto}
+.more{text-align:center;margin:26px 0 6px}
+.mobile-only{display:none}
+
+/* ── Comparar ── */
+.cmp-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:6px}
+.slot{border:2px dashed var(--border);border-radius:14px;min-height:150px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;cursor:pointer;color:var(--muted);font-weight:700;background:var(--card);padding:10px;text-align:center}
+.slot:hover{border-color:var(--accent);color:var(--accent)}
+.slot.full{border-style:solid;cursor:default;color:var(--text);position:relative;padding:0;overflow:hidden;align-items:stretch;justify-content:flex-start}
+.slot.full .card-img{height:100px}
+.slot .x{position:absolute;top:6px;right:6px;background:rgba(255,255,255,.92);border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:13px;z-index:3;color:#333}
+.slot .sn{padding:8px 12px;font-weight:800;font-size:14px}
+.slot .sn small{display:block;color:var(--muted);font-size:11px;font-weight:600;text-transform:uppercase}
+.cmp-wrap{overflow:auto;border:1px solid var(--border);border-radius:14px;background:var(--card);margin-top:18px}
+table.cmp{border-collapse:collapse;width:100%;min-width:560px}
+table.cmp th,table.cmp td{padding:11px 14px;border-bottom:1px solid var(--border);font-size:13px;text-align:left;vertical-align:middle}
+table.cmp th.row{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;width:200px;background:var(--bg)}
+table.cmp tr.grp td{background:var(--header);color:var(--header-text);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+table.cmp td.best{background:var(--yes-bg);color:var(--yes-text);font-weight:800}
+table.cmp tr:last-child td,table.cmp tr:last-child th{border-bottom:none}
+.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--border);border-radius:14px;background:var(--card)}
+
+/* ── Notícias ── */
+.carousel{position:relative;border-radius:18px;overflow:hidden;min-height:280px;background:var(--header);color:var(--header-text)}
+.slide{display:none;padding:40px 44px;min-height:280px;flex-direction:column;justify-content:center;gap:12px;background:linear-gradient(120deg,var(--header),var(--accent2))}
+.slide.on{display:flex}
+.slide h3{font-size:28px;font-weight:800;letter-spacing:-.5px;max-width:720px;line-height:1.2}
+.slide p{max-width:680px;opacity:.92;font-size:15px}
+.slide .meta{font-size:12px;opacity:.85}
+.dots{position:absolute;bottom:14px;left:44px;display:flex;gap:8px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;border:none}
+.dot.on{background:#fff}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.news{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:9px}
+.news h4{font-size:16px;font-weight:800;line-height:1.25}
+.news p{font-size:13px;color:var(--muted)}
+.tag{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:3px 9px;border-radius:99px;background:var(--ev-bg);color:var(--ev-text);align-self:flex-start}
+
+/* ── Detalhe ── */
+.back{display:inline-flex;gap:6px;align-items:center;font-weight:700;font-size:13px;color:var(--accent);cursor:pointer;margin-bottom:14px;background:none;border:none}
+.det{display:grid;grid-template-columns:1.15fr 1fr;gap:26px;align-items:start}
+.gallery-main{height:380px;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,var(--ev-bg),var(--accent2));position:relative;border:1px solid var(--border)}
+.gallery-main img{width:100%;height:100%;object-fit:cover}
+.thumbs{display:flex;gap:8px;margin-top:10px;overflow:auto}
+.thumb{width:78px;height:56px;border-radius:8px;overflow:hidden;border:2px solid transparent;cursor:pointer;flex-shrink:0;background:var(--ev-bg)}
+.thumb.on{border-color:var(--accent)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.det h1{font-size:30px;font-weight:800;letter-spacing:-.6px;line-height:1.1}
+.price-big{font-size:34px;font-weight:800;color:var(--accent);margin:12px 0 2px;letter-spacing:-1px}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-top:20px}
+.panel h3{font-size:16px;font-weight:800;margin-bottom:14px}
+.seg{display:inline-flex;border:1.5px solid var(--accent);border-radius:10px;overflow:hidden;margin-bottom:14px}
+.seg button{border:none;background:transparent;color:var(--accent);padding:9px 18px;font-weight:700;cursor:pointer;font-size:13px}
+.seg button.on{background:var(--accent);color:var(--header-text)}
+.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.sim-grid label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);display:block;margin-bottom:5px}
+.res{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px}
+.res:last-child{border-bottom:none}
+.res b{font-variant-numeric:tabular-nums}
+.res.total{font-size:17px;font-weight:800;color:var(--accent);border-top:2px solid var(--accent);border-bottom:none;margin-top:6px;padding-top:12px}
+.note{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.5}
+.rings{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px}
+.ring{text-align:center}
+.ring svg{width:112px;height:112px;transform:rotate(-90deg)}
+.ring .bg{fill:none;stroke:var(--border);stroke-width:9}
+.ring .fg{fill:none;stroke:var(--accent);stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset .8s}
+.ring .na{stroke:none}
+.ring-wrap{position:relative;width:112px;height:112px;margin:0 auto}
+.ring-val{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:19px;line-height:1.1}
+.ring-val small{font-size:10px;font-weight:600;color:var(--muted)}
+.ring-lbl{font-size:12px;font-weight:700;margin-top:6px}
+.vtable{width:100%;border-collapse:collapse;font-size:13px}
+.vtable th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding:6px 8px;border-bottom:1.5px solid var(--border)}
+.vtable td{padding:9px 8px;border-bottom:1px solid var(--border)}
+.vtable tr.sel td{background:var(--bg)}
+.vtable tr{cursor:pointer}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 
 /* ── Modal ── */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(15,30,60,.5);z-index:1000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
-.modal-overlay.open{display:flex}
-.modal{background:var(--card);border:1px solid var(--border);border-radius:16px;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.2)}
-.modal-photo{width:100%;height:220px;object-fit:cover;border-radius:14px 14px 0 0;background:var(--bg);display:block}
-.modal-photo-placeholder{width:100%;height:220px;border-radius:14px 14px 0 0;background:linear-gradient(135deg,var(--ev-bg) 0%,var(--accent2) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
-.modal-photo-placeholder .car-icon{font-size:52px;opacity:.5}
-.modal-photo-placeholder .car-name{font-size:15px;font-weight:700;color:var(--accent);opacity:.7}
-.modal-body{padding:22px 26px 26px}
-.modal-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
-.modal-title{font-size:20px;font-weight:800;color:var(--text)}
-.modal-subtitle{font-size:13px;color:var(--muted);margin-top:3px}
-.modal-close{background:var(--bg);border:1px solid var(--border);border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:16px;color:var(--muted);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s}
-.modal-close:hover{background:var(--border)}
-.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.modal-stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
-.modal-stat-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px}
-.modal-stat-value{font-size:17px;font-weight:800;color:var(--accent)}
-.modal-stat-unit{font-size:11px;color:var(--muted);margin-left:2px;font-weight:400}
-.modal-obs{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px}
-.modal-obs strong{color:var(--text)}
-.modal-links{display:flex;gap:10px;flex-wrap:wrap}
-.modal-link{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;background:var(--accent);color:#fff;transition:background .15s}
-.modal-link:hover{background:#3d5e94}
-.modal-link.secondary{background:var(--bg);color:var(--accent);border:1px solid var(--border)}
-.modal-link.secondary:hover{background:var(--ev-bg)}
-.modal-iva-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:14px}
+.overlay{display:none;position:fixed;inset:0;background:rgba(10,25,50,.55);z-index:200;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.overlay.open{display:flex}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:16px;width:100%;max-width:560px;max-height:86vh;overflow:auto;padding:22px 24px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal h3{font-size:19px;font-weight:800;margin-bottom:12px;padding-right:34px}
+.modal .close{position:absolute;top:14px;right:14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;width:32px;height:32px;cursor:pointer;color:var(--muted);font-size:15px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid var(--border);border-radius:9px;margin-bottom:8px;cursor:pointer;background:var(--card)}
+.row:hover{border-color:var(--accent);background:var(--bg)}
+.row .t{font-weight:700;font-size:13px}
+.row .s{font-size:12px;color:var(--muted);text-align:right;white-space:nowrap}
 
-/* ── Footer ── */
-footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);background:var(--card)}
+footer{max-width:1400px;margin:0 auto;padding:0 24px 40px;font-size:12px;color:var(--muted);line-height:1.6}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#223;color:#fff;padding:11px 20px;border-radius:10px;font-size:13px;z-index:400;opacity:0;pointer-events:none;transition:opacity .25s}
+.toast.show{opacity:1}
+.errbox{background:var(--no-bg);color:var(--no-text);border-radius:12px;padding:20px;margin:30px 0;line-height:1.6}
+
+@media(max-width:980px){
+  .guia{grid-template-columns:1fr}
+  .side{position:static;max-height:none;display:none}
+  .side.open{display:block}
+  .mobile-only{display:inline-block}
+  .det{grid-template-columns:1fr}
+  .quick{grid-template-columns:1fr 1fr;margin:-50px 12px 0}
+  .cmp-slots{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  main{padding:16px 14px 60px}
+  .topbar-in{padding:0 12px;gap:10px}
+  .logo{display:none}
+  .hero{padding:30px 20px 80px}
+  .hero h1{font-size:25px}
+  .quick{grid-template-columns:1fr}
+  .slide{padding:26px 22px}
+  .slide h3{font-size:22px}
+  .dots{left:22px}
+  .sim-grid{grid-template-columns:1fr}
+  .gallery-main{height:250px}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div>
-    <h1>⚡ Veículos Eletrificados em Portugal</h1>
-    <p>Base consolidada · Guia do Automóvel · EV e PHEV · A carregar dados...</p>
-  </div>
+<div class="topbar"><div class="topbar-in">
+  <div class="logo" onclick="go('inicio')">⚡ EV&PHEV&nbsp;PT</div>
+  <nav class="tabs" id="tabs">
+    <button class="tab" data-v="inicio" onclick="go('inicio')">Início</button>
+    <button class="tab" data-v="guia" onclick="go('guia')">Guia de Compra</button>
+    <button class="tab" data-v="comparar" onclick="go('comparar')">Comparar <span class="cnt" id="cmp-cnt">0</span></button>
+    <button class="tab" data-v="noticias" onclick="go('noticias')">Notícias &amp; Reviews</button>
+  </nav>
+  <button class="fav-btn-top" onclick="showFavs()">♥ Favoritos <span id="fav-cnt">0</span></button>
   <div class="theme-wrap">
-    <button class="theme-btn" id="theme-btn" onclick="toggleThemeMenu(event)">
-      <span id="theme-btn-icon">❄️</span> <span id="theme-btn-label">Arctic Frost</span> <span class="chev">▼</span>
-    </button>
+    <button class="theme-btn" onclick="toggleThemeMenu(event)"><span id="theme-btn-icon">❄️</span><span id="theme-btn-label">Arctic Frost</span><span style="font-size:9px;opacity:.7">▼</span></button>
     <div class="theme-menu" id="theme-menu"></div>
   </div>
-</header>
+</div></div>
 
-<main>
-  <!-- KPI Cards -->
-  <div class="kpi-grid" id="kpi-grid">
-    <div class="kpi"><div class="kpi-icon">🚗</div><div class="kpi-label">Total Veículos</div><div class="kpi-value" id="kpi-total">—</div><div class="kpi-sub" id="kpi-total-sub">—</div></div>
-    <div class="kpi"><div class="kpi-icon">⚡</div><div class="kpi-label">Aut. Média EV</div><div class="kpi-value" id="kpi-aut-ev">—</div><div class="kpi-sub">km elétricos</div><div class="kpi-bar"><div class="kpi-bar-fill" id="bar-aut-ev" style="width:0%"></div></div></div>
-    <div class="kpi"><div class="kpi-icon">🔋</div><div class="kpi-label">Aut. Média PHEV</div><div class="kpi-value" id="kpi-aut-phev">—</div><div class="kpi-sub">km elétricos</div><div class="kpi-bar"><div class="kpi-bar-fill" id="bar-aut-phev" style="width:0%"></div></div></div>
-    <div class="kpi"><div class="kpi-icon">💶</div><div class="kpi-label">EV Mais Acessível</div><div class="kpi-value" id="kpi-min-ev" style="font-size:18px">—</div><div class="kpi-sub">PVP desde</div></div>
-    <div class="kpi"><div class="kpi-icon">💶</div><div class="kpi-label">PHEV Mais Acessível</div><div class="kpi-value" id="kpi-min-phev" style="font-size:18px">—</div><div class="kpi-sub">PVP desde</div></div>
-    <div class="kpi"><div class="kpi-icon">🏢</div><div class="kpi-label">IVA Dedutível</div><div class="kpi-value" id="kpi-iva-pct">—</div><div class="kpi-sub" id="kpi-iva-sub">—</div><div class="kpi-bar"><div class="kpi-bar-fill" id="bar-iva" style="width:0%"></div></div></div>
-    <div class="kpi"><div class="kpi-icon">🏎️</div><div class="kpi-label">Potência Máxima</div><div class="kpi-value" id="kpi-max-cv">—</div><div class="kpi-sub" id="kpi-max-cv-sub">cv</div></div>
-  </div>
+<main id="app">
+  <div id="loading" class="empty">A carregar dados…</div>
 
-  <!-- Main layout -->
-  <div class="layout">
-    <!-- Table -->
-    <div>
-      <div class="controls-bar">
-        <input type="text" id="q" placeholder="🔍  Pesquisar marca, modelo, tipo...">
-        <select id="f-tipo"><option value="">Tipo: todos</option><option>EV</option><option>PHEV</option></select>
-        <select id="f-iva"><option value="">IVA empresa: todos</option><option value="Sim">Sim (dedutível)</option><option value="Não">Não</option></select>
-        <span class="count-tag" id="count-tag"></span>
-      </div>
-      <div class="table-wrap">
-        <table id="tbl">
-          <thead>
-            <tr>
-              <th data-col="Marca">Marca<span class="sort-icon"></span></th>
-              <th data-col="Modelo">Modelo<span class="sort-icon"></span></th>
-              <th data-col="Tipo">Tipo<span class="sort-icon"></span></th>
-              <th data-col="Autonomia elétrica (km)" class="desc">Autonomia (km)<span class="sort-icon"></span></th>
-              <th data-col="Potência (cv)">Pot. (cv)<span class="sort-icon"></span></th>
-              <th data-col="Preço desde (€ PVP)">Preço PVP<span class="sort-icon"></span></th>
-              <th data-col="IVA dedutível empresas?">IVA<span class="sort-icon"></span></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="tbody"></tbody>
-        </table>
+  <!-- INÍCIO -->
+  <section class="view" id="v-inicio">
+    <div class="hero">
+      <div class="hero-bg" id="hero-bg"></div>
+      <h1>Qual o elétrico ou híbrido plug-in em que a sua empresa deduz o IVA?</h1>
+      <p>Preços, autonomia e dedução de IVA para todos os EV e PHEV vendidos em Portugal.</p>
+      <div class="search-wrap">
+        <div class="search-big">
+          <input id="gsearch" type="text" placeholder="Pesquisar Marca ou Modelo..." autocomplete="off" oninput="suggest(this.value)" onkeydown="if(event.key==='Enter')searchGo()">
+          <button onclick="searchGo()">Pesquisar</button>
+        </div>
+        <div class="sugg" id="sugg" style="display:none"></div>
       </div>
     </div>
 
-    <!-- Sidebar -->
-    <div>
-      <div class="sidebar-card" style="margin-bottom:14px">
-        <h3>📊 Distribuição por tipo</h3>
-        <div class="type-row">
-          <div class="type-pill"><div class="type-num" id="sb-ev">—</div><div class="type-lbl">EV</div></div>
-          <div class="type-pill"><div class="type-num" id="sb-phev">—</div><div class="type-lbl">PHEV</div></div>
-        </div>
-        <div class="price-range">
-          <div class="pr-row"><span class="pr-lbl">EV mínimo</span><span class="pr-val" id="pr-ev-min">—</span></div>
-          <div class="pr-row"><span class="pr-lbl">EV médio</span><span class="pr-val" id="pr-ev-avg">—</span></div>
-          <div class="pr-row"><span class="pr-lbl">PHEV mínimo</span><span class="pr-val" id="pr-phev-min">—</span></div>
-          <div class="pr-row"><span class="pr-lbl">PHEV médio</span><span class="pr-val" id="pr-phev-avg">—</span></div>
-        </div>
+    <div class="quick">
+      <div>
+        <label class="l">Tipo</label>
+        <select id="q-tipo" onchange="setF('tipo',this.value)">
+          <option value="">Todos</option><option value="EV">EV (100% elétrico)</option><option value="PHEV">PHEV (plug-in)</option>
+        </select>
       </div>
-
-      <div class="sidebar-card">
-        <h3>🏷️ Modelos por marca</h3>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">clica numa marca para ver os modelos</div>
-        <div id="brand-bars"></div>
+      <div>
+        <label class="l">Orçamento s/ IVA <span class="val" id="q-pr-v">Sem limite</span></label>
+        <input type="range" id="q-pr" min="20000" max="100000" step="2500" value="100000" oninput="setF('maxsem',+this.value)">
+      </div>
+      <div>
+        <label class="l">Autonomia mínima <span class="val" id="q-au-v">Qualquer</span></label>
+        <input type="range" id="q-au" min="100" max="600" step="25" value="100" oninput="setF('minaut',+this.value)">
+      </div>
+      <div class="toggle-row">
+        <label class="switch"><input type="checkbox" id="q-iva" onchange="setF('soIva',this.checked)"><span></span></label>
+        <span class="toggle-label">Mostrar APENAS carros com IVA 100% Dedutível</span>
+        <span style="flex:1"></span>
+        <button class="btn" onclick="go('guia')" id="q-go">Ver resultados</button>
       </div>
     </div>
-  </div>
+
+    <h2 class="sec">Destaques <span class="muted" style="font-size:13px;font-weight:600" id="dest-sub"></span></h2>
+    <div class="grid" id="destaques"></div>
+
+    <h2 class="sec">Modelos por marca</h2>
+    <div class="chips" id="brand-chips"></div>
+  </section>
+
+  <!-- GUIA -->
+  <section class="view" id="v-guia">
+    <div class="guia">
+      <aside class="side" id="side"></aside>
+      <div>
+        <div class="toolbar">
+          <button class="btn ghost sm mobile-only" onclick="document.getElementById('side').classList.toggle('open')">☰ Filtros</button>
+          <div class="count" id="g-count"></div>
+          <select id="g-sort" onchange="setF('sort',this.value)">
+            <option value="aut">Maior Autonomia</option>
+            <option value="preco">Menor Preço</option>
+            <option value="recente">Mais Recentes</option>
+          </select>
+        </div>
+        <div class="grid" id="g-grid"></div>
+        <div class="more" id="g-more"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARAR -->
+  <section class="view" id="v-comparar">
+    <h2 class="sec" style="margin-top:6px">Comparar veículos</h2>
+    <p class="muted" style="margin-bottom:14px;font-size:14px">Escolha 2 a 4 modelos para ver lado a lado.</p>
+    <div class="cmp-slots" id="cmp-slots"></div>
+    <div id="cmp-table"></div>
+  </section>
+
+  <!-- NOTÍCIAS -->
+  <section class="view" id="v-noticias">
+    <div class="carousel" id="carousel"></div>
+    <div class="chips" style="margin:22px 0 4px" id="news-tags"></div>
+    <div class="news-grid" id="news-grid"></div>
+  </section>
+
+  <!-- DETALHE -->
+  <section class="view" id="v-detalhe"></section>
 </main>
 
-<footer>Dados: Guia do Automóvel · guiadoautomovel.pt · Referência 2026-06-17 · Preços PVP Portugal · Sujeitos a alteração</footer>
+<footer id="foot"></footer>
 
-<!-- Modal -->
-<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal" id="modal-box">
-    <div id="modal-photo-area"></div>
-    <div class="modal-body" id="modal-body"></div>
-  </div>
-</div>
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()"><div class="modal" id="modal"></div></div>
+<div class="toast" id="toast"></div>
 
 <script>
-/* ── Helpers ── */
-const fmtEUR=n=>new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-const fmtN=n=>n?new Intl.NumberFormat('pt-PT').format(n):'—';
-
-/* ── Sort state ── */
-let sortCol='Autonomia elétrica (km)',sortDir=-1;
-
-/* ── KPIs ── */
-function updateKPIs(rows){
-  const ev=rows.filter(r=>r.Tipo==='EV'),phev=rows.filter(r=>r.Tipo==='PHEV');
-  const avg=a=>a.length?Math.round(a.reduce((s,r)=>s+(r['Autonomia elétrica (km)']||0),0)/a.length):0;
-  const minP=a=>a.length?Math.min(...a.map(r=>r['Preço desde (€ PVP)'])):0;
-  const ivaOk=rows.filter(r=>r['IVA dedutível empresas?']==='Sim').length;
-  const maxCV=rows.length?Math.max(...rows.map(r=>r['Potência (cv)']||0)):0;
-  const maxCVCar=rows.find(r=>(r['Potência (cv)']||0)===maxCV);
-  const ivaPct=rows.length?Math.round(ivaOk/rows.length*100):0;
-  document.getElementById('kpi-total').textContent=rows.length;
-  document.getElementById('kpi-total-sub').textContent=`${ev.length} EV · ${phev.length} PHEV`;
-  document.getElementById('kpi-aut-ev').textContent=fmtN(avg(ev));
-  document.getElementById('bar-aut-ev').style.width=Math.min(100,Math.round(avg(ev)/810*100))+'%';
-  document.getElementById('kpi-aut-phev').textContent=fmtN(avg(phev));
-  document.getElementById('bar-aut-phev').style.width=Math.min(100,Math.round(avg(phev)/200*100))+'%';
-  document.getElementById('kpi-min-ev').textContent=ev.length?fmtEUR(minP(ev)):'—';
-  document.getElementById('kpi-min-phev').textContent=phev.length?fmtEUR(minP(phev)):'—';
-  document.getElementById('kpi-iva-pct').textContent=ivaPct+'%';
-  document.getElementById('kpi-iva-sub').textContent=`${ivaOk} de ${rows.length} modelos`;
-  document.getElementById('bar-iva').style.width=ivaPct+'%';
-  document.getElementById('kpi-max-cv').textContent=fmtN(maxCV);
-  document.getElementById('kpi-max-cv-sub').textContent=maxCVCar?`cv · ${maxCVCar.Marca} ${maxCVCar.Modelo}`:'cv';
-  document.getElementById('sb-ev').textContent=ev.length;
-  document.getElementById('sb-phev').textContent=phev.length;
-  document.getElementById('pr-ev-min').textContent=ev.length?fmtEUR(minP(ev)):'—';
-  document.getElementById('pr-ev-avg').textContent=ev.length?fmtEUR(Math.round(ev.reduce((s,r)=>s+r['Preço desde (€ PVP)'],0)/ev.length)):'—';
-  document.getElementById('pr-phev-min').textContent=phev.length?fmtEUR(minP(phev)):'—';
-  document.getElementById('pr-phev-avg').textContent=phev.length?fmtEUR(Math.round(phev.reduce((s,r)=>s+r['Preço desde (€ PVP)'],0)/phev.length)):'—';
-}
-
-/* ── Brand bars ── */
-function updateBrands(rows){
-  const bc={};
-  rows.forEach(r=>{bc[r.Marca]=(bc[r.Marca]||0)+1});
-  const top=Object.entries(bc).sort((a,b)=>b[1]-a[1]).slice(0,10);
-  const max=top[0]?top[0][1]:1;
-  document.getElementById('brand-bars').innerHTML=top.map(([b,c])=>`
-    <div class="bar-row" style="cursor:pointer" onclick="openBrandModal('${b.replace(/'/g,"\\'")}')">
-      <div class="bar-label" title="${b}">${b}</div>
-      <div class="bar-track"><div class="bar-fill" style="width:${Math.round(c/max*100)}%"></div></div>
-      <div class="bar-num">${c}</div>
-    </div>`).join('');
-}
-
-/* ── Table ── */
-function renderTable(){
-  const q=document.getElementById('q').value.toLowerCase();
-  const tipo=document.getElementById('f-tipo').value;
-  const iva=document.getElementById('f-iva').value;
-
-  let rows=DATA.filter(r=>{
-    if(tipo&&r.Tipo!==tipo)return false;
-    if(iva==='Sim'&&r['IVA dedutível empresas?']!=='Sim')return false;
-    if(iva==='Não'&&r['IVA dedutível empresas?']==='Sim')return false;
-    if(!q)return true;
-    return [r.Marca,r.Modelo,r.Tipo].join(' ').toLowerCase().includes(q);
-  });
-
-  rows.sort((a,b)=>{
-    let va=a[sortCol]||0,vb=b[sortCol]||0;
-    if(typeof va==='number'&&typeof vb==='number')return(va-vb)*sortDir;
-    return String(va).localeCompare(String(vb),'pt')*sortDir;
-  });
-
-  const ivaLabel=r=>{
-    const v=r['IVA dedutível empresas?'];
-    if(v==='Sim')return'<span class="badge badge-sim">Sim</span>';
-    if(v==='Autonomia')return'<span class="badge badge-auto">★ Aut.</span>';
-    if(v==='Parcial')return'<span class="badge badge-parcial">◐ Parcial</span>';
-    return'<span class="badge badge-nao">Não</span>';
-  };
-
-  document.getElementById('count-tag').textContent=rows.length+' veículos';
-  document.getElementById('tbody').innerHTML=rows.map(r=>`
-    <tr>
-      <td style="font-weight:600">${r.Marca}</td>
-      <td>${r.Modelo}</td>
-      <td><span class="badge badge-${r.Tipo==='EV'?'ev':'phev'}">${r.Tipo}</span></td>
-      <td style="text-align:right;font-variant-numeric:tabular-nums">${fmtN(r['Autonomia elétrica (km)'])}</td>
-      <td style="text-align:right;font-variant-numeric:tabular-nums">${fmtN(r['Potência (cv)'])}</td>
-      <td style="text-align:right;font-variant-numeric:tabular-nums">${fmtEUR(r['Preço desde (€ PVP)'])}</td>
-      <td>${ivaLabel(r)}</td>
-      <td><button class="btn-detail" onclick="openModal(${DATA.indexOf(r)})">detalhes</button></td>
-    </tr>`).join('');
-
-  updateKPIs(rows);
-  updateBrands(rows);
-}
-
-/* ── Sort headers ── */
-document.querySelectorAll('thead th[data-col]').forEach(th=>{
-  th.addEventListener('click',()=>{
-    const col=th.dataset.col;
-    if(sortCol===col){sortDir*=-1}else{sortCol=col;sortDir=-1}
-    document.querySelectorAll('thead th').forEach(t=>t.classList.remove('asc','desc'));
-    th.classList.add(sortDir===1?'asc':'desc');
-    renderTable();
-  });
-});
-document.getElementById('q').addEventListener('input',renderTable);
-document.getElementById('f-tipo').addEventListener('change',renderTable);
-document.getElementById('f-iva').addEventListener('change',renderTable);
-
-/* ── Modal ── */
-function openModal(idx){
-  const r=DATA[idx];
-  const iva=r['IVA dedutível empresas?'];
-  const ivaOk=iva==='Sim', ivaAut=iva==='Autonomia', ivaParcial=iva==='Parcial';
-  const photo=r['Foto']||'';
-  const temVariantes = Array.isArray(r['Variantes']) && r['Variantes'].length>0;
-
-  document.getElementById('modal-photo-area').innerHTML=photo
-    ?`<img class="modal-photo" src="${photo}" alt="${r.Marca} ${r.Modelo}"
-         onerror="this.style.display='none';document.getElementById('modal-ph').style.display='flex'">
-       <div class="modal-photo-placeholder" id="modal-ph" style="display:none">
-         <div class="car-icon">🚗</div><div class="car-name">${r.Marca} ${r.Modelo}</div>
-       </div>`
-    :`<div class="modal-photo-placeholder" id="modal-ph" style="display:flex">
-        <div class="car-icon">🚗</div><div class="car-name">${r.Marca} ${r.Modelo}</div>
-      </div>`;
-
-  const ivaBg  = ivaOk?'var(--yes-bg)':ivaParcial?'#fff7ed':ivaAut?'#f3eeff':'var(--no-bg)';
-  const ivaClr = ivaOk?'var(--yes-text)':ivaParcial?'#c2410c':ivaAut?'#7c3aed':'var(--no-text)';
-  const ivaIcon= ivaOk?'✅':ivaParcial?'◐':ivaAut?'★':'❌';
-  const ivaTxt = ivaOk?'IVA dedutível para empresas'
-               : ivaParcial?'Depende da versão — ver detalhe das variantes abaixo'
-               : ivaAut?'Incluído por autonomia superior ao máximo elegível'
-               : 'IVA não dedutível para empresas';
-
-  const statLabel = temVariantes ? 'Preço desde (variante mais barata)' : 'Preço PVP desde';
-  const autLabel  = temVariantes ? 'Autonomia máx. (melhor variante)'   : 'Autonomia elétrica';
-
-  let variantsHtml = '';
-  if (temVariantes) {
-    const rows = r['Variantes']
-      .slice()
-      .sort((a,b)=>a.pvp-b.pvp)
-      .map(v=>{
-        const vIcon = v.iva_dedutivel==='Sim' ? '✅' : v.iva_dedutivel==='Autonomia' ? '★' : '❌';
-        const vColor = v.iva_dedutivel==='Sim' ? 'var(--yes-text)' : v.iva_dedutivel==='Autonomia' ? '#7c3aed' : 'var(--no-text)';
-        return `<tr>
-          <td><span class="variant-name">${v.nome}</span>${v.estimado?'<div class="variant-est">preço estimado</div>':''}</td>
-          <td style="text-align:right">${fmtEUR(v.pvp)}</td>
-          <td style="text-align:right">${fmtN(v.autonomia_km)} km</td>
-          <td style="text-align:right">${fmtN(v.hp)} cv</td>
-          <td style="text-align:center;color:${vColor};font-weight:600">${vIcon}</td>
-        </tr>`;
-      }).join('');
-    variantsHtml = `
-      <div style="margin-top:14px">
-        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px">
-          Variantes / motorizações
-        </div>
-        <table class="variant-table">
-          <thead><tr>
-            <th>Versão</th><th style="text-align:right">Preço PVP</th>
-            <th style="text-align:right">Autonomia</th><th style="text-align:right">Potência</th>
-            <th style="text-align:center">IVA</th>
-          </tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-      </div>`;
-  }
-
-  document.getElementById('modal-body').innerHTML=`
-    <div class="modal-header">
-      <div>
-        <div class="modal-title">${r.Marca} ${r.Modelo}</div>
-        <div class="modal-subtitle">${r.Tipo==='EV'?'⚡ Elétrico puro':'🔋 Híbrido plug-in'} · Guia do Automóvel</div>
-      </div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
-    </div>
-    <div class="modal-iva-badge" style="background:${ivaBg};color:${ivaClr}">${ivaIcon} ${ivaTxt}</div>
-    <div class="modal-grid">
-      <div class="modal-stat"><div class="modal-stat-label">${statLabel}</div>
-        <div class="modal-stat-value" style="font-size:15px">${fmtEUR(r['Preço desde (€ PVP)'])}</div></div>
-      <div class="modal-stat"><div class="modal-stat-label">Preço s/ IVA est.</div>
-        <div class="modal-stat-value" style="font-size:15px">${fmtEUR(r['Preço s/ IVA estimado (€)'])}</div></div>
-      <div class="modal-stat"><div class="modal-stat-label">${autLabel}</div>
-        <div class="modal-stat-value">${fmtN(r['Autonomia elétrica (km)'])}<span class="modal-stat-unit">km</span></div></div>
-      <div class="modal-stat"><div class="modal-stat-label">Potência</div>
-        <div class="modal-stat-value">${fmtN(r['Potência (cv)'])}<span class="modal-stat-unit">cv</span></div></div>
-    </div>
-    ${variantsHtml}
-    ${r['Observações']?`<div class="modal-obs"><strong>📌 Nota:</strong> ${r['Observações']}</div>`:''}
-    <div class="modal-links">
-      ${r['Representante PT']?`<a class="modal-link" href="${r['Representante PT']}" target="_blank" rel="noopener">🔗 Representante PT</a>`:''}
-      ${r['Fonte Guia']?`<a class="modal-link secondary" href="${r['Fonte Guia']}" target="_blank" rel="noopener">📖 Guia do Automóvel</a>`:''}
-    </div>`;
-
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){
-  document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-
-/* ── Brand Modal ── */
-function openBrandModal(marca){
-  const modelos = DATA.filter(r=>r.Marca===marca).sort((a,b)=>(b['Autonomia elétrica (km)']||0)-(a['Autonomia elétrica (km)']||0));
-  document.getElementById('modal-photo-area').innerHTML='';
-  const rows = modelos.map(r=>{
-    const idx = DATA.indexOf(r);
-    const tipoColor = r.Tipo==='EV' ? 'background:var(--ev-bg);color:var(--ev-text)' : 'background:var(--phev-bg);color:var(--phev-text)';
-    return `<div class="brand-row" onclick="openModal(${idx})">
-      <div>
-        <span class="brand-row-model">${r.Modelo}</span>
-        <span class="brand-row-type" style="${tipoColor}">${r.Tipo}</span>
-      </div>
-      <div class="brand-row-stats">
-        <div class="brand-row-stat"><div class="lbl">Autonomia</div><div class="val">${fmtN(r['Autonomia elétrica (km)'])} km</div></div>
-        <div class="brand-row-stat"><div class="lbl">Preço</div><div class="val">${fmtEUR(r['Preço desde (€ PVP)'])}</div></div>
-      </div>
-    </div>`;
-  }).join('');
-
-  document.getElementById('modal-body').innerHTML=`
-    <div class="modal-header">
-      <div>
-        <div class="modal-title">${marca}</div>
-        <div class="modal-subtitle">${modelos.length} modelo${modelos.length!==1?'s':''} no catálogo</div>
-      </div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
-    </div>
-    <div style="margin-top:6px">${rows}</div>`;
-
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-/* ── Theme Switcher ── */
+/* ════════ TEMAS ════════ */
 const THEMES = {
-  arctic: {
-    label:'Arctic Frost', icon:'❄️',
-    vars:{ '--bg':'#eef4fb','--card':'#ffffff','--header':'#4a6fa5','--header-text':'#ffffff',
-      '--text':'#2a3a50','--muted':'#6a8aaa','--border':'#c0d4ea','--accent':'#4a6fa5',
-      '--accent2':'#a0c4e8','--input':'#f0f6fc',
-      '--ev-bg':'#d4e8f8','--ev-text':'#1a3a70','--phev-bg':'#e8f0f8','--phev-text':'#3a4a70',
-      '--yes-bg':'#d8f0e8','--yes-text':'#1a4a30','--no-bg':'#f8e8e8','--no-text':'#7a2020' }
-  },
-  ocean: {
-    label:'Ocean Depths', icon:'🌊',
-    vars:{ '--bg':'#0b2333','--card':'#0f2e42','--header':'#0a3d5c','--header-text':'#e8f4f8',
-      '--text':'#dceef4','--muted':'#7fa8bc','--border':'#1e4a63','--accent':'#00b4d8',
-      '--accent2':'#48cae4','--input':'#0f2e42',
-      '--ev-bg':'#0e3d52','--ev-text':'#90e0ef','--phev-bg':'#123048','--phev-text':'#a8d8e8',
-      '--yes-bg':'#0d3d2e','--yes-text':'#52d68a','--no-bg':'#3d1620','--no-text':'#f07178' }
-  },
-  minimal: {
-    label:'Modern Minimalist', icon:'⚪',
-    vars:{ '--bg':'#fafafa','--card':'#ffffff','--header':'#1a1a1a','--header-text':'#ffffff',
-      '--text':'#1a1a1a','--muted':'#8a8a8a','--border':'#e0e0e0','--accent':'#1a1a1a',
-      '--accent2':'#4a4a4a','--input':'#f5f5f5',
-      '--ev-bg':'#f0f0f0','--ev-text':'#1a1a1a','--phev-bg':'#f5f5f5','--phev-text':'#4a4a4a',
-      '--yes-bg':'#e8f5e9','--yes-text':'#1b5e20','--no-bg':'#fbe9e7','--no-text':'#b71c1c' }
-  },
-  tech: {
-    label:'Tech Innovation', icon:'🚀',
-    vars:{ '--bg':'#0f0f1a','--card':'#1a1a2e','--header':'#16162a','--header-text':'#e0e0ff',
-      '--text':'#e0e0ff','--muted':'#8888b0','--border':'#2a2a4a','--accent':'#8b5cf6',
-      '--accent2':'#c084fc','--input':'#1a1a2e',
-      '--ev-bg':'#2a1a4a','--ev-text':'#c084fc','--phev-bg':'#1a2a4a','--phev-text':'#60a5fa',
-      '--yes-bg':'#0f2a1a','--yes-text':'#4ade80','--no-bg':'#2a0f1a','--no-text':'#f87171' }
-  },
-  aviation: {
-    label:'Aviation', icon:'✈️',
-    vars:{ '--bg':'#0d1b2a','--card':'#132a3e','--header':'#1b3a5c','--header-text':'#ffd166',
-      '--text':'#e8eef2','--muted':'#7a95ab','--border':'#28455e','--accent':'#ffd166',
-      '--accent2':'#4fc3f7','--input':'#132a3e',
-      '--ev-bg':'#123048','--ev-text':'#4fc3f7','--phev-bg':'#1b3a2a','--phev-text':'#81c995',
-      '--yes-bg':'#123020','--yes-text':'#66d9a0','--no-bg':'#3a1418','--no-text':'#ff6b6b' }
-  }
+  arctic:{label:'Arctic Frost',icon:'❄️',vars:{'--bg':'#eef4fb','--card':'#ffffff','--header':'#4a6fa5','--header-text':'#ffffff','--text':'#2a3a50','--muted':'#6a8aaa','--border':'#c0d4ea','--accent':'#4a6fa5','--accent2':'#a0c4e8','--input':'#f0f6fc','--ev-bg':'#d4e8f8','--ev-text':'#1a3a70','--phev-bg':'#e8f0f8','--phev-text':'#3a4a70','--yes-bg':'#d8f0e8','--yes-text':'#1a4a30','--no-bg':'#f8e8e8','--no-text':'#7a2020'}},
+  ocean:{label:'Ocean Depths',icon:'🌊',vars:{'--bg':'#0b2333','--card':'#0f2e42','--header':'#0a3d5c','--header-text':'#e8f4f8','--text':'#dceef4','--muted':'#7fa8bc','--border':'#1e4a63','--accent':'#00b4d8','--accent2':'#48cae4','--input':'#0f2e42','--ev-bg':'#0e3d52','--ev-text':'#90e0ef','--phev-bg':'#123048','--phev-text':'#a8d8e8','--yes-bg':'#0d3d2e','--yes-text':'#52d68a','--no-bg':'#3d1620','--no-text':'#f07178'}},
+  minimal:{label:'Modern Minimalist',icon:'⚪',vars:{'--bg':'#fafafa','--card':'#ffffff','--header':'#1a1a1a','--header-text':'#ffffff','--text':'#1a1a1a','--muted':'#8a8a8a','--border':'#e0e0e0','--accent':'#1a1a1a','--accent2':'#4a4a4a','--input':'#f5f5f5','--ev-bg':'#f0f0f0','--ev-text':'#1a1a1a','--phev-bg':'#f5f5f5','--phev-text':'#4a4a4a','--yes-bg':'#e8f5e9','--yes-text':'#1b5e20','--no-bg':'#fbe9e7','--no-text':'#b71c1c'}},
+  tech:{label:'Tech Innovation',icon:'🚀',vars:{'--bg':'#0f0f1a','--card':'#1a1a2e','--header':'#16162a','--header-text':'#e0e0ff','--text':'#e0e0ff','--muted':'#8888b0','--border':'#2a2a4a','--accent':'#8b5cf6','--accent2':'#c084fc','--input':'#1a1a2e','--ev-bg':'#2a1a4a','--ev-text':'#c084fc','--phev-bg':'#1a2a4a','--phev-text':'#60a5fa','--yes-bg':'#0f2a1a','--yes-text':'#4ade80','--no-bg':'#2a0f1a','--no-text':'#f87171'}},
+  aviation:{label:'Aviation',icon:'✈️',vars:{'--bg':'#0d1b2a','--card':'#132a3e','--header':'#1b3a5c','--header-text':'#ffd166','--text':'#e8eef2','--muted':'#7a95ab','--border':'#28455e','--accent':'#ffd166','--accent2':'#4fc3f7','--input':'#132a3e','--ev-bg':'#123048','--ev-text':'#4fc3f7','--phev-bg':'#1b3a2a','--phev-text':'#81c995','--yes-bg':'#123020','--yes-text':'#66d9a0','--no-bg':'#3a1418','--no-text':'#ff6b6b'}}
 };
-
+function lsGet(k,def){try{const v=localStorage.getItem(k);return v===null?def:v}catch(e){return def}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function applyTheme(key){
-  const t = THEMES[key];
-  if(!t) return;
-  const root = document.documentElement;
-  Object.entries(t.vars).forEach(([k,v])=>root.style.setProperty(k,v));
-  document.getElementById('theme-btn-icon').textContent = t.icon;
-  document.getElementById('theme-btn-label').textContent = t.label;
-  document.querySelectorAll('.theme-opt').forEach(el=>el.classList.toggle('active', el.dataset.key===key));
-  try{ localStorage.setItem('evpt-theme', key); }catch(e){}
+  const t=THEMES[key]; if(!t) return;
+  Object.entries(t.vars).forEach(([k,v])=>document.documentElement.style.setProperty(k,v));
+  document.getElementById('theme-btn-icon').textContent=t.icon;
+  document.getElementById('theme-btn-label').textContent=t.label;
+  document.querySelectorAll('.theme-opt').forEach(el=>el.classList.toggle('active',el.dataset.key===key));
+  lsSet('evpt-theme',key);
   document.getElementById('theme-menu').classList.remove('open');
 }
+function toggleThemeMenu(e){e.stopPropagation();document.getElementById('theme-menu').classList.toggle('open')}
+document.addEventListener('click',()=>document.getElementById('theme-menu').classList.remove('open'));
+document.getElementById('theme-menu').innerHTML=Object.entries(THEMES).map(([k,t])=>
+  `<div class="theme-opt" data-key="${k}" onclick="applyTheme('${k}')"><span class="swatch" style="background:${t.vars['--header']}"></span><span>${t.icon} ${t.label}</span><span class="check">✓</span></div>`).join('');
+applyTheme(lsGet('evpt-theme','arctic'));
 
-function buildThemeMenu(){
-  const menu = document.getElementById('theme-menu');
-  menu.innerHTML = Object.entries(THEMES).map(([key,t])=>`
-    <div class="theme-opt" data-key="${key}" onclick="applyTheme('${key}')">
-      <span class="swatch" style="background:${t.vars['--header']}"></span>
-      <span>${t.icon} ${t.label}</span>
-      <span class="check">✓</span>
-    </div>`).join('');
+/* ════════ UTILIDADES ════════ */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const eur=n=>n?Math.round(n).toLocaleString('pt-PT')+' €':'—';
+const eur0=n=>Math.round(n||0).toLocaleString('pt-PT')+' €';
+const num=(n,u)=>n?Math.round(n).toLocaleString('pt-PT')+(u?' '+u:''):'—';
+const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),2200)}
+
+let DATA=[], META={};
+
+/* ════════ REGRAS FISCAIS 2026 ════════ */
+const LIM={EV:62500,PHEV:50000};
+function taRate(tipo,cost){            // tributação autónoma, empresa sem prejuízo fiscal
+  if(tipo==='EV') return cost<=62500?0:0.10;
+  return cost<=37500?0.025:cost<=45000?0.075:0.15;
+}
+function taCombustao(cost){return cost<=37500?0.08:cost<=45000?0.25:0.32}
+function isDeduct(st){return st==='Sim'||st==='Autonomia'}
+function costEmpresa(pvp,tipo,st){return isDeduct(st)?pvp/1.23:pvp}   // IVA dedutível não entra no custo de aquisição
+function escalaoLbl(tipo,pvp,st){
+  const r=taRate(tipo,costEmpresa(pvp,tipo,st));
+  return r===0?'Isento':(r*100).toString().replace('.',',')+'%';
 }
 
-function toggleThemeMenu(e){
-  e.stopPropagation();
-  document.getElementById('theme-menu').classList.toggle('open');
+/* ════════ ESTADO / FILTROS ════════ */
+const F={q:'',tipo:'',maxsem:100000,minaut:100,soIva:false,sort:'aut',brands:new Set(),kwh:new Set(),dc:new Set(),body:new Set(),page:1};
+const PAGE=24;
+const KWH_B={'lt50':['Até 50 kWh',0,50],'50-75':['50 – 75 kWh',50,75],'75-100':['75 – 100 kWh',75,100],'gt100':['Mais de 100 kWh',100,1e9]};
+const DC_B={'lt100':['Até 100 kW',0,100],'100-200':['100 – 200 kW',100,200],'gt200':['Mais de 200 kW',200,1e9]};
+
+function setF(k,v){
+  F[k]=v;F.page=1;
+  if(k==='tipo')$('q-tipo').value=v;
+  if(k==='maxsem'){$('q-pr').value=v;$('q-pr-v').textContent=v>=100000?'Sem limite':'até '+eur(v)}
+  if(k==='minaut'){$('q-au').value=v;$('q-au-v').textContent=v<=100?'Qualquer':'≥ '+v+' km'}
+  if(k==='soIva')$('q-iva').checked=v;
+  if(k==='sort')$('g-sort').value=v;
+  refresh();
+}
+function toggleSet(set,val){const s=F[set];s.has(val)?s.delete(val):s.add(val);F.page=1;refresh()}
+function resetF(){Object.assign(F,{q:'',tipo:'',maxsem:100000,minaut:100,soIva:false,brands:new Set(),kwh:new Set(),dc:new Set(),body:new Set(),page:1});
+  ['tipo','maxsem','minaut','soIva'].forEach(k=>setF(k,F[k]));$('gsearch').value=''}
+
+function matches(m){
+  if(F.q){const q=norm(F.q);if(!norm(m.brand+m.name).includes(q))return false}
+  if(F.tipo&&m.tipo!==F.tipo)return false;
+  if(F.maxsem<100000&&m.sem>F.maxsem)return false;
+  if(F.minaut>100&&(!m.aut||m.aut<F.minaut))return false;
+  if(F.soIva&&m.iva!=='Sim')return false;
+  if(F.brands.size&&!F.brands.has(m.brand))return false;
+  if(F.body.size&&!F.body.has(m.body))return false;
+  if(F.kwh.size){if(!m.kwh||![...F.kwh].some(k=>m.kwh>KWH_B[k][1]&&m.kwh<=KWH_B[k][2]||(KWH_B[k][1]===0&&m.kwh<=KWH_B[k][2])))return false}
+  if(F.dc.size){if(!m.dc||![...F.dc].some(k=>m.dc>DC_B[k][1]&&m.dc<=DC_B[k][2]||(DC_B[k][1]===0&&m.dc<=DC_B[k][2])))return false}
+  return true;
+}
+function sorted(list){
+  const a=[...list];
+  if(F.sort==='preco')a.sort((x,y)=>x.pvp-y.pvp);
+  else if(F.sort==='recente')a.sort((x,y)=>(y.ano||0)-(x.ano||0)||y.aut-x.aut);
+  else a.sort((x,y)=>(y.aut||0)-(x.aut||0)||x.pvp-y.pvp);
+  return a;
 }
 
-document.addEventListener('click', ()=>{
-  document.getElementById('theme-menu').classList.remove('open');
-});
+/* ════════ FAVORITOS / COMPARAR (guardados no browser) ════════ */
+let FAV=new Set(JSON.parse(lsGet('evpt-fav','[]')));
+let CMP=JSON.parse(lsGet('evpt-cmp','[]'));
+function saveFav(){lsSet('evpt-fav',JSON.stringify([...FAV]));$('fav-cnt').textContent=FAV.size}
+function saveCmp(){lsSet('evpt-cmp',JSON.stringify(CMP));$('cmp-cnt').textContent=CMP.length}
+function toggleFav(id,ev){if(ev)ev.stopPropagation();FAV.has(id)?FAV.delete(id):FAV.add(id);saveFav();refresh();
+  if(CUR.view==='detalhe')renderDetalhe(CUR.id)}
+function addCmp(id,ev){if(ev)ev.stopPropagation();
+  if(CMP.includes(id)){toast('Já está na comparação');return}
+  if(CMP.length>=4){toast('Máximo de 4 modelos');return}
+  CMP.push(id);saveCmp();toast('Adicionado à comparação ('+CMP.length+'/4)');renderComparar()}
+function rmCmp(id){CMP=CMP.filter(x=>x!==id);saveCmp();renderComparar()}
+const byId=id=>DATA.find(m=>m.id===id);
 
-buildThemeMenu();
-let savedTheme = 'arctic';
-try{ savedTheme = localStorage.getItem('evpt-theme') || 'arctic'; }catch(e){}
-applyTheme(savedTheme);
+/* ════════ COMPONENTES ════════ */
+function ivaBadge(st){
+  return st==='Sim'?'<span class="badge badge-sim">✓ IVA 100% dedutível</span>'
+   :st==='Parcial'?'<span class="badge badge-parcial">◐ Depende da versão</span>'
+   :st==='Autonomia'?'<span class="badge badge-auto">★ Dedutível (autonomia)</span>'
+   :'<span class="badge badge-nao">✗ IVA não dedutível</span>';
+}
+function photoBox(m,i){
+  const src=(m.fotos&&m.fotos[i||0])||'';
+  const ph=`<div class="ph"><b>${esc((m.brand||'?')[0])}</b><small>${esc(m.brand)}</small></div>`;
+  return ph+(src?`<img src="${esc(src)}" alt="${esc(m.brand+' '+m.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()" style="position:absolute;inset:0">`:'');
+}
+function cardHTML(m){
+  const fav=FAV.has(m.id);
+  return `<div class="card" onclick="openDet('${esc(m.id).replace(/'/g,"\\'")}')">
+    <div class="card-img">${photoBox(m)}
+      <div class="card-tags"><span class="badge ${m.tipo==='EV'?'badge-ev':'badge-phev'}">${m.tipo}</span>${m.estimado?'<span class="badge badge-est">preço estimado</span>':''}</div>
+      <button class="card-fav" title="Favorito" onclick="toggleFav('${esc(m.id).replace(/'/g,"\\'")}',event)">${fav?'♥':'♡'}</button>
+    </div>
+    <div class="card-body">
+      <div class="card-brand">${esc(m.brand)}</div>
+      <div class="card-name">${esc(m.name)}</div>
+      <div class="stats">
+        <div class="stat"><div class="k">Preço desde</div><div class="v">${m.estimado?'~':''}${eur(m.pvp)}</div></div>
+        <div class="stat"><div class="k">s/ IVA</div><div class="v">${eur(m.sem)}</div></div>
+        <div class="stat"><div class="k">Autonomia</div><div class="v">${num(m.aut,'km')}</div></div>
+        <div class="stat"><div class="k">Bateria</div><div class="v">${num(m.kwh,'kWh')}</div></div>
+      </div>
+      <div class="card-foot">${ivaBadge(m.iva)}<span style="flex:1"></span>
+        <button class="btn ghost sm" onclick="addCmp('${esc(m.id).replace(/'/g,"\\'")}',event)">+ Comparar</button></div>
+    </div></div>`;
+}
 
-/* ── Load data.json dynamically ── */
-let DATA=[];
+/* ════════ ROTAS ════════ */
+const CUR={view:'inicio',id:null};
+function go(v){location.hash='#'+v}
+function openDet(id){location.hash='#modelo='+encodeURIComponent(id)}
+function route(){
+  if(!DATA.length)return;
+  const h=decodeURIComponent(location.hash.slice(1))||'inicio';
+  let view=h,id=null;
+  if(h.startsWith('modelo=')){view='detalhe';id=h.slice(7)}
+  if(!['inicio','guia','comparar','noticias','detalhe'].includes(view))view='inicio';
+  CUR.view=view;CUR.id=id;
+  document.querySelectorAll('.view').forEach(s=>s.classList.toggle('active',s.id==='v-'+view));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.v===(view==='detalhe'?'guia':view)));
+  window.scrollTo(0,0);
+  if(view==='detalhe'){
+    if(!byId(id)){go('guia');return}
+    renderDetalhe(id)}
+  else refresh();
+  if(view==='noticias')startCarousel();
+}
+window.addEventListener('hashchange',route);
 
+function refresh(){
+  const v=CUR.view;
+  if(v==='inicio')renderInicio();
+  else if(v==='guia')renderGuia();
+  else if(v==='comparar')renderComparar();
+  else if(v==='noticias')renderNoticias();
+}
+
+/* ════════ INÍCIO ════════ */
+function renderInicio(){
+  const f=sorted(DATA.filter(matches)).slice(0,4);
+  const n=DATA.filter(matches).length;
+  $('dest-sub').textContent='· '+n+' modelos com os filtros atuais, por maior autonomia';
+  $('destaques').innerHTML=f.length?f.map(cardHTML).join(''):'<div class="empty" style="grid-column:1/-1">Nenhum modelo com estes filtros. Alargue o orçamento ou reduza a autonomia mínima.</div>';
+  $('q-go').textContent='Ver '+n+' resultados';
+  const b={};DATA.forEach(m=>b[m.brand]=(b[m.brand]||0)+1);
+  $('brand-chips').innerHTML=Object.keys(b).sort().map(k=>`<button class="chip" onclick="openBrand('${k.replace(/'/g,"\\'")}')">${esc(k)} <small>${b[k]}</small></button>`).join('');
+}
+function suggest(v){
+  const box=$('sugg');F.q=v;
+  if(!v||v.length<2){box.style.display='none';return}
+  const q=norm(v);
+  const r=DATA.filter(m=>norm(m.brand+m.name).includes(q)).slice(0,7);
+  box.innerHTML=r.map(m=>`<div onclick="openDet('${esc(m.id).replace(/'/g,"\\'")}')"><span>${esc(m.brand)} <b>${esc(m.name)}</b></span><small>${m.tipo} · ${num(m.aut,'km')}</small></div>`).join('')||'<div>Sem resultados</div>';
+  box.style.display='block';
+}
+function searchGo(){$('sugg').style.display='none';F.page=1;go('guia')}
+document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))$('sugg').style.display='none'});
+
+/* ════════ GUIA ════════ */
+function renderSide(){
+  const cnt=(arr,fn)=>arr.reduce((o,m)=>{const k=fn(m);if(k)o[k]=(o[k]||0)+1;return o},{});
+  const bc=cnt(DATA,m=>m.brand), tc=cnt(DATA,m=>m.body);
+  const chk=(set,val,label,n)=>`<label class="chk"><input type="checkbox" ${F[set].has(val)?'checked':''} onchange="toggleSet('${set}','${val.replace(/'/g,"\\'")}')"> ${esc(label)}${n!=null?`<span class="n">${n}</span>`:''}</label>`;
+  const kn=Object.keys(KWH_B).map(k=>DATA.filter(m=>m.kwh&&m.kwh>KWH_B[k][1]&&m.kwh<=KWH_B[k][2]||(KWH_B[k][1]===0&&m.kwh&&m.kwh<=KWH_B[k][2])).length);
+  const dn=Object.keys(DC_B).map(k=>DATA.filter(m=>m.dc&&m.dc>DC_B[k][1]&&m.dc<=DC_B[k][2]||(DC_B[k][1]===0&&m.dc&&m.dc<=DC_B[k][2])).length);
+  $('side').innerHTML=`
+   <div style="display:flex;justify-content:space-between;align-items:center"><b>Filtros</b><button class="btn ghost sm" onclick="resetF()">Limpar</button></div>
+   <h4>Tipo</h4>
+   <select onchange="setF('tipo',this.value)"><option value="" ${F.tipo===''?'selected':''}>Todos</option><option value="EV" ${F.tipo==='EV'?'selected':''}>EV</option><option value="PHEV" ${F.tipo==='PHEV'?'selected':''}>PHEV</option></select>
+   <label class="chk" style="margin-top:8px"><input type="checkbox" ${F.soIva?'checked':''} onchange="setF('soIva',this.checked)"> Só IVA 100% dedutível</label>
+   <h4>Marca</h4><div class="brands-box">${Object.keys(bc).sort().map(b=>chk('brands',b,b,bc[b])).join('')}</div>
+   <h4>Capacidade da bateria</h4>${Object.entries(KWH_B).map(([k,v],i)=>chk('kwh',k,v[0],kn[i])).join('')}
+   <div class="hint">Só modelos com dado conhecido.</div>
+   <h4>Carga rápida DC</h4>${Object.entries(DC_B).map(([k,v],i)=>chk('dc',k,v[0],dn[i])).join('')}
+   <div class="hint">Só modelos com dado conhecido.</div>
+   <h4>Tipologia</h4>${['SUV','Carrinha','Citadino','Sedan','Comercial'].filter(k=>tc[k]).map(k=>chk('body',k,k,tc[k])).join('')}`;
+}
+function renderGuia(){
+  renderSide();
+  const list=sorted(DATA.filter(matches));
+  const shown=list.slice(0,F.page*PAGE);
+  $('g-count').textContent=list.length+' modelos';
+  $('g-sort').value=F.sort;
+  $('g-grid').innerHTML=shown.length?shown.map(cardHTML).join(''):'<div class="empty" style="grid-column:1/-1">Nenhum modelo com estes filtros.</div>';
+  $('g-more').innerHTML=list.length>shown.length?`<button class="btn" onclick="F.page++;renderGuia()">Mostrar mais (${list.length-shown.length})</button>`:'';
+}
+
+/* ════════ COMPARAR ════════ */
+function evdbUrl(m){return 'https://ev-database.org/#sort:path~type~order=.rank~number~desc|search:'+encodeURIComponent(m.brand+' '+m.name)}
+function quoteUrl(m){return m.link||('https://www.guiadoautomovel.pt/pesquisa?q='+encodeURIComponent(m.brand+' '+m.name))}
+function renderComparar(){
+  const ms=CMP.map(byId).filter(Boolean);
+  let slots='';
+  for(let i=0;i<4;i++){
+    const m=ms[i];
+    slots+=m?`<div class="slot full"><button class="x" onclick="rmCmp('${esc(m.id).replace(/'/g,"\\'")}')">✕</button><div class="card-img">${photoBox(m)}</div><div class="sn"><small>${esc(m.brand)}</small>${esc(m.name)}</div></div>`
+      :`<div class="slot" onclick="openAddModal()"><div style="font-size:30px">＋</div>Adicionar Veículo +</div>`;
+  }
+  $('cmp-slots').innerHTML=slots;
+  if(ms.length<2){$('cmp-table').innerHTML='<div class="empty" style="margin-top:18px">Adicione pelo menos 2 veículos para ver a comparação.</div>';return}
+  const best=(fn,low)=>{const v=ms.map(fn);const c=v.filter(x=>x>0);if(c.length<2)return -1;const t=low?Math.min(...c):Math.max(...c);return v.indexOf(t)};
+  const row=(label,fn,fmt,bestIdx)=>`<tr><th class="row">${label}</th>${ms.map((m,i)=>`<td class="${bestIdx===i?'best':''}">${fmt(m)}</td>`).join('')}</tr>`;
+  const grp=t=>`<tr class="grp"><td colspan="${ms.length+1}">${t}</td></tr>`;
+  const t=`<div class="cmp-wrap"><table class="cmp">
+   <tr><th class="row">Modelo</th>${ms.map(m=>`<td><b>${esc(m.brand)}</b><br>${esc(m.name)}<br><span class="badge ${m.tipo==='EV'?'badge-ev':'badge-phev'}">${m.tipo}</span></td>`).join('')}</tr>
+   ${grp('Preço e fiscalidade')}
+   ${row('Preço c/ IVA (desde)',m=>m.pvp,m=>(m.estimado?'~':'')+eur(m.pvp),best(m=>m.pvp,true))}
+   ${row('Preço s/ IVA',m=>m.sem,m=>eur(m.sem),best(m=>m.sem,true))}
+   ${row('IVA dedutível (empresa)',null,m=>ivaBadge(m.iva))}
+   ${row('Tributação autónoma (empresa)',null,m=>escalaoLbl(m.tipo,m.pvp,m.iva==='Parcial'?'Sim':m.iva))}
+   ${grp('Autonomia e bateria')}
+   ${row('Autonomia WLTP',m=>m.aut,m=>num(m.aut,'km'),best(m=>m.aut))}
+   ${row('Autonomia real (indicativa)',m=>m.real,m=>num(m.real,'km'),best(m=>m.real))}
+   ${row('Bateria útil',m=>m.kwh,m=>num(m.kwh,'kWh'),best(m=>m.kwh))}
+   ${grp('Carregamento rápido DC')}
+   ${row('Tempo 10–80%',m=>m.t1080,m=>num(m.t1080,'min'),best(m=>m.t1080,true))}
+   ${row('Potência máx. DC',m=>m.dc,m=>num(m.dc,'kW'),best(m=>m.dc))}
+   ${grp('Ligações')}
+   <tr><th class="row">Ações</th>${ms.map(m=>`<td><a class="btn sm" style="display:inline-block;text-decoration:none;margin-bottom:6px" href="${esc(evdbUrl(m))}" target="_blank" rel="noopener">Ver no EV-Database</a><br><a class="btn ghost sm" style="display:inline-block;text-decoration:none" href="${esc(quoteUrl(m))}" target="_blank" rel="noopener">Pedir Cotação</a></td>`).join('')}</tr>
+  </table></div>
+  <p class="note">“—” = sem dado. Bateria, carga DC e autonomia real são valores indicativos (EV-Database/fabricante) e só existem para alguns modelos. A verde: melhor valor da linha.</p>`;
+  $('cmp-table').innerHTML=t;
+}
+function openAddModal(){
+  $('modal').innerHTML=`<button class="close" onclick="closeModal()">✕</button><h3>Adicionar veículo</h3>
+   <input type="text" id="add-q" placeholder="Pesquisar marca ou modelo..." oninput="addList(this.value)" autofocus><div id="add-list" style="margin-top:12px"></div>`;
+  $('overlay').classList.add('open');addList('');setTimeout(()=>{const e=$('add-q');if(e)e.focus()},50);
+}
+function addList(q){
+  const nq=norm(q);
+  const r=DATA.filter(m=>!CMP.includes(m.id)&&(!nq||norm(m.brand+m.name).includes(nq))).sort((a,b)=>b.aut-a.aut).slice(0,30);
+  $('add-list').innerHTML=r.map(m=>`<div class="row" onclick="addCmp('${esc(m.id).replace(/'/g,"\\'")}');closeModal()"><div class="t">${esc(m.brand)} ${esc(m.name)} <span class="badge ${m.tipo==='EV'?'badge-ev':'badge-phev'}">${m.tipo}</span></div><div class="s">${num(m.aut,'km')} · ${eur(m.pvp)}</div></div>`).join('')||'<div class="muted">Sem resultados</div>';
+}
+function closeModal(){$('overlay').classList.remove('open')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+function openBrand(b){
+  const ms=DATA.filter(m=>m.brand===b).sort((x,y)=>(y.aut||0)-(x.aut||0));
+  $('modal').innerHTML=`<button class="close" onclick="closeModal()">✕</button><h3>${esc(b)} <span class="muted" style="font-size:13px">· ${ms.length} modelos</span></h3>`+
+   ms.map(m=>`<div class="row" onclick="closeModal();openDet('${esc(m.id).replace(/'/g,"\\'")}')"><div class="t">${esc(m.name)} <span class="badge ${m.tipo==='EV'?'badge-ev':'badge-phev'}">${m.tipo}</span><div style="margin-top:4px">${ivaBadge(m.iva)}</div></div><div class="s"><b>${num(m.aut,'km')}</b><br>${m.estimado?'~':''}${eur(m.pvp)}</div></div>`).join('');
+  $('overlay').classList.add('open');
+}
+function showFavs(){
+  const ms=[...FAV].map(byId).filter(Boolean);
+  $('modal').innerHTML=`<button class="close" onclick="closeModal()">✕</button><h3>♥ Favoritos</h3>`+
+   (ms.length?ms.map(m=>`<div class="row" onclick="closeModal();openDet('${esc(m.id).replace(/'/g,"\\'")}')"><div class="t">${esc(m.brand)} ${esc(m.name)}</div><div class="s">${num(m.aut,'km')} · ${eur(m.pvp)}</div></div>`).join('')
+   :'<div class="muted">Ainda sem favoritos. Clique no ♡ de um veículo.</div>')+
+   '<p class="note">Os favoritos ficam guardados neste browser (não há login).</p>';
+  $('overlay').classList.add('open');
+}
+
+/* ════════ NOTÍCIAS ════════ */
+const NEWS=[
+ {tag:'Fisco',title:'Limites de IVA dedutível em 2026: 62.500 € para EV e 50.000 € para PHEV',txt:'Uma empresa recupera 100% do IVA em elétricos até 62.500 € e em híbridos plug-in até 50.000 € (valores sem IVA). Acima destes limites não há dedução.',src:'Caetano — Incentivos carros elétricos 2026',url:'https://caetano.pt/blog/incentivos-carros-eletricos/',feat:true},
+ {tag:'Fisco',title:'Tributação autónoma 2026: EV isento até 62.500 €, PHEV de 2,5% a 15%',txt:'Elétricos até 62.500 € de custo de aquisição estão isentos; acima paga 10%. Nos PHEV a taxa sobe por escalões: 2,5% até 37.500 €, 7,5% até 45.000 € e 15% acima.',src:'Caetano — Tributação autónoma 2026',url:'https://caetano.pt/blog/tributacao-autonoma/',feat:true},
+ {tag:'Novidades',title:'Híbridos plug-in: novas exigências no Orçamento do Estado 2026',txt:'O limite de emissões passa de 50 para 80 g CO₂/km (Euro 6e-bis), com autonomia elétrica mínima de 50 km. O desconto de ISV passa a 75%. Verificar sempre modelo a modelo.',src:'Caetano — Incentivos carros elétricos 2026',url:'https://caetano.pt/blog/incentivos-carros-eletricos/',feat:true},
+ {tag:'Fisco',title:'Elétricos continuam isentos de IUC',txt:'A isenção de IUC para 100% elétricos é automática e vitalícia. Os PHEV não têm isenção: pagam IUC conforme cilindrada e emissões.',src:'Caetano',url:'https://caetano.pt/blog/incentivos-carros-eletricos/'},
+ {tag:'Fisco',title:'Elétricos e PHEV: isenções e benefícios fiscais para empresas 2026',txt:'Resumo do Guia do Automóvel sobre os benefícios fiscais para empresas na compra de elétricos e híbridos plug-in.',src:'Guia do Automóvel',url:'https://www.guiadoautomovel.pt/noticia/2538/eletricos-e-phev-isencoes-e-beneficios-fiscais-para-empresas-2026'},
+ {tag:'Fisco',title:'Orçamento do Estado 2026: alterações fiscais',txt:'Lista das alterações fiscais do OE2026 relevantes para viaturas e empresas.',src:'APCMC',url:'https://apcmc.pt/legislacao/orcamento-do-estado-para-2026-alteracoes-fiscais/'},
+ {tag:'Dicas de Carregamento',title:'Carregar entre 10% e 80% é o mais rápido',txt:'A potência de carga DC desce muito depois dos 80%. Em viagem compensa parar mais vezes e carregar só até 80%. Chegar ao carregador com a bateria quente (navegação com pré-condicionamento) acelera a carga.'},
+ {tag:'Dicas de Carregamento',title:'Em casa: carregar de noite e entre 20% e 80% no dia a dia',txt:'Para uso diário, manter a bateria entre 20% e 80% reduz o desgaste. Carregue até 100% apenas antes de viagens longas (nas baterias LFP, carregar a 100% regularmente é normalmente aceitável — ver manual).'},
+ {tag:'Dicas de Carregamento',title:'O inverno reduz a autonomia: conte com menos',txt:'Frio e aquecimento fazem baixar a autonomia real face ao valor WLTP. Pré-aquecer o carro ainda ligado à tomada ajuda a poupar bateria.'}
+];
+let nTag='Todas',cIdx=0,cTimer=null;
+function renderNoticias(){
+  const feat=NEWS.filter(n=>n.feat);
+  $('carousel').innerHTML=feat.map((n,i)=>`<div class="slide ${i===cIdx?'on':''}"><span class="tag" style="background:rgba(255,255,255,.25);color:inherit">${esc(n.tag)}</span><h3>${esc(n.title)}</h3><p>${esc(n.txt)}</p><div class="meta">${n.url?`Fonte: ${esc(n.src)} · <a style="color:inherit" href="${esc(n.url)}" target="_blank" rel="noopener">Ler mais ↗</a>`:''}</div></div>`).join('')+
+   `<div class="dots">${feat.map((_,i)=>`<button class="dot ${i===cIdx?'on':''}" onclick="cIdx=${i};renderNoticias();startCarousel()"></button>`).join('')}</div>`;
+  const tags=['Todas','Novidades','Fisco','Test-Drives','Dicas de Carregamento'];
+  $('news-tags').innerHTML=tags.map(t=>`<button class="chip ${nTag===t?'on':''}" onclick="nTag='${t}';renderNoticias()">${t}</button>`).join('');
+  const l=NEWS.filter(n=>nTag==='Todas'||n.tag===nTag);
+  $('news-grid').innerHTML=l.length?l.map(n=>`<div class="news"><span class="tag">${esc(n.tag)}</span><h4>${esc(n.title)}</h4><p>${esc(n.txt)}</p>${n.url?`<a href="${esc(n.url)}" target="_blank" rel="noopener" style="font-size:12px;font-weight:700">${esc(n.src)} ↗</a>`:''}</div>`).join(''):
+   '<div class="empty" style="grid-column:1/-1">Ainda sem artigos nesta secção. Esta página é de conteúdo curado manualmente — não há feed automático.</div>';
+}
+function startCarousel(){
+  clearInterval(cTimer);
+  cTimer=setInterval(()=>{if(CUR.view!=='noticias'){clearInterval(cTimer);return}
+    cIdx=(cIdx+1)%NEWS.filter(n=>n.feat).length;renderNoticias()},7000);
+}
+
+/* ════════ DETALHE ════════ */
+let SIM={buyer:'empresa',exp:6000,iucComb:0,vi:0,img:0};
+function renderDetalhe(id){
+  const m=byId(id);if(!m)return;
+  if(SIM.id!==id){SIM={...SIM,id,vi:0,img:0,buyer:SIM.buyer}}
+  const vs=m.variantes||null;
+  const v=vs?vs[Math.min(SIM.vi,vs.length-1)]:null;
+  const pvp=v?v.pvp:m.pvp, sem=pvp/1.23, st=v?v.iva:m.iva;
+  const aut=v?v.aut:m.aut;
+  const emp=SIM.buyer==='empresa';
+  const sid=esc(id).replace(/'/g,"\\'");
+
+  // simulador
+  const ivaSave=emp&&isDeduct(st)?pvp-sem:0;
+  const cost=emp?costEmpresa(pvp,m.tipo,st):pvp;
+  const rate=emp?taRate(m.tipo,cost):0;
+  const taPag=SIM.exp*rate;
+  const taComb=emp?SIM.exp*taCombustao(cost):0;
+  const taSave=emp?taComb-taPag:0;
+  const iucSave=m.tipo==='EV'?(+SIM.iucComb||0):0;
+  const total=ivaSave+taSave+iucSave;
+
+  const gal=(m.fotos&&m.fotos.length?m.fotos:['']);
+  const rings=(()=>{
+    const mk=(lbl,val,max,unit,na)=>{const C=2*Math.PI*45,p=val?Math.min(val/max,1):0;
+      return `<div class="ring"><div class="ring-wrap"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"/>${val?`<circle class="fg" cx="50" cy="50" r="45" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-p)}"/>`:''}</svg><div class="ring-val">${val?Math.round(val)+`<small>${unit}</small>`:'—'}</div></div><div class="ring-lbl">${lbl}</div></div>`};
+    const ratio=m.real&&aut?Math.round(m.real/aut*100):0;
+    return mk('Autonomia WLTP',aut,m.tipo==='EV'?800:150,'km')+mk('Autonomia real',m.real,m.tipo==='EV'?800:150,'km')+mk('Real vs WLTP',ratio,100,'%')+mk('Carga DC',m.dc,350,'kW')+mk('10–80% DC',m.t1080?Math.max(0,60-m.t1080):0,60,'min',0).replace(/>(\d+)<small>min/,(a,b)=>'>'+m.t1080+'<small>min');
+  })();
+
+  $('v-detalhe').innerHTML=`
+   <button class="back" onclick="history.length>1?history.back():go('guia')">← Voltar</button>
+   <div class="det">
+     <div>
+       <div class="gallery-main" id="gal-main">${photoBox({...m,fotos:gal},SIM.img)}</div>
+       ${gal.length>1?`<div class="thumbs">${gal.map((u,i)=>`<div class="thumb ${i===SIM.img?'on':''}" onclick="SIM.img=${i};renderDetalhe('${sid}')"><img src="${esc(u)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></div>`).join('')}</div>`:''}
+       <div class="panel"><h3>Desempenho</h3><div class="rings">${rings}</div>
+         <p class="note">Autonomia WLTP, real, carga DC e tempo 10–80% são valores indicativos e só existem para alguns modelos (“—” = sem dado). Os consumos por cidade, autoestrada, inverno e verão ainda não estão na base — consulte o <a href="${esc(evdbUrl(m))}" target="_blank" rel="noopener">EV-Database ↗</a>.</p></div>
+     </div>
+     <div>
+       <div style="display:flex;gap:8px;margin-bottom:8px"><span class="badge ${m.tipo==='EV'?'badge-ev':'badge-phev'}">${m.tipo}</span>${m.estimado?'<span class="badge badge-est">preço estimado</span>':''}</div>
+       <div class="muted" style="font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:12px">${esc(m.brand)}</div>
+       <h1>${esc(m.name)}</h1>
+       <div class="price-big">${m.estimado?'~':''}${eur(pvp)}</div>
+       <div class="muted" style="font-size:13px;margin-bottom:10px">PVP${vs?' · '+esc(v.nome):' desde'} · s/ IVA ${eur(sem)}</div>
+       ${ivaBadge(st)}
+       <div class="stats" style="grid-template-columns:repeat(3,1fr);margin-top:16px">
+         <div class="stat"><div class="k">Autonomia</div><div class="v">${num(aut,'km')}</div></div>
+         <div class="stat"><div class="k">Potência</div><div class="v">${num(v?v.hp:m.hp,'cv')}</div></div>
+         <div class="stat"><div class="k">Bateria</div><div class="v">${num(m.kwh,'kWh')}</div></div>
+       </div>
+       ${vs?`<div class="panel"><h3>Versões</h3><table class="vtable"><tr><th>Versão</th><th>Preço</th><th>Autonomia</th><th>IVA</th></tr>
+         ${vs.map((x,i)=>`<tr class="${i===SIM.vi?'sel':''}" onclick="SIM.vi=${i};renderDetalhe('${sid}')"><td><b>${esc(x.nome)}</b>${x.est?'<br><small class="muted">preço/autonomia estimados</small>':''}</td><td>${eur(x.pvp)}</td><td>${num(x.aut,'km')}</td><td>${x.iva==='Sim'?'✅':x.iva==='Autonomia'?'★':'❌'}</td></tr>`).join('')}</table>
+         <p class="note">Clique numa versão para a usar no simulador.</p></div>`:''}
+
+       <div class="panel"><h3>💶 Simulador fiscal</h3>
+         <div class="seg"><button class="${emp?'on':''}" onclick="SIM.buyer='empresa';renderDetalhe('${sid}')">Comprar como Empresa</button><button class="${emp?'':'on'}" onclick="SIM.buyer='particular';renderDetalhe('${sid}')">Particular</button></div>
+         <div class="sim-grid">
+           <div><label>Despesas anuais da viatura (€)</label><input type="number" min="0" step="500" value="${SIM.exp}" onchange="SIM.exp=Math.max(0,+this.value||0);renderDetalhe('${sid}')"></div>
+           <div><label>IUC anual do equivalente a combustão (€)</label><input type="number" min="0" step="10" value="${SIM.iucComb||''}" placeholder="0" ${m.tipo==='EV'?'':'disabled'} onchange="SIM.iucComb=Math.max(0,+this.value||0);renderDetalhe('${sid}')"></div>
+         </div>
+         <div class="res"><span>IVA recuperado na compra</span><b>${emp?eur0(ivaSave):'não aplicável'}</b></div>
+         <div class="res"><span>Tributação autónoma anual (${emp?(rate===0?'isento':(rate*100).toString().replace('.',',')+'%'):'—'})</span><b>${emp?eur0(taPag):'—'}</b></div>
+         <div class="res"><span>Tributação autónoma de um combustão equivalente (${emp?(taCombustao(cost)*100)+'%':'—'})</span><b>${emp?eur0(taComb):'—'}</b></div>
+         <div class="res"><span>Poupança anual em tributação autónoma</span><b>${emp?eur0(taSave):'—'}</b></div>
+         <div class="res"><span>IUC</span><b>${m.tipo==='EV'?'Isento'+(iucSave?' (poupa '+eur0(iucSave)+'/ano)':''):'Aplica-se (cilindrada/CO₂)'}</b></div>
+         <div class="res total"><span>${emp?'Poupança (IVA na compra + ano 1)':'Poupança como particular'}</span><b>${eur0(total)}</b></div>
+         <p class="note">${emp?'Cálculo para empresa sem prejuízo fiscal. ':'Particulares não deduzem IVA nem pagam tributação autónoma. '}${st==='Autonomia'?'★ Acima do limite de IVA: a app considera-o dedutível pelo critério de autonomia — confirme com o seu contabilista. ':''}${m.tipo==='PHEV'?'PHEV: IUC e condições (≤80 g CO₂/km, autonomia ≥50 km) dependem da versão. ':''}Estimativa informativa; não substitui aconselhamento fiscal.</p>
+       </div>
+
+       <div class="actions">
+         <button class="btn" onclick="toggleFav('${sid}')">${FAV.has(id)?'♥ Nos favoritos':'♡ Adicionar aos favoritos'}</button>
+         <button class="btn ghost" onclick="addCmp('${sid}')">+ Comparar</button>
+         <a class="btn ghost" style="text-decoration:none" href="${esc(quoteUrl(m))}" target="_blank" rel="noopener">Pedir Cotação ↗</a>
+         <a class="btn ghost" style="text-decoration:none" href="${esc(evdbUrl(m))}" target="_blank" rel="noopener">EV-Database ↗</a>
+       </div>
+       <p class="note">Favoritos ficam guardados neste browser — não há login.</p>
+       ${m.obs?`<p class="note"><b>Notas:</b> ${esc(m.obs)}</p>`:''}
+     </div>
+   </div>`;
+}
+
+/* ════════ CARREGAR DADOS ════════ */
+function mapModel(r){
+  const vs=Array.isArray(r['Variantes'])&&r['Variantes'].length?r['Variantes'].map(v=>({nome:v.nome,pvp:v.pvp,aut:v.autonomia_km||0,hp:v.hp||0,iva:v.iva_dedutivel,est:!!v.estimado})):null;
+  return {
+    id:r.Marca+'||'+r.Modelo, brand:r.Marca, name:r.Modelo, tipo:r.Tipo,
+    pvp:r['Preço desde (€ PVP)']||0, sem:r['Preço s/ IVA estimado (€)']||0,
+    aut:r['Autonomia elétrica (km)']||0, hp:r['Potência (cv)']||0,
+    body:r['Tipologia']||r['Carroçaria']||'', fotos:(r['Fotos']&&r['Fotos'].length?r['Fotos']:(r['Foto']?[r['Foto']]:[])),
+    ano:r['Ano']||0, kwh:r['Bateria útil (kWh)']||0, dc:r['Carga DC máx. (kW)']||0,
+    t1080:r['Tempo 10-80% DC (min)']||0, real:r['Autonomia real (km)']||0,
+    iva:r['IVA dedutível empresas?'], estimado:!!r['Preço estimado'],
+    link:r['Fonte Guia']||'', obs:r['Observações']||'', variantes:vs
+  };
+}
 async function loadData(){
-  document.getElementById('tbody').innerHTML=
-    '<tr><td colspan="8" style="text-align:center;padding:40px;color:var(--muted)">⏳ A carregar dados do Guia do Automóvel...</td></tr>';
   try{
     const res=await fetch('data.json?t='+Date.now());
     if(!res.ok)throw new Error('HTTP '+res.status);
-    const json=await res.json();
-    DATA=json.models||[];
-    if(json.updated){
-      const d=new Date(json.updated);
-      const label=d.toLocaleDateString('pt-PT',{day:'2-digit',month:'long',year:'numeric'});
-      document.querySelector('header p').textContent=
-        `Base consolidada · Guia do Automóvel · EV e PHEV · Actualizado em ${label}`;
-    }
-    renderTable();
-  }catch(err){
-    console.error('Erro:',err);
-    document.getElementById('tbody').innerHTML=
-      `<tr><td colspan="8" style="text-align:center;padding:40px;color:#dc2626">
-         ⚠ Erro ao carregar dados. <a href="" onclick="location.reload();return false">Tentar novamente</a>
-       </td></tr>`;
+    const j=await res.json();
+    META=j;DATA=j.models.map(mapModel);
+  }catch(e){
+    $('loading').className='errbox';
+    $('loading').innerHTML='<b>Não foi possível carregar os dados (data.json).</b><br>Abra a app pelo endereço <a href="https://mendreas.github.io/ev-portugal-arctic-frost/">mendreas.github.io/ev-portugal-arctic-frost</a>. Abrir o ficheiro diretamente do computador (file://) é bloqueado pelo browser.<br><small>'+esc(e.message)+'</small>';
+    return;
   }
+  $('loading').style.display='none';
+  const top=DATA.filter(m=>m.fotos.length).sort((a,b)=>b.pvp-a.pvp)[0];
+  if(top)$('hero-bg').style.backgroundImage=`url("${top.fotos[0]}")`;
+  const d=META.updated?new Date(META.updated).toLocaleDateString('pt-PT'):'—';
+  $('foot').innerHTML=`<b>${META.total} modelos</b> (${META.ev_count} EV · ${META.phev_count} PHEV) · dados atualizados a ${d}.<br>
+   Limites de IVA dedutível: EV ${eur(META.iva_limit_ev)} · PHEV ${eur(META.iva_limit_phev)} (s/ IVA). “★ Autonomia” = acima do limite mas com autonomia superior ao máximo dos elegíveis do mesmo tipo (critério da app).<br>
+   Preços: Guia do Automóvel (carros novos em stock) e preços de referência de mercado; “preço estimado” = referência sem stock novo. Bateria, carga DC e autonomia real: valores indicativos. Confirme sempre no representante.`;
+  saveFav();saveCmp();
+  route();
 }
-
 loadData();
 </script>
-
 </body>
 </html>
