@@ -222,7 +222,7 @@ def build_entry(marca, modelo, tipo, pvp, hp, carrocaria, fotos, ano, ov, spec) 
         "Carga DC máx. (kW)": spec.get("dc_kw", 0),
         "Tempo 10-80% DC (min)": spec.get("tempo_10_80_min", 0),
         "Autonomia real (km)": spec.get("autonomia_real_km", 0),
-        "Dados técnicos": "indicativo" if spec else "",
+        "Dados técnicos": spec.get("fonte", "indicativo") if spec else "",
         "IVA dedutível empresas?": "",
         "Representante PT": ov.get("representante_pt", ""),
         "Fonte Guia": ov.get("fonte_guia", ""),
