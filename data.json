@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-07T08:54:23Z",
+  "updated": "2026-10-07T09:10:06Z",
   "total": 111,
   "ev_count": 73,
   "phev_count": 38,
@@ -75,8 +75,10 @@
       "Autonomia elétrica (km)": 427,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/2021_BYD_Dolphin_EV_%28front%29.jpg/500px-2021_BYD_Dolphin_EV_%28front%29.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/2021_BYD_Dolphin_EV_%28front%29.jpg/500px-2021_BYD_Dolphin_EV_%28front%29.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 60.5,
       "Carga DC máx. (kW)": 0,
@@ -333,8 +335,10 @@
       "Autonomia elétrica (km)": 581,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/%C5%A0koda_Elroq_DSC_9260.jpg/500px-%C5%A0koda_Elroq_DSC_9260.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/%C5%A0koda_Elroq_DSC_9260.jpg/500px-%C5%A0koda_Elroq_DSC_9260.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 77,
       "Carga DC máx. (kW)": 0,
@@ -383,8 +387,10 @@
       "Autonomia elétrica (km)": 480,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Volvo_EX30_IMG_8923.jpg/500px-Volvo_EX30_IMG_8923.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Volvo_EX30_IMG_8923.jpg/500px-Volvo_EX30_IMG_8923.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 65,
       "Carga DC máx. (kW)": 0,
@@ -407,8 +413,10 @@
       "Autonomia elétrica (km)": 409,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Fiat_600_Hybrid_1.2_T3_Pop_%28III%29_%E2%80%93_f_24032026.jpg/500px-Fiat_600_Hybrid_1.2_T3_Pop_%28III%29_%E2%80%93_f_24032026.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Fiat_600_Hybrid_1.2_T3_Pop_%28III%29_%E2%80%93_f_24032026.jpg/500px-Fiat_600_Hybrid_1.2_T3_Pop_%28III%29_%E2%80%93_f_24032026.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 0,
       "Carga DC máx. (kW)": 0,
@@ -515,8 +523,10 @@
       "Autonomia elétrica (km)": 557,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/2020_Volkswagen_ID.3_1st_Front.jpg/500px-2020_Volkswagen_ID.3_1st_Front.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/2020_Volkswagen_ID.3_1st_Front.jpg/500px-2020_Volkswagen_ID.3_1st_Front.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 79,
       "Carga DC máx. (kW)": 0,
@@ -745,8 +755,10 @@
       "Autonomia elétrica (km)": 587,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/%C5%A0koda_Enyaq_IMG_1190.jpg/500px-%C5%A0koda_Enyaq_IMG_1190.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/%C5%A0koda_Enyaq_IMG_1190.jpg/500px-%C5%A0koda_Enyaq_IMG_1190.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 77,
       "Carga DC máx. (kW)": 0,
@@ -795,8 +807,10 @@
       "Autonomia elétrica (km)": 560,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/2025_Volkswagen_ID4_Pro_Redspot_front.jpg/500px-2025_Volkswagen_ID4_Pro_Redspot_front.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/2025_Volkswagen_ID4_Pro_Redspot_front.jpg/500px-2025_Volkswagen_ID4_Pro_Redspot_front.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 79,
       "Carga DC máx. (kW)": 0,
@@ -1023,8 +1037,10 @@
       "Autonomia elétrica (km)": 562,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/2021_Audi_Q4_e-tron_Sport_35.jpg/500px-2021_Audi_Q4_e-tron_Sport_35.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/2021_Audi_Q4_e-tron_Sport_35.jpg/500px-2021_Audi_Q4_e-tron_Sport_35.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 79,
       "Carga DC máx. (kW)": 0,
@@ -1213,8 +1229,10 @@
       "Autonomia elétrica (km)": 668,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Peugeot_5008_C_DSC_2949.jpg/500px-Peugeot_5008_C_DSC_2949.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Peugeot_5008_C_DSC_2949.jpg/500px-Peugeot_5008_C_DSC_2949.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 96.9,
       "Carga DC máx. (kW)": 0,
@@ -1237,8 +1255,10 @@
       "Autonomia elétrica (km)": 560,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Mercedes-Benz_H243_IMG_5876.jpg/500px-Mercedes-Benz_H243_IMG_5876.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Mercedes-Benz_H243_IMG_5876.jpg/500px-Mercedes-Benz_H243_IMG_5876.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 0,
       "Carga DC máx. (kW)": 0,
@@ -1469,8 +1489,10 @@
       "Autonomia elétrica (km)": 613,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/BMW_i4_IMG_6695.jpg/500px-BMW_i4_IMG_6695.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/BMW_i4_IMG_6695.jpg/500px-BMW_i4_IMG_6695.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 81.3,
       "Carga DC máx. (kW)": 0,
@@ -1493,8 +1515,10 @@
       "Autonomia elétrica (km)": 805,
       "Potência (cv)": 320,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/BMW_iX3_50_xDrive_M_Sportpaket_Pro_%28NA5%29_%E2%80%93_f_17052026.jpg/500px-BMW_iX3_50_xDrive_M_Sportpaket_Pro_%28NA5%29_%E2%80%93_f_17052026.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/BMW_iX3_50_xDrive_M_Sportpaket_Pro_%28NA5%29_%E2%80%93_f_17052026.jpg/500px-BMW_iX3_50_xDrive_M_Sportpaket_Pro_%28NA5%29_%E2%80%93_f_17052026.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 108.7,
       "Carga DC máx. (kW)": 0,
@@ -1696,8 +1720,10 @@
       "Autonomia elétrica (km)": 688,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Mercedes-Benz_V295_350%2B_Classic-Days_2022_DSC_0018.jpg/500px-Mercedes-Benz_V295_350%2B_Classic-Days_2022_DSC_0018.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Mercedes-Benz_V295_350%2B_Classic-Days_2022_DSC_0018.jpg/500px-Mercedes-Benz_V295_350%2B_Classic-Days_2022_DSC_0018.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 96,
       "Carga DC máx. (kW)": 0,
@@ -1928,8 +1954,10 @@
       "Autonomia elétrica (km)": 701,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/BMW_iX_IAA_2021_1X7A0204.jpg/500px-BMW_iX_IAA_2021_1X7A0204.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/BMW_iX_IAA_2021_1X7A0204.jpg/500px-BMW_iX_IAA_2021_1X7A0204.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 109.1,
       "Carga DC máx. (kW)": 0,
@@ -1952,8 +1980,10 @@
       "Autonomia elétrica (km)": 678,
       "Potência (cv)": 0,
       "Carroçaria": "",
-      "Foto": "",
-      "Fotos": [],
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/2020_Porsche_Taycan_4S_79kWh_Front.jpg/500px-2020_Porsche_Taycan_4S_79kWh_Front.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/2020_Porsche_Taycan_4S_79kWh_Front.jpg/500px-2020_Porsche_Taycan_4S_79kWh_Front.jpg"
+      ],
       "Ano": 0,
       "Bateria útil (kWh)": 97,
       "Carga DC máx. (kW)": 0,
