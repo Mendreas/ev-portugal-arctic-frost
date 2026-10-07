@@ -322,7 +322,8 @@ footer{max-width:1400px;margin:0 auto;padding:0 24px 40px;font-size:12px;color:v
           <button class="btn ghost sm mobile-only" onclick="document.getElementById('side').classList.toggle('open')">☰ Filtros</button>
           <div class="count" id="g-count"></div>
           <select id="g-sort" onchange="setF('sort',this.value)">
-            <option value="aut">Maior Autonomia</option>
+            <option value="aut">Maior Autonomia (WLTP)</option>
+            <option value="real">Maior Autonomia Real</option>
             <option value="preco">Menor Preço</option>
             <option value="recente">Mais Recentes</option>
           </select>
@@ -442,6 +443,7 @@ function matches(m){
 function sorted(list){
   const a=[...list];
   if(F.sort==='preco')a.sort((x,y)=>x.pvp-y.pvp);
+  else if(F.sort==='real')a.sort((x,y)=>(y.real||0)-(x.real||0)||(y.aut||0)-(x.aut||0));
   else if(F.sort==='recente')a.sort((x,y)=>(y.ano||0)-(x.ano||0)||y.aut-x.aut);
   else a.sort((x,y)=>(y.aut||0)-(x.aut||0)||x.pvp-y.pvp);
   return a;
@@ -599,7 +601,7 @@ function renderComparar(){
    ${row('Tributação autónoma (empresa)',null,m=>escalaoLbl(m.tipo,m.pvp,m.iva==='Parcial'?'Sim':m.iva))}
    ${grp('Autonomia e bateria')}
    ${row('Autonomia WLTP',m=>m.aut,m=>num(m.aut,'km'),best(m=>m.aut))}
-   ${row('Autonomia real (indicativa)',m=>m.real,m=>num(m.real,'km'),best(m=>m.real))}
+   ${row('Autonomia real (EV-Database)',m=>m.real,m=>num(m.real,'km'),best(m=>m.real))}
    ${row('Bateria útil',m=>m.kwh,m=>num(m.kwh,'kWh'),best(m=>m.kwh))}
    ${grp('Carregamento rápido DC')}
    ${row('Tempo 10–80%',m=>m.t1080,m=>num(m.t1080,'min'),best(m=>m.t1080,true))}
@@ -607,7 +609,7 @@ function renderComparar(){
    ${grp('Ligações')}
    <tr><th class="row">Ações</th>${ms.map(m=>`<td><a class="btn sm" style="display:inline-block;text-decoration:none;margin-bottom:6px" href="${esc(evdbUrl(m))}" target="_blank" rel="noopener">Ver no EV-Database</a><br><a class="btn ghost sm" style="display:inline-block;text-decoration:none" href="${esc(quoteUrl(m))}" target="_blank" rel="noopener">Pedir Cotação</a></td>`).join('')}</tr>
   </table></div>
-  <p class="note">“—” = sem dado. Bateria, carga DC e autonomia real são valores indicativos (EV-Database/fabricante) e só existem para alguns modelos. A verde: melhor valor da linha.</p>`;
+  <p class="note">“—” = sem dado. Autonomia real e bateria útil: EV-Database (versão de topo de cada modelo). Carga DC e tempo 10–80% são valores indicativos. A verde: melhor valor da linha.</p>`;
   $('cmp-table').innerHTML=t;
 }
 function openAddModal(){
@@ -703,7 +705,7 @@ function renderDetalhe(id){
        <div class="gallery-main" id="gal-main">${photoBox({...m,fotos:gal},SIM.img)}</div>
        ${gal.length>1?`<div class="thumbs">${gal.map((u,i)=>`<div class="thumb ${i===SIM.img?'on':''}" onclick="SIM.img=${i};renderDetalhe('${sid}')"><img src="${esc(u)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></div>`).join('')}</div>`:''}
        <div class="panel"><h3>Desempenho</h3><div class="rings">${rings}</div>
-         <p class="note">Autonomia WLTP, real, carga DC e tempo 10–80% são valores indicativos e só existem para alguns modelos (“—” = sem dado). Os consumos por cidade, autoestrada, inverno e verão ainda não estão na base — consulte o <a href="${esc(evdbUrl(m))}" target="_blank" rel="noopener">EV-Database ↗</a>.</p></div>
+         <p class="note">Autonomia real e bateria: EV-Database (clima ameno, versão de topo). Carga DC e tempo 10–80%: valores indicativos, só para alguns modelos (“—” = sem dado). Os consumos por cidade, autoestrada, inverno e verão ainda não estão na base — consulte o <a href="${esc(evdbUrl(m))}" target="_blank" rel="noopener">EV-Database ↗</a>.</p></div>
      </div>
      <div>
        <div style="display:flex;gap:8px;margin-bottom:8px"><span class="badge ${m.tipo==='EV'?'badge-ev':'badge-phev'}">${m.tipo}</span>${m.estimado?'<span class="badge badge-est">preço estimado</span>':''}</div>
@@ -779,7 +781,7 @@ async function loadData(){
   const d=META.updated?new Date(META.updated).toLocaleDateString('pt-PT'):'—';
   $('foot').innerHTML=`<b>${META.total} modelos</b> (${META.ev_count} EV · ${META.phev_count} PHEV) · dados atualizados a ${d}.<br>
    Limites de IVA dedutível: EV ${eur(META.iva_limit_ev)} · PHEV ${eur(META.iva_limit_phev)} (s/ IVA). “★ Autonomia” = acima do limite mas com autonomia superior ao máximo dos elegíveis do mesmo tipo (critério da app).<br>
-   Preços: Guia do Automóvel (carros novos em stock) e preços de referência de mercado; “preço estimado” = referência sem stock novo. Bateria, carga DC e autonomia real: valores indicativos. Confirme sempre no representante.`;
+   Preços: Guia do Automóvel (carros novos em stock) e preços de referência de mercado; “preço estimado” = referência sem stock novo. Autonomia real e bateria útil: EV-Database; carga DC: valores indicativos. Confirme sempre no representante.`;
   saveFav();saveCmp();
   route();
 }

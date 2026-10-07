@@ -1,21 +1,351 @@
 {
- "Renault||5 E-Tech Electric": {"bateria_kwh": 52, "dc_kw": 100, "tempo_10_80_min": 30, "autonomia_real_km": 300},
- "Hyundai||IONIQ 5": {"bateria_kwh": 84, "dc_kw": 350, "tempo_10_80_min": 18, "autonomia_real_km": 400},
- "Hyundai||IONIQ 6": {"bateria_kwh": 77, "dc_kw": 350, "tempo_10_80_min": 18, "autonomia_real_km": 435},
- "Hyundai||IONIQ 9": {"bateria_kwh": 110, "dc_kw": 350, "tempo_10_80_min": 24},
- "Kia||EV6": {"bateria_kwh": 84, "dc_kw": 258, "tempo_10_80_min": 18, "autonomia_real_km": 420},
- "Kia||EV9": {"bateria_kwh": 99, "dc_kw": 210, "tempo_10_80_min": 24, "autonomia_real_km": 425},
- "Kia||EV3": {"bateria_kwh": 81, "dc_kw": 128, "tempo_10_80_min": 31, "autonomia_real_km": 435},
- "Volkswagen||ID.7": {"bateria_kwh": 86, "dc_kw": 200, "tempo_10_80_min": 26, "autonomia_real_km": 470},
- "Peugeot||E-208": {"bateria_kwh": 48, "dc_kw": 100, "tempo_10_80_min": 27, "autonomia_real_km": 290},
- "Peugeot||E-2008": {"bateria_kwh": 48, "dc_kw": 100, "tempo_10_80_min": 27, "autonomia_real_km": 270},
- "BYD||Atto 3": {"bateria_kwh": 60, "dc_kw": 88, "autonomia_real_km": 330},
- "MG||MG4 Electric": {"bateria_kwh": 64, "dc_kw": 140, "tempo_10_80_min": 26, "autonomia_real_km": 340},
- "Volvo||EX90": {"bateria_kwh": 107, "dc_kw": 250, "tempo_10_80_min": 28, "autonomia_real_km": 480},
- "Porsche||Macan Electric": {"bateria_kwh": 95, "dc_kw": 270, "tempo_10_80_min": 21, "autonomia_real_km": 470},
- "Audi||Q6 e-tron": {"bateria_kwh": 94, "dc_kw": 270, "tempo_10_80_min": 21, "autonomia_real_km": 490},
- "Tesla||Model Y": {"bateria_kwh": 75, "dc_kw": 250, "tempo_10_80_min": 27, "autonomia_real_km": 440},
- "Tesla||Model 3": {"bateria_kwh": 75, "dc_kw": 250, "tempo_10_80_min": 25, "autonomia_real_km": 480},
- "Smart||#3": {"bateria_kwh": 62, "dc_kw": 150, "tempo_10_80_min": 26, "autonomia_real_km": 340},
- "Polestar||Polestar 3": {"bateria_kwh": 107, "dc_kw": 250, "tempo_10_80_min": 28, "autonomia_real_km": 430}
+ "Renault||5 E-Tech Electric": {
+  "bateria_kwh": 52,
+  "dc_kw": 100,
+  "tempo_10_80_min": 30,
+  "autonomia_real_km": 345,
+  "fonte": "EV-Database"
+ },
+ "Hyundai||IONIQ 5": {
+  "bateria_kwh": 80,
+  "dc_kw": 350,
+  "tempo_10_80_min": 18,
+  "autonomia_real_km": 450,
+  "fonte": "EV-Database"
+ },
+ "Hyundai||IONIQ 6": {
+  "bateria_kwh": 80,
+  "dc_kw": 350,
+  "tempo_10_80_min": 18,
+  "autonomia_real_km": 545,
+  "fonte": "EV-Database"
+ },
+ "Hyundai||IONIQ 9": {
+  "bateria_kwh": 106,
+  "dc_kw": 350,
+  "tempo_10_80_min": 24,
+  "autonomia_real_km": 505,
+  "fonte": "EV-Database"
+ },
+ "Kia||EV6": {
+  "bateria_kwh": 80,
+  "dc_kw": 258,
+  "tempo_10_80_min": 18,
+  "autonomia_real_km": 455,
+  "fonte": "EV-Database"
+ },
+ "Kia||EV9": {
+  "bateria_kwh": 96,
+  "dc_kw": 210,
+  "tempo_10_80_min": 24,
+  "autonomia_real_km": 450,
+  "fonte": "EV-Database"
+ },
+ "Kia||EV3": {
+  "bateria_kwh": 78,
+  "dc_kw": 128,
+  "tempo_10_80_min": 31,
+  "autonomia_real_km": 455,
+  "fonte": "EV-Database"
+ },
+ "Volkswagen||ID.7": {
+  "bateria_kwh": 86,
+  "dc_kw": 200,
+  "tempo_10_80_min": 26,
+  "autonomia_real_km": 525,
+  "fonte": "EV-Database"
+ },
+ "Peugeot||E-208": {
+  "bateria_kwh": 48,
+  "dc_kw": 100,
+  "tempo_10_80_min": 27,
+  "autonomia_real_km": 335,
+  "fonte": "EV-Database"
+ },
+ "Peugeot||E-2008": {
+  "bateria_kwh": 48,
+  "dc_kw": 100,
+  "tempo_10_80_min": 27,
+  "autonomia_real_km": 300,
+  "fonte": "EV-Database"
+ },
+ "BYD||Atto 3": {
+  "bateria_kwh": 74.8,
+  "dc_kw": 88,
+  "autonomia_real_km": 405,
+  "fonte": "EV-Database"
+ },
+ "MG||MG4 Electric": {
+  "bateria_kwh": 74.4,
+  "dc_kw": 140,
+  "tempo_10_80_min": 26,
+  "autonomia_real_km": 435,
+  "fonte": "EV-Database"
+ },
+ "Volvo||EX90": {
+  "bateria_kwh": 102,
+  "dc_kw": 250,
+  "tempo_10_80_min": 28,
+  "autonomia_real_km": 480,
+  "fonte": "EV-Database"
+ },
+ "Porsche||Macan Electric": {
+  "bateria_kwh": 94.9,
+  "dc_kw": 270,
+  "tempo_10_80_min": 21,
+  "autonomia_real_km": 495,
+  "fonte": "EV-Database"
+ },
+ "Audi||Q6 e-tron": {
+  "bateria_kwh": 94.9,
+  "dc_kw": 270,
+  "tempo_10_80_min": 21,
+  "autonomia_real_km": 510,
+  "fonte": "EV-Database"
+ },
+ "Tesla||Model Y": {
+  "bateria_kwh": 79,
+  "dc_kw": 250,
+  "tempo_10_80_min": 27,
+  "autonomia_real_km": 475,
+  "fonte": "EV-Database"
+ },
+ "Tesla||Model 3": {
+  "bateria_kwh": 79,
+  "dc_kw": 250,
+  "tempo_10_80_min": 25,
+  "autonomia_real_km": 580,
+  "fonte": "EV-Database"
+ },
+ "Smart||#3": {
+  "bateria_kwh": 62,
+  "dc_kw": 150,
+  "tempo_10_80_min": 26,
+  "autonomia_real_km": 355,
+  "fonte": "EV-Database"
+ },
+ "Polestar||Polestar 3": {
+  "bateria_kwh": 102,
+  "dc_kw": 250,
+  "tempo_10_80_min": 28,
+  "autonomia_real_km": 495,
+  "fonte": "EV-Database"
+ },
+ "BYD||Dolphin": {
+  "autonomia_real_km": 350,
+  "bateria_kwh": 60.5,
+  "fonte": "EV-Database"
+ },
+ "Hyundai||Inster": {
+  "autonomia_real_km": 300,
+  "fonte": "EV-Database"
+ },
+ "Leapmotor||B10": {
+  "autonomia_real_km": 360,
+  "bateria_kwh": 65,
+  "fonte": "EV-Database"
+ },
+ "Kia||EV2": {
+  "autonomia_real_km": 360,
+  "fonte": "EV-Database"
+ },
+ "Renault||4 E-Tech Electric": {
+  "autonomia_real_km": 315,
+  "fonte": "EV-Database"
+ },
+ "Skoda||Elroq": {
+  "autonomia_real_km": 450,
+  "bateria_kwh": 77,
+  "fonte": "EV-Database"
+ },
+ "Fiat||600e": {
+  "autonomia_real_km": 310,
+  "fonte": "EV-Database"
+ },
+ "Volvo||EX30": {
+  "autonomia_real_km": 365,
+  "bateria_kwh": 65,
+  "fonte": "EV-Database"
+ },
+ "Leapmotor||C10": {
+  "autonomia_real_km": 410,
+  "bateria_kwh": 81.9,
+  "fonte": "EV-Database"
+ },
+ "Volkswagen||ID.3": {
+  "autonomia_real_km": 490,
+  "bateria_kwh": 79,
+  "fonte": "EV-Database"
+ },
+ "DS||DS 3 E-Tense": {
+  "autonomia_real_km": 300,
+  "fonte": "EV-Database"
+ },
+ "Smart||#1": {
+  "autonomia_real_km": 335,
+  "bateria_kwh": 62,
+  "fonte": "EV-Database"
+ },
+ "Kia||EV4": {
+  "autonomia_real_km": 510,
+  "bateria_kwh": 78,
+  "fonte": "EV-Database"
+ },
+ "Kia||EV5": {
+  "autonomia_real_km": 410,
+  "bateria_kwh": 78,
+  "fonte": "EV-Database"
+ },
+ "Skoda||Enyaq": {
+  "autonomia_real_km": 470,
+  "bateria_kwh": 77,
+  "fonte": "EV-Database"
+ },
+ "Volkswagen||ID.4": {
+  "autonomia_real_km": 460,
+  "bateria_kwh": 79,
+  "fonte": "EV-Database"
+ },
+ "Volkswagen||ID.5": {
+  "autonomia_real_km": 465,
+  "bateria_kwh": 79,
+  "fonte": "EV-Database"
+ },
+ "Volkswagen||ID. Buzz": {
+  "autonomia_real_km": 390,
+  "bateria_kwh": 86,
+  "fonte": "EV-Database"
+ },
+ "Peugeot||E-408": {
+  "autonomia_real_km": 345,
+  "bateria_kwh": 58.3,
+  "fonte": "EV-Database"
+ },
+ "Peugeot||E-3008": {
+  "autonomia_real_km": 500,
+  "bateria_kwh": 96.9,
+  "fonte": "EV-Database"
+ },
+ "Peugeot||E-5008": {
+  "autonomia_real_km": 485,
+  "bateria_kwh": 96.9,
+  "fonte": "EV-Database"
+ },
+ "Citroën||ë-C4": {
+  "autonomia_real_km": 325,
+  "fonte": "EV-Database"
+ },
+ "Citroën||ë-C4 X": {
+  "autonomia_real_km": 335,
+  "fonte": "EV-Database"
+ },
+ "BYD||Seal U": {
+  "autonomia_real_km": 425,
+  "bateria_kwh": 87,
+  "fonte": "EV-Database"
+ },
+ "BYD||Seal": {
+  "autonomia_real_km": 480,
+  "bateria_kwh": 82.5,
+  "fonte": "EV-Database"
+ },
+ "BYD||Sealion 7": {
+  "autonomia_real_km": 440,
+  "bateria_kwh": 91.3,
+  "fonte": "EV-Database"
+ },
+ "BYD||Tang": {
+  "autonomia_real_km": 460,
+  "bateria_kwh": 108.8,
+  "fonte": "EV-Database"
+ },
+ "Volvo||EX40": {
+  "autonomia_real_km": 400,
+  "bateria_kwh": 79,
+  "fonte": "EV-Database"
+ },
+ "Volvo||EC40": {
+  "autonomia_real_km": 420,
+  "bateria_kwh": 79,
+  "fonte": "EV-Database"
+ },
+ "Volvo||EX60": {
+  "autonomia_real_km": 610,
+  "bateria_kwh": 112,
+  "fonte": "EV-Database"
+ },
+ "Volvo||ES90": {
+  "autonomia_real_km": 560,
+  "bateria_kwh": 102,
+  "fonte": "EV-Database"
+ },
+ "Audi||Q4 e-tron": {
+  "autonomia_real_km": 455,
+  "bateria_kwh": 79,
+  "fonte": "EV-Database"
+ },
+ "Audi||A6 e-tron": {
+  "autonomia_real_km": 600,
+  "bateria_kwh": 94.9,
+  "fonte": "EV-Database"
+ },
+ "BMW||iX1": {
+  "autonomia_real_km": 400,
+  "bateria_kwh": 65.2,
+  "fonte": "EV-Database"
+ },
+ "BMW||i4": {
+  "autonomia_real_km": 525,
+  "bateria_kwh": 81.3,
+  "fonte": "EV-Database"
+ },
+ "BMW||iX3": {
+  "autonomia_real_km": 645,
+  "bateria_kwh": 108.7,
+  "fonte": "EV-Database"
+ },
+ "BMW||iX": {
+  "autonomia_real_km": 525,
+  "bateria_kwh": 109.1,
+  "fonte": "EV-Database"
+ },
+ "Mercedes-Benz||CLA com tecnologia EQ": {
+  "autonomia_real_km": 585,
+  "bateria_kwh": 85,
+  "fonte": "EV-Database"
+ },
+ "Mercedes-Benz||EQE": {
+  "autonomia_real_km": 555,
+  "bateria_kwh": 96,
+  "fonte": "EV-Database"
+ },
+ "Opel||Grandland Electric": {
+  "autonomia_real_km": 495,
+  "bateria_kwh": 96.9,
+  "fonte": "EV-Database"
+ },
+ "DS||Nº8": {
+  "autonomia_real_km": 545,
+  "bateria_kwh": 97.2,
+  "fonte": "EV-Database"
+ },
+ "MG||Cyberster": {
+  "autonomia_real_km": 425,
+  "bateria_kwh": 74.4,
+  "fonte": "EV-Database"
+ },
+ "Porsche||Taycan": {
+  "autonomia_real_km": 575,
+  "bateria_kwh": 97,
+  "fonte": "EV-Database"
+ },
+ "Hyundai||Kauai Electric": {
+  "autonomia_real_km": 390,
+  "bateria_kwh": 65.4,
+  "fonte": "EV-Database"
+ },
+ "Citroën||ë-SpaceTourer": {
+  "bateria_kwh": 69,
+  "fonte": "EV-Database"
+ }
 }
