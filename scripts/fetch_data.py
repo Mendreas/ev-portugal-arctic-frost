@@ -282,7 +282,8 @@ def main():
         key = norm(m["Marca"]) + "|" + norm(m["Modelo"])
         if key not in base:
             base[key] = {"Marca": m["Marca"], "Modelo": m["Modelo"], "Tipo": m["Tipo"],
-                         "pvp": m["pvp_estimado"], "hp": 0, "carrocaria": "", "fotos": [], "ano": 0,
+                         "pvp": m["pvp_estimado"], "hp": 0, "carrocaria": "",
+                         "fotos": [m["Foto"]] if m.get("Foto") else [], "ano": 0,
                          "preco_estimado": True, "tipologia": m.get("Tipologia", "")}
 
     # 2) API enriquece (preço real, fotos reais) ou acrescenta modelos novos
