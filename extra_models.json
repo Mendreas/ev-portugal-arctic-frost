@@ -1,0 +1,135 @@
+[
+ {
+  "Marca": "BMW",
+  "Modelo": "iX",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 92000
+ },
+ {
+  "Marca": "Mercedes-Benz",
+  "Modelo": "EQE",
+  "Tipo": "EV",
+  "Tipologia": "Sedan",
+  "pvp_estimado": 72000
+ },
+ {
+  "Marca": "Porsche",
+  "Modelo": "Taycan",
+  "Tipo": "EV",
+  "Tipologia": "Sedan",
+  "pvp_estimado": 105000
+ },
+ {
+  "Marca": "Peugeot",
+  "Modelo": "E-5008",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 51000
+ },
+ {
+  "Marca": "BMW",
+  "Modelo": "i4",
+  "Tipo": "EV",
+  "Tipologia": "Sedan",
+  "pvp_estimado": 60000
+ },
+ {
+  "Marca": "Skoda",
+  "Modelo": "Enyaq",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 42000
+ },
+ {
+  "Marca": "Skoda",
+  "Modelo": "Elroq",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 35000
+ },
+ {
+  "Marca": "Volvo",
+  "Modelo": "EX40",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 47000
+ },
+ {
+  "Marca": "Audi",
+  "Modelo": "Q4 e-tron",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 47000
+ },
+ {
+  "Marca": "Mercedes-Benz",
+  "Modelo": "EQA",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 51000
+ },
+ {
+  "Marca": "Volkswagen",
+  "Modelo": "ID.4",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 43000
+ },
+ {
+  "Marca": "Volkswagen",
+  "Modelo": "ID.3",
+  "Tipo": "EV",
+  "Tipologia": "Citadino",
+  "pvp_estimado": 37000
+ },
+ {
+  "Marca": "Volkswagen",
+  "Modelo": "ID.5",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 50000
+ },
+ {
+  "Marca": "Volvo",
+  "Modelo": "EX30",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 36000
+ },
+ {
+  "Marca": "Smart",
+  "Modelo": "#1",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 38000
+ },
+ {
+  "Marca": "BYD",
+  "Modelo": "Dolphin",
+  "Tipo": "EV",
+  "Tipologia": "Citadino",
+  "pvp_estimado": 30000
+ },
+ {
+  "Marca": "Fiat",
+  "Modelo": "600e",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 36000
+ },
+ {
+  "Marca": "MG",
+  "Modelo": "Marvel R",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 45000
+ },
+ {
+  "Marca": "BMW",
+  "Modelo": "iX3",
+  "Tipo": "EV",
+  "Tipologia": "SUV",
+  "pvp_estimado": 65000
+ }
+]
