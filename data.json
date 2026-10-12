@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-07T09:10:06Z",
+  "updated": "2026-10-12T14:21:49Z",
   "total": 111,
   "ev_count": 73,
   "phev_count": 38,
@@ -979,32 +979,6 @@
       "Tipologia": "SUV"
     },
     {
-      "Marca": "BYD",
-      "Modelo": "Seal U",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 45997.3,
-      "Preço s/ IVA estimado (€)": 37396.18,
-      "Autonomia elétrica (km)": 500,
-      "Potência (cv)": 218,
-      "Carroçaria": "",
-      "Foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/2023_BYD_Song_Plus_DM-i_%28front%29.jpg/3840px-2023_BYD_Song_Plus_DM-i_%28front%29.jpg",
-      "Fotos": [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/2023_BYD_Song_Plus_DM-i_%28front%29.jpg/3840px-2023_BYD_Song_Plus_DM-i_%28front%29.jpg"
-      ],
-      "Ano": 0,
-      "Bateria útil (kWh)": 87,
-      "Carga DC máx. (kW)": 0,
-      "Tempo 10-80% DC (min)": 0,
-      "Autonomia real (km)": 425,
-      "Dados técnicos": "EV-Database",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "https://www.bydauto.pt/modelos/byd-seal-u",
-      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/byd/seal-u/precos",
-      "Observações": "Guia lista 420/500 km e preço desde 45.997,30€.",
-      "Preço estimado": false,
-      "Tipologia": "SUV"
-    },
-    {
       "Marca": "Volvo",
       "Modelo": "EX40",
       "Tipo": "EV",
@@ -1056,6 +1030,33 @@
     },
     {
       "Marca": "BYD",
+      "Modelo": "Seal U",
+      "Tipo": "EV",
+      "Preço desde (€ PVP)": 47925.0,
+      "Preço s/ IVA estimado (€)": 38963.41,
+      "Autonomia elétrica (km)": 500,
+      "Potência (cv)": 218,
+      "Carroçaria": "SUV",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/760224/large/large_API_NCAUTO_17885412614460-6.webp",
+      "Fotos": [
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/760224/large/large_API_NCAUTO_17885412614460-6.webp",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/2023_BYD_Song_Plus_DM-i_%28front%29.jpg/3840px-2023_BYD_Song_Plus_DM-i_%28front%29.jpg"
+      ],
+      "Ano": 2026,
+      "Bateria útil (kWh)": 87,
+      "Carga DC máx. (kW)": 0,
+      "Tempo 10-80% DC (min)": 0,
+      "Autonomia real (km)": 425,
+      "Dados técnicos": "EV-Database",
+      "IVA dedutível empresas?": "Sim",
+      "Representante PT": "https://www.bydauto.pt/modelos/byd-seal-u",
+      "Fonte Guia": "https://www.guiadoautomovel.pt/marcas/byd/seal-u/precos",
+      "Observações": "Guia lista 420/500 km e preço desde 45.997,30€.",
+      "Preço estimado": false,
+      "Tipologia": "SUV"
+    },
+    {
+      "Marca": "BYD",
       "Modelo": "Seal",
       "Tipo": "EV",
       "Preço desde (€ PVP)": 47925.0,
@@ -1063,14 +1064,14 @@
       "Autonomia elétrica (km)": 570,
       "Potência (cv)": 313,
       "Carroçaria": "Sedan",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752047/large/large_API_NCAUTO_17889652279030-6.webp",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752055/large/large_API_NCAUTO_17889648499890-6.webp",
       "Fotos": [
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752047/large/large_API_NCAUTO_17889652279030-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752052/large/large_API_NCAUTO_17889652278870-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752056/large/large_API_NCAUTO_17889652278960-6.webp",
         "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752055/large/large_API_NCAUTO_17889648499890-6.webp",
         "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752059/large/large_API_NCAUTO_17889648501740-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752064/large/large_API_NCAUTO_17889648502150-6.webp"
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752064/large/large_API_NCAUTO_17889648502150-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752047/large/large_API_NCAUTO_17889652279030-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752052/large/large_API_NCAUTO_17889652278870-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752056/large/large_API_NCAUTO_17889652278960-6.webp"
       ],
       "Ano": 2026,
       "Bateria útil (kWh)": 82.5,
@@ -1102,8 +1103,8 @@
         "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757082/large/large_API_NCAUTO_17900097855330-6.webp",
         "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757087/large/large_API_NCAUTO_17900097855230-6.webp",
         "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757088/large/large_API_NCAUTO_17900097853320-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757083/large/large_API_NCAUTO_17900089250240-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757085/large/large_API_NCAUTO_17900089249500-6.webp"
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/751801/large/large_API_NCAUTO_17900068440730-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/751805/large/large_API_NCAUTO_17900068439400-6.webp"
       ],
       "Ano": 2026,
       "Bateria útil (kWh)": 91.3,
