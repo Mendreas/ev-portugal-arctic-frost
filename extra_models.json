@@ -146,5 +146,14 @@
   "Tipologia": "SUV",
   "pvp_estimado": 65000,
   "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/BMW_iX3_50_xDrive_M_Sportpaket_Pro_%28NA5%29_%E2%80%93_f_17052026.jpg/500px-BMW_iX3_50_xDrive_M_Sportpaket_Pro_%28NA5%29_%E2%80%93_f_17052026.jpg"
+ },
+ {
+  "Marca": "Volkswagen",
+  "Modelo": "ID. Polo",
+  "Tipo": "EV",
+  "Tipologia": "Citadino",
+  "pvp_estimado": 24700,
+  "preco_confirmado": true,
+  "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Volkswagen_ID.Polo_IMG_8361.jpg/500px-Volkswagen_ID.Polo_IMG_8361.jpg"
  }
 ]

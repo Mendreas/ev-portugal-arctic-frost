@@ -729,5 +729,11 @@
   "fonte_guia": "https://www.guiadoautomovel.pt/marcas/bmw/ix3/review",
   "representante_pt": "https://www.bmw.pt/pt/all-models/x-series/ix3/bmw-ix3.html",
   "observacoes": "iX3 40 (RWD) ainda sem preço oficial confirmado para Portugal — estimativa baseada no posicionamento acima do iX3 50 na Alemanha/França. iX3 50 xDrive tem preço de lista de €72.900, mas existem campanhas para empresas a partir de ~€56.133+IVA (verificar junto do concessionário). Ambas as versões ficam acima do limite de €62.500 s/IVA ao preço de lista."
+ },
+ "Volkswagen||ID. Polo": {
+  "autonomia_km": 455,
+  "fonte_guia": "https://4gnews.pt/oficial-volkswagen-lanca-novo-carro-eletrico-e-ja-podes-comprar-em-portugal/",
+  "representante_pt": "Volkswagen Portugal",
+  "observacoes": "Lançado em Portugal em maio de 2026, desde 24.700 €. Baterias de 37 e 52 kWh; WLTP até 455 km (versão não especificada na fonte). O preço é o da versão de entrada."
  }
 }

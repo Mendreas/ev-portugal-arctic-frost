@@ -1,13 +1,39 @@
 {
-  "updated": "2026-10-19T12:03:13Z",
-  "total": 111,
-  "ev_count": 73,
+  "updated": "2026-10-19T08:07:05Z",
+  "total": 112,
+  "ev_count": 74,
   "phev_count": 38,
   "iva_limit_ev": 62500,
   "iva_limit_phev": 50000,
   "max_aut_ev_elegivel": 805,
   "max_aut_phev_elegivel": 145,
   "models": [
+    {
+      "Marca": "Volkswagen",
+      "Modelo": "ID. Polo",
+      "Tipo": "EV",
+      "Preço desde (€ PVP)": 24700,
+      "Preço s/ IVA estimado (€)": 20081.3,
+      "Autonomia elétrica (km)": 455,
+      "Potência (cv)": 0,
+      "Carroçaria": "",
+      "Foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Volkswagen_ID.Polo_IMG_8361.jpg/500px-Volkswagen_ID.Polo_IMG_8361.jpg",
+      "Fotos": [
+        "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Volkswagen_ID.Polo_IMG_8361.jpg/500px-Volkswagen_ID.Polo_IMG_8361.jpg"
+      ],
+      "Ano": 2026,
+      "Bateria útil (kWh)": 0,
+      "Carga DC máx. (kW)": 0,
+      "Tempo 10-80% DC (min)": 0,
+      "Autonomia real (km)": 335,
+      "Dados técnicos": "EV-Database",
+      "IVA dedutível empresas?": "Sim",
+      "Representante PT": "Volkswagen Portugal",
+      "Fonte Guia": "https://4gnews.pt/oficial-volkswagen-lanca-novo-carro-eletrico-e-ja-podes-comprar-em-portugal/",
+      "Observações": "Lançado em Portugal em maio de 2026, desde 24.700 €. Baterias de 37 e 52 kWh; WLTP até 455 km (versão não especificada na fonte). O preço é o da versão de entrada.",
+      "Preço estimado": false,
+      "Tipologia": "Citadino"
+    },
     {
       "Marca": "Peugeot",
       "Modelo": "E-2008",

@@ -347,5 +347,10 @@
  "Citroën||ë-SpaceTourer": {
   "bateria_kwh": 69,
   "fonte": "EV-Database"
+ },
+ "Volkswagen||ID. Polo": {
+  "autonomia_real_km": 335,
+  "ano": 2026,
+  "fonte": "EV-Database"
  }
 }
