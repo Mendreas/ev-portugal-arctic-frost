@@ -677,6 +677,7 @@ function renderDetalhe(id){
   const v=vs?vs[Math.min(SIM.vi,vs.length-1)]:null;
   const pvp=v?v.pvp:m.pvp, sem=pvp/1.23, st=v?v.iva:m.iva;
   const aut=v?v.aut:m.aut;
+  const real=v?(v.real||0):m.real, kwh=v?(v.kwh||0):m.kwh;
   const emp=SIM.buyer==='empresa';
   const sid=esc(id).replace(/'/g,"\\'");
 
@@ -694,8 +695,8 @@ function renderDetalhe(id){
   const rings=(()=>{
     const mk=(lbl,val,max,unit,na)=>{const C=2*Math.PI*45,p=val?Math.min(val/max,1):0;
       return `<div class="ring"><div class="ring-wrap"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="45"/>${val?`<circle class="fg" cx="50" cy="50" r="45" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-p)}"/>`:''}</svg><div class="ring-val">${val?Math.round(val)+`<small>${unit}</small>`:'—'}</div></div><div class="ring-lbl">${lbl}</div></div>`};
-    const ratio=m.real&&aut?Math.round(m.real/aut*100):0;
-    return mk('Autonomia WLTP',aut,m.tipo==='EV'?800:150,'km')+mk('Autonomia real',m.real,m.tipo==='EV'?800:150,'km')+mk('Real vs WLTP',ratio,100,'%')+mk('Carga DC',m.dc,350,'kW')+mk('10–80% DC',m.t1080?Math.max(0,60-m.t1080):0,60,'min',0).replace(/>(\d+)<small>min/,(a,b)=>'>'+m.t1080+'<small>min');
+    const ratio=real&&aut?Math.round(real/aut*100):0;
+    return mk('Autonomia WLTP',aut,m.tipo==='EV'?800:150,'km')+mk('Autonomia real',real,m.tipo==='EV'?800:150,'km')+mk('Real vs WLTP',ratio,100,'%')+mk('Carga DC',m.dc,350,'kW')+mk('10–80% DC',m.t1080?Math.max(0,60-m.t1080):0,60,'min',0).replace(/>(\d+)<small>min/,(a,b)=>'>'+m.t1080+'<small>min');
   })();
 
   $('v-detalhe').innerHTML=`
@@ -717,10 +718,10 @@ function renderDetalhe(id){
        <div class="stats" style="grid-template-columns:repeat(3,1fr);margin-top:16px">
          <div class="stat"><div class="k">Autonomia</div><div class="v">${num(aut,'km')}</div></div>
          <div class="stat"><div class="k">Potência</div><div class="v">${num(v?v.hp:m.hp,'cv')}</div></div>
-         <div class="stat"><div class="k">Bateria</div><div class="v">${num(m.kwh,'kWh')}</div></div>
+         <div class="stat"><div class="k">Bateria</div><div class="v">${num(kwh,'kWh')}</div></div>
        </div>
-       ${vs?`<div class="panel"><h3>Versões</h3><table class="vtable"><tr><th>Versão</th><th>Preço</th><th>Autonomia</th><th>IVA</th></tr>
-         ${vs.map((x,i)=>`<tr class="${i===SIM.vi?'sel':''}" onclick="SIM.vi=${i};renderDetalhe('${sid}')"><td><b>${esc(x.nome)}</b>${x.est?'<br><small class="muted">preço/autonomia estimados</small>':''}</td><td>${eur(x.pvp)}</td><td>${num(x.aut,'km')}</td><td>${x.iva==='Sim'?'✅':x.iva==='Autonomia'?'★':'❌'}</td></tr>`).join('')}</table>
+       ${vs?`<div class="panel"><h3>Versões</h3><table class="vtable"><tr><th>Versão</th><th>Preço</th><th>WLTP</th><th>Real</th><th>Bateria</th><th>IVA</th></tr>
+         ${vs.map((x,i)=>`<tr class="${i===SIM.vi?'sel':''}" onclick="SIM.vi=${i};renderDetalhe('${sid}')"><td><b>${esc(x.nome)}</b>${x.est?'<br><small class="muted">preço/autonomia estimados</small>':''}</td><td>${eur(x.pvp)}</td><td>${num(x.aut,'km')}</td><td>${num(x.real,'km')}</td><td>${num(x.kwh,'kWh')}</td><td>${x.iva==='Sim'?'✅':x.iva==='Autonomia'?'★':'❌'}</td></tr>`).join('')}</table>
          <p class="note">Clique numa versão para a usar no simulador.</p></div>`:''}
 
        <div class="panel"><h3>💶 Simulador fiscal</h3>
@@ -752,7 +753,7 @@ function renderDetalhe(id){
 
 /* ════════ CARREGAR DADOS ════════ */
 function mapModel(r){
-  const vs=Array.isArray(r['Variantes'])&&r['Variantes'].length?r['Variantes'].map(v=>({nome:v.nome,pvp:v.pvp,aut:v.autonomia_km||0,hp:v.hp||0,iva:v.iva_dedutivel,est:!!v.estimado})):null;
+  const vs=Array.isArray(r['Variantes'])&&r['Variantes'].length?r['Variantes'].map(v=>({nome:v.nome,pvp:v.pvp,aut:v.autonomia_km||0,hp:v.hp||0,real:v.autonomia_real_km||0,kwh:v.bateria_kwh||0,iva:v.iva_dedutivel,est:!!v.estimado})):null;
   return {
     id:r.Marca+'||'+r.Modelo, brand:r.Marca, name:r.Modelo, tipo:r.Tipo,
     pvp:r['Preço desde (€ PVP)']||0, sem:r['Preço s/ IVA estimado (€)']||0,

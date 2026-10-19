@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T14:21:49Z",
+  "updated": "2026-10-19T08:00:06Z",
   "total": 111,
   "ev_count": 73,
   "phev_count": 38,
@@ -17,9 +17,9 @@
       "Autonomia elétrica (km)": 406,
       "Potência (cv)": 136,
       "Carroçaria": "Hatchback",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752015/large/large_API_NCAUTO_17895719454380-6.webp",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/764376/large/large_API_NCAUTO_17895719454380-6.webp",
       "Fotos": [
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/752015/large/large_API_NCAUTO_17895719454380-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/764376/large/large_API_NCAUTO_17895719454380-6.webp",
         "https://upload.wikimedia.org/wikipedia/commons/f/f7/2023_Peugeot_2008_in_Vertigo_Blue%2C_front_left%2C_06-08-2025.jpg"
       ],
       "Ano": 2025,
@@ -489,6 +489,8 @@
           "pvp_sem_iva": 30073.17,
           "autonomia_km": 534,
           "hp": 283,
+          "autonomia_real_km": 450,
+          "bateria_kwh": 60,
           "estimado": false,
           "iva_dedutivel": "Sim"
         },
@@ -498,6 +500,8 @@
           "pvp_sem_iva": 36577.24,
           "autonomia_km": 750,
           "hp": 333,
+          "autonomia_real_km": 580,
+          "bateria_kwh": 79,
           "estimado": true,
           "iva_dedutivel": "Sim"
         },
@@ -507,6 +511,8 @@
           "pvp_sem_iva": 46739.84,
           "autonomia_km": 528,
           "hp": 627,
+          "autonomia_real_km": 515,
+          "bateria_kwh": 79,
           "estimado": true,
           "iva_dedutivel": "Sim"
         }
@@ -1037,9 +1043,11 @@
       "Autonomia elétrica (km)": 500,
       "Potência (cv)": 218,
       "Carroçaria": "SUV",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/760224/large/large_API_NCAUTO_17885412614460-6.webp",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/763759/large/large_API_NCAUTO_17919027644880-6.webp",
       "Fotos": [
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/760224/large/large_API_NCAUTO_17885412614460-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/763759/large/large_API_NCAUTO_17919027644880-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/763763/large/large_API_NCAUTO_17919027644210-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/763765/large/large_API_NCAUTO_17919027643160-6.webp",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/2023_BYD_Song_Plus_DM-i_%28front%29.jpg/3840px-2023_BYD_Song_Plus_DM-i_%28front%29.jpg"
       ],
       "Ano": 2026,
@@ -1085,39 +1093,6 @@
       "Observações": "Página Guia BYD; gama elétrica.",
       "Preço estimado": false,
       "Tipologia": "Sedan"
-    },
-    {
-      "Marca": "BYD",
-      "Modelo": "Sealion 7",
-      "Tipo": "EV",
-      "Preço desde (€ PVP)": 49425.0,
-      "Preço s/ IVA estimado (€)": 40182.93,
-      "Autonomia elétrica (km)": 0,
-      "Potência (cv)": 313,
-      "Carroçaria": "SUV",
-      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/758042/large/large_API_NCAUTO_17908456392610-6.webp",
-      "Fotos": [
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/758042/large/large_API_NCAUTO_17908456392610-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/758043/large/large_API_NCAUTO_17908456383520-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/758046/large/large_API_NCAUTO_17908456418010-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757082/large/large_API_NCAUTO_17900097855330-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757087/large/large_API_NCAUTO_17900097855230-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757088/large/large_API_NCAUTO_17900097853320-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/751801/large/large_API_NCAUTO_17900068440730-6.webp",
-        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/751805/large/large_API_NCAUTO_17900068439400-6.webp"
-      ],
-      "Ano": 2026,
-      "Bateria útil (kWh)": 91.3,
-      "Carga DC máx. (kW)": 0,
-      "Tempo 10-80% DC (min)": 0,
-      "Autonomia real (km)": 440,
-      "Dados técnicos": "EV-Database",
-      "IVA dedutível empresas?": "Sim",
-      "Representante PT": "",
-      "Fonte Guia": "",
-      "Observações": "",
-      "Preço estimado": false,
-      "Tipologia": "SUV"
     },
     {
       "Marca": "Volkswagen",
@@ -1220,6 +1195,39 @@
       "Observações": "Guia lista preço desde 50.800€.",
       "Preço estimado": false,
       "Tipologia": "Comercial"
+    },
+    {
+      "Marca": "BYD",
+      "Modelo": "Sealion 7",
+      "Tipo": "EV",
+      "Preço desde (€ PVP)": 50974.0,
+      "Preço s/ IVA estimado (€)": 41442.28,
+      "Autonomia elétrica (km)": 0,
+      "Potência (cv)": 313,
+      "Carroçaria": "SUV",
+      "Foto": "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757082/large/large_API_NCAUTO_17900097855330-6.webp",
+      "Fotos": [
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757082/large/large_API_NCAUTO_17900097855330-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757087/large/large_API_NCAUTO_17900097855230-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/757088/large/large_API_NCAUTO_17900097853320-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/751801/large/large_API_NCAUTO_17900068440730-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/751805/large/large_API_NCAUTO_17900068439400-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/751808/large/large_API_NCAUTO_17900068440000-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/751799/large/large_API_NCAUTO_17900096508950-6.webp",
+        "https://images.ngine.ai/file/ngine-assets/production/uploads/images/stock_image/photo/751806/large/large_API_NCAUTO_17900096509930-6.webp"
+      ],
+      "Ano": 2026,
+      "Bateria útil (kWh)": 91.3,
+      "Carga DC máx. (kW)": 0,
+      "Tempo 10-80% DC (min)": 0,
+      "Autonomia real (km)": 440,
+      "Dados técnicos": "EV-Database",
+      "IVA dedutível empresas?": "Sim",
+      "Representante PT": "",
+      "Fonte Guia": "",
+      "Observações": "",
+      "Preço estimado": false,
+      "Tipologia": "SUV"
     },
     {
       "Marca": "Peugeot",
@@ -1537,6 +1545,8 @@
           "pvp_sem_iva": 52845.53,
           "autonomia_km": 635,
           "hp": 320,
+          "autonomia_real_km": 510,
+          "bateria_kwh": 82.6,
           "estimado": true,
           "iva_dedutivel": "Sim"
         },
@@ -1546,6 +1556,8 @@
           "pvp_sem_iva": 59268.29,
           "autonomia_km": 805,
           "hp": 469,
+          "autonomia_real_km": 645,
+          "bateria_kwh": 108.7,
           "estimado": false,
           "iva_dedutivel": "Sim"
         }
@@ -1635,6 +1647,8 @@
           "pvp_sem_iva": 55208.13,
           "autonomia_km": 620,
           "hp": 374,
+          "autonomia_real_km": 455,
+          "bateria_kwh": 80,
           "estimado": false,
           "iva_dedutivel": "Sim"
         },
@@ -1644,6 +1658,8 @@
           "pvp_sem_iva": 58943.09,
           "autonomia_km": 660,
           "hp": 510,
+          "autonomia_real_km": 500,
+          "bateria_kwh": 91,
           "estimado": true,
           "iva_dedutivel": "Sim"
         },
@@ -1653,6 +1669,8 @@
           "pvp_sem_iva": 62708.13,
           "autonomia_km": 810,
           "hp": 680,
+          "autonomia_real_km": 610,
+          "bateria_kwh": 112,
           "estimado": false,
           "iva_dedutivel": "Autonomia"
         }
